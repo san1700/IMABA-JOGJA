@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { Newspaper, Calendar } from 'lucide-react'
+import { Newspaper } from 'lucide-react'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { POSTS_QUERY, CATEGORIES_QUERY, type Post, type Category } from '@/sanity/lib/queries'
-import { PostCard } from '@/components/cards/post-card'
+import { PostFilterTabs } from '@/components/post-filter-tabs'
 
 export const metadata: Metadata = {
   title: 'Berita & Agenda DPW',
@@ -108,62 +107,12 @@ export default async function BeritaPage({ searchParams }: BeritaPageProps) {
 
       {/* Main Content Area */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        {/* Category Filter Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
-          <Link
-            href="/berita"
-            className={`px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 ${
-              !categoryFilter
-                ? 'bg-primary text-white shadow-md'
-                : 'bg-card border border-border text-foreground hover:bg-muted'
-            }`}
-          >
-            Semua Berita
-          </Link>
-
-          {categories.map((cat) => {
-            const isSelected = categoryFilter === cat.slug
-            return (
-              <Link
-                key={cat._id}
-                href={`/berita?kategori=${cat.slug}`}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 ${
-                  isSelected
-                    ? 'bg-primary text-white shadow-md'
-                    : 'bg-card border border-border text-foreground hover:bg-muted'
-                }`}
-              >
-                {cat.title}
-              </Link>
-            )
-          })}
-        </div>
-
-        {/* Grid Artikel Berita */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayPosts.map((post) => (
-            <PostCard key={post._id} post={post} hrefPrefix="/berita" />
-          ))}
-        </div>
-
-        {/* Empty State jika filter tidak menemukan artikel */}
-        {displayPosts.length === 0 && (
-          <div className="text-center py-20 bg-card rounded-3xl border border-border p-8 max-w-lg mx-auto">
-            <Calendar className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="font-heading font-bold text-lg text-foreground mb-2">
-              Belum Ada Berita di Kategori Ini
-            </h3>
-            <p className="text-sm text-muted-foreground mb-6">
-              Pengurus belum mempublikasikan artikel untuk kategori ini.
-            </p>
-            <Link
-              href="/berita"
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary text-white text-xs font-semibold"
-            >
-              Lihat Semua Berita
-            </Link>
-          </div>
-        )}
+        <PostFilterTabs
+          posts={displayPosts}
+          categories={categories}
+          hrefPrefix="/berita"
+          initialCategory={categoryFilter}
+        />
       </section>
     </div>
   )

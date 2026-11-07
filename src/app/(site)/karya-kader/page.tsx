@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { Feather, PenTool } from 'lucide-react'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { POSTS_QUERY, CATEGORIES_QUERY, type Post, type Category } from '@/sanity/lib/queries'
-import { PostCard } from '@/components/cards/post-card'
+import { PostFilterTabs } from '@/components/post-filter-tabs'
 
 export const metadata: Metadata = {
   title: 'Karya Kader | Opini, Esai, Cerpen & Puisi',
@@ -106,43 +105,12 @@ export default async function KaryaKaderPage({ searchParams }: KaryaKaderPagePro
 
       {/* Main Content Area */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        {/* Category Filter Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
-          <Link
-            href="/karya-kader"
-            className={`px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 ${
-              !categoryFilter
-                ? 'bg-[#1E2FB8] text-white shadow-md'
-                : 'bg-card border border-border text-foreground hover:bg-muted'
-            }`}
-          >
-            Semua Karya
-          </Link>
-
-          {categories.map((cat) => {
-            const isSelected = categoryFilter === cat.slug
-            return (
-              <Link
-                key={cat._id}
-                href={`/karya-kader?kategori=${cat.slug}`}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 ${
-                  isSelected
-                    ? 'bg-[#1E2FB8] text-white shadow-md'
-                    : 'bg-card border border-border text-foreground hover:bg-muted'
-                }`}
-              >
-                {cat.title}
-              </Link>
-            )
-          })}
-        </div>
-
-        {/* Grid Karya Kader */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayPosts.map((post) => (
-            <PostCard key={post._id} post={post} hrefPrefix="/karya-kader" />
-          ))}
-        </div>
+        <PostFilterTabs
+          posts={displayPosts}
+          categories={categories}
+          hrefPrefix="/karya-kader"
+          initialCategory={categoryFilter}
+        />
 
         {/* CTA Kirim Tulisan */}
         <div className="mt-20 p-8 sm:p-12 rounded-[32px] bg-card border border-border flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">

@@ -12,6 +12,7 @@ import {
 import { urlFor } from '@/sanity/lib/image'
 import { PortableText } from '@/components/portable-text'
 import { PostCard } from '@/components/cards/post-card'
+import { ReadingProgress } from '@/components/reading-progress'
 
 interface PostDetailPageProps {
   params: Promise<{ slug: string }>
@@ -91,7 +92,8 @@ export default async function BeritaDetailPage({ params }: PostDetailPageProps) 
     : null
 
   return (
-    <article className="w-full min-h-screen bg-background py-10 sm:py-16">
+    <article className="w-full min-h-screen bg-background py-10 sm:py-16 relative">
+      <ReadingProgress />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Tombol Kembali & Breadcrumb */}
         <div className="flex items-center justify-between gap-4 mb-8">

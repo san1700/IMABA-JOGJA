@@ -18,8 +18,10 @@ import {
   Sparkles,
   FileText,
   HeartHandshake,
+  Search,
 } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { SearchModal } from '@/components/search-modal'
 import { cn } from '@/lib/utils'
 
 interface SubMenuItem {
@@ -163,7 +165,20 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null)
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false)
   const navRef = React.useRef<HTMLElement>(null)
+
+  // Shortcut Cmd+K / Ctrl+K untuk pencarian cepat
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setIsSearchOpen((prev) => !prev)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   // Pantau scroll untuk efek glassmorphism
   React.useEffect(() => {
@@ -332,7 +347,18 @@ export function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            {/* Quick Search Button */}
+            <button
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Pencarian Cepat (Cmd+K)"
+              title="Pencarian Cepat (Cmd+K)"
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/90 border border-white/15 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+
             {/* Dark Mode Toggle */}
             <ThemeToggle className="text-white" />
 
@@ -444,6 +470,8 @@ export function Navbar() {
           </div>
         </div>
       )}
+      {/* Modal Pencarian Cepat */}
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   )
 }

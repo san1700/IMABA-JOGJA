@@ -22,3 +22,4 @@ export async function sanityFetch<T>({
     return fallback
   }
 }
+

@@ -9,6 +9,7 @@ import {
   CheckCircle2,
 } from 'lucide-react'
 import { InstagramIcon } from '@/components/icons'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/components/motion/fade-in'
 
 export const metadata: Metadata = {
   title: 'Puteri Imaba Yogyakarta | Pemberdayaan Mahasiswi Santri',
@@ -73,58 +74,60 @@ export default function PuteriImabaPage() {
       {/* SECTION 1: VISI & IDENTITAS PUTERI IMABA */}
       {/* ============================================================ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E3262A]/10 text-[#E3262A] text-xs font-bold mb-4">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Visi & Keanggunan</span>
-            </div>
-
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-6 leading-tight">
-              Melahirkan Mahasiswi Santri yang Cerdas, Mandiri, dan Berakhlakul Karimah
-            </h2>
-
-            <p className="text-foreground/80 leading-relaxed text-base mb-6">
-              Puteri Imaba hadir sebagai ruang aman dan kondusif bagi para santriwati perantau di Jogja
-              untuk saling mendukung dalam studi, mengasah kepekaan sosial, memperdalam wawasan
-              keagamaan, serta melatih kecakapan publik dan kepemimpinan.
-            </p>
-
-            <div className="space-y-3.5 text-sm text-foreground/85">
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#E3262A] flex-shrink-0 mt-0.5" />
-                <span>Mempererat ukhuwah silaturahmi antar mahasiswi Bata-Bata se-Yogyakarta.</span>
+        <FadeUp>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E3262A]/10 text-[#E3262A] text-xs font-bold mb-4">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Visi & Keanggunan</span>
               </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#E3262A] flex-shrink-0 mt-0.5" />
-                <span>Membekali kader dengan kecakapan public speaking, riset, dan kepenulisan.</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#E3262A] flex-shrink-0 mt-0.5" />
-                <span>Mengawal kesadaran isu gender, keluarga sakinah, dan kesehatan mental santriwati.</span>
-              </div>
-            </div>
-          </div>
 
-          <div className="lg:col-span-6">
-            <div className="p-8 sm:p-10 rounded-[32px] bg-gradient-to-br from-[#050A2E] to-[#1E2FB8] text-white shadow-2xl border border-white/10">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#F9C80E] mb-6">
-                <Feather className="w-6 h-6" />
-              </div>
-              <h3 className="font-heading font-bold text-2xl text-white mb-3">
-                Falsafah Gerakan
-              </h3>
-              <p className="text-white/80 leading-relaxed text-sm italic mb-6">
-                &ldquo;Keanggunan seorang santriwati tidak hanya tercermin dari kesantunan tutur kata,
-                tetapi juga dari ketajaman daya nalar, kemandirian sikap, dan kesiapan berkhidmah
-                bagi peradaban.&rdquo;
+              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-6 leading-tight">
+                Melahirkan Mahasiswi Santri yang Cerdas, Mandiri, dan Berakhlakul Karimah
+              </h2>
+
+              <p className="text-foreground/80 leading-relaxed text-base mb-6">
+                Puteri Imaba hadir sebagai ruang aman dan kondusif bagi para santriwati perantau di Jogja
+                untuk saling mendukung dalam studi, mengasah kepekaan sosial, memperdalam wawasan
+                keagamaan, serta melatih kecakapan publik dan kepemimpinan.
               </p>
-              <div className="pt-4 border-t border-white/10 text-xs text-white/60">
-                Divisi Puteri DPW IMABA Daerah Istimewa Yogyakarta
+
+              <div className="space-y-3.5 text-sm text-foreground/85">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#E3262A] flex-shrink-0 mt-0.5" />
+                  <span>Mempererat ukhuwah silaturahmi antar mahasiswi Bata-Bata se-Yogyakarta.</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#E3262A] flex-shrink-0 mt-0.5" />
+                  <span>Membekali kader dengan kecakapan public speaking, riset, dan kepenulisan.</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#E3262A] flex-shrink-0 mt-0.5" />
+                  <span>Mengawal kesadaran isu gender, keluarga sakinah, dan kesehatan mental santriwati.</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6">
+              <div className="p-8 sm:p-10 rounded-[32px] bg-gradient-to-br from-[#050A2E] to-[#1E2FB8] text-white shadow-2xl border border-white/10">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#F9C80E] mb-6">
+                  <Feather className="w-6 h-6" />
+                </div>
+                <h3 className="font-heading font-bold text-2xl text-white mb-3">
+                  Falsafah Gerakan
+                </h3>
+                <p className="text-white/80 leading-relaxed text-sm italic mb-6">
+                  &ldquo;Keanggunan seorang santriwati tidak hanya tercermin dari kesantunan tutur kata,
+                  tetapi juga dari ketajaman daya nalar, kemandirian sikap, dan kesiapan berkhidmah
+                  bagi peradaban.&rdquo;
+                </p>
+                <div className="pt-4 border-t border-white/10 text-xs text-white/60">
+                  Divisi Puteri DPW IMABA Daerah Istimewa Yogyakarta
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ============================================================ */}
@@ -145,55 +148,63 @@ export default function PuteriImabaPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="card-radius-large p-7 bg-card border border-border">
-              <div className="w-10 h-10 rounded-2xl bg-[#E3262A]/10 text-[#E3262A] flex items-center justify-center mb-5">
-                <BookOpen className="w-5 h-5" />
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <StaggerItem>
+              <div className="h-full card-radius-large p-7 bg-card border border-border">
+                <div className="w-10 h-10 rounded-2xl bg-[#E3262A]/10 text-[#E3262A] flex items-center justify-center mb-5">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                  Kajian Fiqhun Nisa
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Kajian kitab klasik seputar fiqih wanita, hukum keluarga, dan perspektif ulama nusantara.
+                </p>
               </div>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">
-                Kajian Fiqhun Nisa
-              </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Kajian kitab klasik seputar fiqih wanita, hukum keluarga, dan perspektif ulama nusantara.
-              </p>
-            </div>
+            </StaggerItem>
 
-            <div className="card-radius-large p-7 bg-card border border-border">
-              <div className="w-10 h-10 rounded-2xl bg-[#1E2FB8]/10 text-[#1E2FB8] flex items-center justify-center mb-5">
-                <Sparkles className="w-5 h-5" />
+            <StaggerItem>
+              <div className="h-full card-radius-large p-7 bg-card border border-border">
+                <div className="w-10 h-10 rounded-2xl bg-[#1E2FB8]/10 text-[#1E2FB8] flex items-center justify-center mb-5">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                  Leadership & Soft Skills
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Workshop public speaking, kepemimpinan organisasi mahasiswa, dan manajemen waktu kuliah.
+                </p>
               </div>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">
-                Leadership & Soft Skills
-              </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Workshop public speaking, kepemimpinan organisasi mahasiswa, dan manajemen waktu kuliah.
-              </p>
-            </div>
+            </StaggerItem>
 
-            <div className="card-radius-large p-7 bg-card border border-border">
-              <div className="w-10 h-10 rounded-2xl bg-[#F9C80E]/20 text-[#D97706] flex items-center justify-center mb-5">
-                <Feather className="w-5 h-5" />
+            <StaggerItem>
+              <div className="h-full card-radius-large p-7 bg-card border border-border">
+                <div className="w-10 h-10 rounded-2xl bg-[#F9C80E]/20 text-[#D97706] flex items-center justify-center mb-5">
+                  <Feather className="w-5 h-5" />
+                </div>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                  Kelas Literasi & Puisi
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Pelatihan menulis kreatif, cerpen, esai, dan kurasi antologi karya santriwati perantau.
+                </p>
               </div>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">
-                Kelas Literasi & Puisi
-              </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Pelatihan menulis kreatif, cerpen, esai, dan kurasi antologi karya santriwati perantau.
-              </p>
-            </div>
+            </StaggerItem>
 
-            <div className="card-radius-large p-7 bg-card border border-border">
-              <div className="w-10 h-10 rounded-2xl bg-[#1FA83C]/10 text-[#1FA83C] flex items-center justify-center mb-5">
-                <Heart className="w-5 h-5" />
+            <StaggerItem>
+              <div className="h-full card-radius-large p-7 bg-card border border-border">
+                <div className="w-10 h-10 rounded-2xl bg-[#1FA83C]/10 text-[#1FA83C] flex items-center justify-center mb-5">
+                  <Heart className="w-5 h-5" />
+                </div>
+                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                  Bakti Sosial & Edukasi
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Aksi sosial kemasyarakatan, mengajar anak-anak TPA, dan kegiatan peduli lingkungan di DIY.
+                </p>
               </div>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">
-                Bakti Sosial & Edukasi
-              </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Aksi sosial kemasyarakatan, mengajar anak-anak TPA, dan kegiatan peduli lingkungan di DIY.
-              </p>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
     </div>

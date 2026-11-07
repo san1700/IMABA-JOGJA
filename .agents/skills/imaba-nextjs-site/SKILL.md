@@ -21,9 +21,9 @@ Skill ini memandu pembangunan situs organisasi **IMABA Jogja** (Ikatan Mahasiswa
 - [x] Fase 0 - Persiapan & keamanan
 - [x] Fase 1 - Next.js 16 + Tailwind + shadcn/ui (Base UI) + motion, lucide-react, next-themes, fuse.js
 - [x] Fase 2 - Sanity ter-init, Studio tertanam di `/studio`, schema sudah dibuat, 1 artikel uji sudah Published
-- [ ] Fase 3 - Design system (warna, font, token)
-- [ ] Fase 4 - Layout global (Navbar, Footer, dark mode)
-- [ ] Fase 5 - Halaman (Beranda, Berita, Karya Kader, Informasi Kampus, Profil, Puteri Imaba, 404)
+- [x] Fase 3 - Design system (warna, font, token)
+- [x] Fase 4 - Layout global (Navbar, Footer, dark mode)
+- [x] Fase 5 - Halaman (Beranda, Berita, Karya Kader, Informasi Kampus, Profil, Puteri Imaba, 404)
 - [ ] Fase 6 - Interaksi & animasi
 - [ ] Fase 7 - SEO, performa, aksesibilitas
 - [ ] Fase 8 - Migrasi konten & redirect

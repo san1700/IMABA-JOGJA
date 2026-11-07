@@ -11,6 +11,7 @@ import {
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { MEMBERS_QUERY, type Member } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/image'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/components/motion/fade-in'
 
 export const metadata: Metadata = {
   title: 'Profil Organisasi, Sejarah & Struktur Pengurus DPW',
@@ -138,77 +139,79 @@ export default async function ProfilPage() {
       {/* SECTION 1: SEJARAH & FILOSOFI */}
       {/* ============================================================ */}
       <section id="sejarah" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 scroll-mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-4">
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>Jejak Sejarah</span>
+        <FadeUp>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-4">
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>Jejak Sejarah</span>
+              </div>
+
+              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-6 tracking-tight leading-snug">
+                Lahir dari Kerinduan, Bertumbuh dalam Persaudaraan Santri di Jogja
+              </h2>
+
+              <div className="space-y-4 text-foreground/80 leading-relaxed text-base">
+                <p>
+                  Pondok Pesantren Mambaul Ulum Bata-Bata Pamekasan Madura telah melahirkan puluhan ribu
+                  santri yang tersebar di seantero nusantara. Yogyakarta, sebagai barometer kota pendidikan
+                  dan kebudayaan Indonesia, menjadi salah satu destinasi utama para alumni untuk melanjutkan
+                  jenjang studi tinggi.
+                </p>
+                <p>
+                  Didorong oleh rasa persaudaraan yang erat dan kebutuhan untuk saling menguatkan di tanah
+                  perantauan, para sesepuh alumni mendirikan <strong>Ikatan Mahasiswa Bata-Bata (IMABA)
+                  Dewan Pengurus Wilayah Daerah Istimewa Yogyakarta</strong>.
+                </p>
+                <p>
+                  IMABA Jogja berfungsi sebagai rumah kedua, tempat bertukar pikiran, menempa kepemimpinan,
+                  mengawal tradisi intelektual, dan memastikan nilai-nilai kesantrian tetap berakar kuat di
+                  tengah heterogenitas pergaulan akademis.
+                </p>
+              </div>
+
+              {/* Quote Slogan */}
+              <div className="mt-8 p-6 rounded-2xl bg-muted/60 border-l-4 border-primary">
+                <span className="text-xs font-bold text-primary uppercase tracking-wider block mb-1">
+                  Falsafah Pesantren Bata-Bata
+                </span>
+                <p className="font-article text-lg italic text-foreground">
+                  &ldquo;Kesopanan Lebih Tinggi Nilainya daripada Kebudayaan&rdquo;
+                </p>
+              </div>
             </div>
 
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-6 tracking-tight leading-snug">
-              Lahir dari Kerinduan, Bertumbuh dalam Persaudaraan Santri di Jogja
-            </h2>
-
-            <div className="space-y-4 text-foreground/80 leading-relaxed text-base">
-              <p>
-                Pondok Pesantren Mambaul Ulum Bata-Bata Pamekasan Madura telah melahirkan puluhan ribu
-                santri yang tersebar di seantero nusantara. Yogyakarta, sebagai barometer kota pendidikan
-                dan kebudayaan Indonesia, menjadi salah satu destinasi utama para alumni untuk melanjutkan
-                jenjang studi tinggi.
-              </p>
-              <p>
-                Didorong oleh rasa persaudaraan yang erat dan kebutuhan untuk saling menguatkan di tanah
-                perantauan, para sesepuh alumni mendirikan <strong>Ikatan Mahasiswa Bata-Bata (IMABA)
-                Dewan Pengurus Wilayah Daerah Istimewa Yogyakarta</strong>.
-              </p>
-              <p>
-                IMABA Jogja berfungsi sebagai rumah kedua, tempat bertukar pikiran, menempa kepemimpinan,
-                mengawal tradisi intelektual, dan memastikan nilai-nilai kesantrian tetap berakar kuat di
-                tengah heterogenitas pergaulan akademis.
-              </p>
-            </div>
-
-            {/* Quote Slogan */}
-            <div className="mt-8 p-6 rounded-2xl bg-muted/60 border-l-4 border-primary">
-              <span className="text-xs font-bold text-primary uppercase tracking-wider block mb-1">
-                Falsafah Pesantren Bata-Bata
-              </span>
-              <p className="font-article text-lg italic text-foreground">
-                &ldquo;Kesopanan Lebih Tinggi Nilainya daripada Kebudayaan&rdquo;
-              </p>
+            <div className="lg:col-span-5 flex flex-col gap-5">
+              <div className="p-8 rounded-[32px] bg-gradient-to-br from-[#050A2E] to-[#1E2FB8] text-white shadow-xl">
+                <h3 className="font-heading font-bold text-xl mb-4 text-[#F9C80E] flex items-center gap-2">
+                  <Sparkles className="w-5 h-5" /> 5 Pilar Gerakan IMABA Jogja
+                </h3>
+                <ul className="space-y-3.5 text-sm text-white/90">
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span><strong>Ketauhidan:</strong> Berpijak pada akidah Ahlussunnah wal Jama&apos;ah</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span><strong>Intelektualitas:</strong> Menjunjung tinggi nalar kritis & riset ilmiah</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span><strong>Kekeluargaan:</strong> Silaturahmi lintas generasi dan kampus</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span><strong>Kemandirian:</strong> Berjiwa wirausaha dan solutif bagi masyarakat</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span><strong>Pengabdian:</strong> Berkhidmah untuk agama, bangsa, dan almamater</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-
-          <div className="lg:col-span-5 flex flex-col gap-5">
-            <div className="p-8 rounded-[32px] bg-gradient-to-br from-[#050A2E] to-[#1E2FB8] text-white shadow-xl">
-              <h3 className="font-heading font-bold text-xl mb-4 text-[#F9C80E] flex items-center gap-2">
-                <Sparkles className="w-5 h-5" /> 5 Pilar Gerakan IMABA Jogja
-              </h3>
-              <ul className="space-y-3.5 text-sm text-white/90">
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
-                  <span><strong>Ketauhidan:</strong> Berpijak pada akidah Ahlussunnah wal Jama&apos;ah</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
-                  <span><strong>Intelektualitas:</strong> Menjunjung tinggi nalar kritis & riset ilmiah</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
-                  <span><strong>Kekeluargaan:</strong> Silaturahmi lintas generasi dan kampus</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
-                  <span><strong>Kemandirian:</strong> Berjiwa wirausaha dan solutif bagi masyarakat</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
-                  <span><strong>Pengabdian:</strong> Berkhidmah untuk agama, bangsa, dan almamater</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ============================================================ */}
@@ -282,7 +285,7 @@ export default async function ProfilPage() {
         </div>
 
         {/* Grid Anggota Pengurus */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayMembers.map((member) => {
             let photoUrl = ''
             if (member.photo?.asset) {
@@ -290,50 +293,49 @@ export default async function ProfilPage() {
             }
 
             return (
-              <div
-                key={member._id}
-                className="card-radius-large p-7 bg-card border border-border flex flex-col items-center text-center group hover:border-primary/50 transition-all"
-              >
-                {/* Foto / Avatar */}
-                <div className="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-[#1E2FB8] via-[#4F5CF2] to-[#F9C80E] mb-5 shadow-md">
-                  <div className="w-full h-full rounded-full bg-muted flex items-center justify-center overflow-hidden text-2xl font-bold font-heading text-primary">
-                    {photoUrl ? (
-                      <Image
-                        src={photoUrl}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      member.name[0]
-                    )}
+              <StaggerItem key={member._id}>
+                <div className="h-full card-radius-large p-7 bg-card border border-border flex flex-col items-center text-center group hover:border-primary/50 transition-all">
+                  {/* Foto / Avatar */}
+                  <div className="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-[#1E2FB8] via-[#4F5CF2] to-[#F9C80E] mb-5 shadow-md">
+                    <div className="w-full h-full rounded-full bg-muted flex items-center justify-center overflow-hidden text-2xl font-bold font-heading text-primary">
+                      {photoUrl ? (
+                        <Image
+                          src={photoUrl}
+                          alt={member.name}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        member.name[0]
+                      )}
+                    </div>
                   </div>
+
+                  {/* Nama & Posisi */}
+                  <h3 className="font-heading font-bold text-lg text-foreground mb-1">
+                    {member.name}
+                  </h3>
+                  <span className="text-xs font-bold text-primary uppercase tracking-wider mb-2">
+                    {member.position}
+                  </span>
+
+                  {/* Kampus */}
+                  {member.campus?.name && (
+                    <p className="text-xs text-muted-foreground flex items-center gap-1 mb-4">
+                      <GraduationCap className="w-3.5 h-3.5 text-primary" />
+                      <span>{member.campus.shortName || member.campus.name}</span>
+                    </p>
+                  )}
+
+                  {/* Periode */}
+                  <span className="text-[11px] px-3 py-1 rounded-full bg-muted text-muted-foreground font-medium mt-auto">
+                    Periode {member.period}
+                  </span>
                 </div>
-
-                {/* Nama & Posisi */}
-                <h3 className="font-heading font-bold text-lg text-foreground mb-1">
-                  {member.name}
-                </h3>
-                <span className="text-xs font-bold text-primary uppercase tracking-wider mb-2">
-                  {member.position}
-                </span>
-
-                {/* Kampus */}
-                {member.campus?.name && (
-                  <p className="text-xs text-muted-foreground flex items-center gap-1 mb-4">
-                    <GraduationCap className="w-3.5 h-3.5 text-primary" />
-                    <span>{member.campus.shortName || member.campus.name}</span>
-                  </p>
-                )}
-
-                {/* Periode */}
-                <span className="text-[11px] px-3 py-1 rounded-full bg-muted text-muted-foreground font-medium">
-                  Periode {member.period}
-                </span>
-              </div>
+              </StaggerItem>
             )
           })}
-        </div>
+        </StaggerContainer>
       </section>
     </div>
   )

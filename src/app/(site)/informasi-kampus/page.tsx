@@ -3,7 +3,6 @@ import {
   GraduationCap,
   Award,
   Download,
-  ExternalLink,
   Sparkles,
   CheckCircle2,
   FileText,
@@ -20,6 +19,7 @@ import {
   type Brochure,
 } from '@/sanity/lib/queries'
 import { ScholarshipCard } from '@/components/cards/scholarship-card'
+import { CampusFilterTabs } from '@/components/campus-filter-tabs'
 
 export const metadata: Metadata = {
   title: 'Informasi Kampus, Beasiswa & Bimtren 2026',
@@ -315,74 +315,7 @@ export default async function InformasiKampusPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayCampuses.map((campus) => {
-            const typeLabels: Record<string, string> = {
-              ptn: 'PTN (Negeri)',
-              ptkin: 'PTKIN (Keagamaan)',
-              pts: 'PTS (Swasta)',
-              kedinasan: 'Kedinasan',
-            }
-
-            return (
-              <div
-                key={campus._id}
-                className="card-radius-large p-7 bg-card border border-border flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <span className="font-heading font-black text-2xl text-primary tracking-tight">
-                      {campus.shortName}
-                    </span>
-                    <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-muted text-foreground/80 border border-border">
-                      {typeLabels[campus.type] || 'Kampus'}
-                    </span>
-                  </div>
-
-                  <h3 className="font-heading font-bold text-lg text-foreground mb-2">
-                    {campus.name}
-                  </h3>
-
-                  {campus.address && (
-                    <p className="text-xs text-muted-foreground mb-3">{campus.address}</p>
-                  )}
-
-                  {campus.description && (
-                    <p className="text-xs text-foreground/75 leading-relaxed line-clamp-3 mb-6">
-                      {campus.description}
-                    </p>
-                  )}
-                </div>
-
-                <div className="pt-4 border-t border-border flex items-center justify-between gap-3">
-                  {campus.websiteUrl && (
-                    <a
-                      href={campus.websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
-                    >
-                      <span>Web Resmi</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-
-                  {campus.admissionUrl && (
-                    <a
-                      href={campus.admissionUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-bold text-white bg-primary hover:bg-primary/90 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1"
-                    >
-                      <span>Portal PMB</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            )
-          })}
-        </div>
+        <CampusFilterTabs campuses={displayCampuses} />
       </section>
 
       {/* ============================================================ */}

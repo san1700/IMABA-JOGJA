@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   ChevronRight,
 } from 'lucide-react'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/components/motion/fade-in'
 
 export default function HomePage() {
   return (
@@ -51,53 +52,55 @@ export default function HomePage() {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-          {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-semibold tracking-wide text-white/90 shadow-md mb-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
-            <span className="w-2 h-2 rounded-full bg-[#F9C80E] animate-pulse" />
-            <span>Ikatan Mahasiswa Bata-Bata (IMABA) Daerah Istimewa Yogyakarta</span>
-          </div>
+          <FadeUp>
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-xs font-semibold tracking-wide text-white/90 shadow-md mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#F9C80E] animate-pulse" />
+              <span>Ikatan Mahasiswa Bata-Bata (IMABA) Daerah Istimewa Yogyakarta</span>
+            </div>
 
-          {/* Main Display Headline */}
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white max-w-4xl leading-[1.12] mb-6">
-            Santri Berintelektual, <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#EEF1F9] to-[#D8E0FF]">
-              Mengabdi di Kota Pelajar
-            </span>
-          </h1>
-
-          {/* Subheadline in Inter */}
-          <p className="font-sans text-base sm:text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed mb-9">
-            Wadah silaturahmi, pengkaderan intelektual, dan pengabdian santri serta alumni Pondok
-            Pesantren Mambaul Ulum Bata-Bata di kampus-kampus Yogyakarta.
-          </p>
-
-          {/* Primary & Secondary Pill Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
-            {/* Pill Button with White Circular Arrow Disc (Matches Reference Image) */}
-            <Link
-              href="/informasi-kampus"
-              className="btn-pill-arrow bg-[#1E2FB8] hover:bg-[#162494] text-white shadow-xl shadow-blue-950/60 border border-white/20 group"
-            >
-              <span>Jelajahi Informasi Kampus</span>
-              <span className="arrow-disc bg-white text-[#1E2FB8] shadow-sm">
-                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+            {/* Main Display Headline */}
+            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-white max-w-4xl leading-[1.12] mb-6">
+              Santri Berintelektual, <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#EEF1F9] to-[#D8E0FF]">
+                Mengabdi di Kota Pelajar
               </span>
-            </Link>
+            </h1>
 
-            {/* Secondary Glass Pill Button */}
-            <Link
-              href="/profil"
-              className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 glass-pill text-white/90 hover:text-white hover:bg-white/15 text-sm font-semibold transition-all duration-200 border border-white/20"
-            >
-              <Compass className="w-4 h-4 text-[#F9C80E]" />
-              <span>Profil Organisasi</span>
-            </Link>
-          </div>
+            {/* Subheadline in Inter */}
+            <p className="font-sans text-base sm:text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed mb-9">
+              Wadah silaturahmi, pengkaderan intelektual, dan pengabdian santri serta alumni Pondok
+              Pesantren Mambaul Ulum Bata-Bata di kampus-kampus Yogyakarta.
+            </p>
+
+            {/* Primary & Secondary Pill Action Buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
+              {/* Pill Button with White Circular Arrow Disc (Matches Reference Image) */}
+              <Link
+                href="/informasi-kampus"
+                className="btn-pill-arrow bg-[#1E2FB8] hover:bg-[#162494] text-white shadow-xl shadow-blue-950/60 border border-white/20 group"
+              >
+                <span>Jelajahi Informasi Kampus</span>
+                <span className="arrow-disc bg-white text-[#1E2FB8] shadow-sm">
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </span>
+              </Link>
+
+              {/* Secondary Glass Pill Button */}
+              <Link
+                href="/profil"
+                className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 glass-pill text-white/90 hover:text-white hover:bg-white/15 text-sm font-semibold transition-all duration-200 border border-white/20"
+              >
+                <Compass className="w-4 h-4 text-[#F9C80E]" />
+                <span>Profil Organisasi</span>
+              </Link>
+            </div>
+          </FadeUp>
 
           {/* ============================================================ */}
           {/* FLOATING GLASS MOCKUP & CARDS (Exact match to reference style) */}
           {/* ============================================================ */}
-          <div className="relative w-full max-w-5xl mt-2">
+          <FadeUp delay={0.15} className="relative w-full max-w-5xl mt-2">
             {/* Left Floating Glass Card: Statistik Kader */}
             <div className="hidden lg:flex absolute -left-6 top-12 z-20 w-64 flex-col p-5 rounded-3xl glass-card text-left text-white shadow-2xl animate-in fade-in slide-in-from-left-4 duration-700">
               <div className="flex items-center justify-between mb-3">
@@ -213,7 +216,7 @@ export default function HomePage() {
                 <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
-          </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -222,168 +225,182 @@ export default function HomePage() {
       {/* ============================================================ */}
       <section className="w-full bg-[#EEF1F9] dark:bg-[#080E38] text-[#050A2E] dark:text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
         <div className="max-w-7xl mx-auto flex flex-col items-center">
-          {/* Section Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1E2FB8]/10 dark:bg-white/10 text-[#1E2FB8] dark:text-[#D8E0FF] text-xs font-bold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#F9C80E]" />
-            <span>Fasilitas & Khidmah Organisasi</span>
-          </div>
-
-          {/* Section Heading */}
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-center tracking-tight text-[#050A2E] dark:text-white max-w-3xl leading-[1.2] mb-5">
-            Merawat Tradisi Keilmuan, Membina Generasi Unggul di Jogja
-          </h2>
-
-          <p className="font-sans text-base sm:text-lg text-gray-600 dark:text-white/70 text-center max-w-2xl mb-14">
-            Seluruh layanan dan program dirancang untuk mendukung kader santri sejak persiapan
-            masuk kampus, masa perkuliahan, hingga kiprah karya intelektual.
-          </p>
-
-          {/* Grid of Large-Radius Cards (Matches Reference Bottom Grid) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
-            {/* Card 1: Featured Highlight Card with Indigo Gradient */}
-            <div className="card-radius-large p-8 bg-gradient-to-br from-[#1E2FB8] to-[#4F5CF2] text-white flex flex-col justify-between shadow-xl shadow-blue-900/20">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white mb-6">
-                  <GraduationCap className="w-6 h-6" />
-                </div>
-                <h3 className="font-heading font-extrabold text-2xl text-white mb-3 tracking-tight">
-                  Bimtren Masuk Kampus
-                </h3>
-                <p className="text-sm text-white/80 leading-relaxed mb-6">
-                  Program unggulan pendampingan masuk perguruan tinggi negeri & keagamaan di Jogja
-                  khusus bagi santri lulusan pesantren Bata-Bata.
-                </p>
-              </div>
-
-              <Link
-                href="/informasi-kampus#bimtren"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#F9C80E] hover:text-white transition-colors group mt-2"
-              >
-                <span>Pelajari Program Bimtren</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+          <FadeUp className="text-center flex flex-col items-center">
+            {/* Section Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1E2FB8]/10 dark:bg-white/10 text-[#1E2FB8] dark:text-[#D8E0FF] text-xs font-bold uppercase tracking-wider mb-4">
+              <Sparkles className="w-3.5 h-3.5 text-[#F9C80E]" />
+              <span>Fasilitas & Khidmah Organisasi</span>
             </div>
+
+            {/* Section Heading */}
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-center tracking-tight text-[#050A2E] dark:text-white max-w-3xl leading-[1.2] mb-5">
+              Merawat Tradisi Keilmuan, Membina Generasi Unggul di Jogja
+            </h2>
+
+            <p className="font-sans text-base sm:text-lg text-gray-600 dark:text-white/70 text-center max-w-2xl mb-14">
+              Seluruh layanan dan program dirancang untuk mendukung kader santri sejak persiapan
+              masuk kampus, masa perkuliahan, hingga kiprah karya intelektual.
+            </p>
+          </FadeUp>
+
+          {/* Grid of Large-Radius Cards dengan Stagger Animation */}
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
+            {/* Card 1: Featured Highlight Card with Indigo Gradient */}
+            <StaggerItem className="h-full">
+              <div className="card-radius-large p-8 bg-gradient-to-br from-[#1E2FB8] to-[#4F5CF2] text-white flex flex-col justify-between shadow-xl shadow-blue-900/20 h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white mb-6">
+                    <GraduationCap className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-2xl text-white mb-3 tracking-tight">
+                    Bimtren Masuk Kampus
+                  </h3>
+                  <p className="text-sm text-white/80 leading-relaxed mb-6">
+                    Program unggulan pendampingan masuk perguruan tinggi negeri & keagamaan di Jogja
+                    khusus bagi santri lulusan pesantren Bata-Bata.
+                  </p>
+                </div>
+
+                <Link
+                  href="/informasi-kampus#bimtren"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#F9C80E] hover:text-white transition-colors group mt-2"
+                >
+                  <span>Pelajari Program Bimtren</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </StaggerItem>
 
             {/* Card 2: Portal Informasi Beasiswa */}
-            <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#1E2FB8] dark:text-[#4F5CF2] flex items-center justify-center mb-6">
-                  <Award className="w-6 h-6" />
+            <StaggerItem className="h-full">
+              <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#1E2FB8] dark:text-[#4F5CF2] flex items-center justify-center mb-6">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
+                    Informasi Beasiswa
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
+                    Direktori beasiswa KIP Kuliah, Beasiswa Kemenag (PBSB), beasiswa Pemda Jawa Timur/Madura,
+                    serta pendampingan keringanan biaya UKT.
+                  </p>
                 </div>
-                <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
-                  Informasi Beasiswa
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
-                  Direktori beasiswa KIP Kuliah, Beasiswa Kemenag (PBSB), beasiswa Pemda Jawa Timur/Madura,
-                  serta pendampingan keringanan biaya UKT.
-                </p>
-              </div>
 
-              <Link
-                href="/informasi-kampus#beasiswa"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#1E2FB8] dark:text-[#4F5CF2] hover:text-[#050A2E] dark:hover:text-white transition-colors group"
-              >
-                <span>Cari Info Beasiswa</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+                <Link
+                  href="/informasi-kampus#beasiswa"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#1E2FB8] dark:text-[#4F5CF2] hover:text-[#050A2E] dark:hover:text-white transition-colors group"
+                >
+                  <span>Cari Info Beasiswa</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </StaggerItem>
 
             {/* Card 3: Karya Kader & Ruang Literasi */}
-            <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#1E2FB8] dark:text-[#4F5CF2] flex items-center justify-center mb-6">
-                  <BookOpen className="w-6 h-6" />
+            <StaggerItem className="h-full">
+              <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#1E2FB8] dark:text-[#4F5CF2] flex items-center justify-center mb-6">
+                    <BookOpen className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
+                    Karya Kader & Literasi
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
+                    Ruang publikasi naskah opini, analisis sosial, cerpen sastra santri, sajak puisi,
+                    serta esai kritis kader IMABA se-Yogyakarta.
+                  </p>
                 </div>
-                <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
-                  Karya Kader & Literasi
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
-                  Ruang publikasi naskah opini, analisis sosial, cerpen sastra santri, sajak puisi,
-                  serta esai kritis kader IMABA se-Yogyakarta.
-                </p>
-              </div>
 
-              <Link
-                href="/karya-kader"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#1E2FB8] dark:text-[#4F5CF2] hover:text-[#050A2E] dark:hover:text-white transition-colors group"
-              >
-                <span>Baca Karya Terbaru</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+                <Link
+                  href="/karya-kader"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#1E2FB8] dark:text-[#4F5CF2] hover:text-[#050A2E] dark:hover:text-white transition-colors group"
+                >
+                  <span>Baca Karya Terbaru</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </StaggerItem>
 
             {/* Card 4: Advokasi & Jaringan Kampus */}
-            <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#1FA83C] flex items-center justify-center mb-6">
-                  <HeartHandshake className="w-6 h-6" />
+            <StaggerItem className="h-full">
+              <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#1FA83C] flex items-center justify-center mb-6">
+                    <HeartHandshake className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
+                    Advokasi & Asrama
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
+                    Pendampingan kebutuhan tempat tinggal santri baru, jejaring kos/asrama mahasiswa,
+                    serta advokasi hak-hak akademik kader.
+                  </p>
                 </div>
-                <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
-                  Advokasi & Asrama
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
-                  Pendampingan kebutuhan tempat tinggal santri baru, jejaring kos/asrama mahasiswa,
-                  serta advokasi hak-hak akademik kader.
-                </p>
-              </div>
 
-              <Link
-                href="/informasi-kampus"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#1FA83C] hover:text-[#16802e] transition-colors group"
-              >
-                <span>Layanan Advokasi</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+                <Link
+                  href="/informasi-kampus"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#1FA83C] hover:text-[#16802e] transition-colors group"
+                >
+                  <span>Layanan Advokasi</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </StaggerItem>
 
             {/* Card 5: Divisi Puteri Imaba */}
-            <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#E3262A] flex items-center justify-center mb-6">
-                  <Sparkles className="w-6 h-6" />
+            <StaggerItem className="h-full">
+              <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#E3262A] flex items-center justify-center mb-6">
+                    <Sparkles className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
+                    Divisi Puteri Imaba
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
+                    Wadah konsolidasi dan pemberdayaan mahasiswi alumni Bata-Bata melalui pelatihan
+                    kepemimpinan, kajian keperempuanan, dan kegiatan kreatif.
+                  </p>
                 </div>
-                <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
-                  Divisi Puteri Imaba
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
-                  Wadah konsolidasi dan pemberdayaan mahasiswi alumni Bata-Bata melalui pelatihan
-                  kepemimpinan, kajian keperempuanan, dan kegiatan kreatif.
-                </p>
-              </div>
 
-              <Link
-                href="/puteri-imaba"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#E3262A] hover:text-[#b81d20] transition-colors group"
-              >
-                <span>Ruang Puteri Imaba</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+                <Link
+                  href="/puteri-imaba"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#E3262A] hover:text-[#b81d20] transition-colors group"
+                >
+                  <span>Ruang Puteri Imaba</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </StaggerItem>
 
             {/* Card 6: Kajian Turats & Sanad Keilmuan */}
-            <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#050A2E] dark:text-[#D8E0FF] flex items-center justify-center mb-6">
-                  <Users className="w-6 h-6" />
+            <StaggerItem className="h-full">
+              <div className="card-radius-large p-8 bg-white dark:bg-[#0B1446] border border-[#DCE2F2] dark:border-white/10 flex flex-col justify-between h-full">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EEF1F9] dark:bg-white/10 text-[#050A2E] dark:text-[#D8E0FF] flex items-center justify-center mb-6">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
+                    Kajian Turats & Spiritual
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
+                    Merawat sanad keilmuan dan ketenangan batin lewat kajian kitab kuning berkala,
+                    istighosah mingguan, dan peringatan haul masyaikh.
+                  </p>
                 </div>
-                <h3 className="font-heading font-extrabold text-xl text-[#050A2E] dark:text-white mb-3 tracking-tight">
-                  Kajian Turats & Spiritual
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-white/70 leading-relaxed mb-6">
-                  Merawat sanad keilmuan dan ketenangan batin lewat kajian kitab kuning berkala,
-                  istighosah mingguan, dan peringatan haul masyaikh.
-                </p>
-              </div>
 
-              <Link
-                href="/berita?kategori=agenda"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#050A2E] dark:text-[#D8E0FF] hover:text-[#1E2FB8] transition-colors group"
-              >
-                <span>Jadwal Pengajian</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
+                <Link
+                  href="/berita?kategori=agenda"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#050A2E] dark:text-[#D8E0FF] hover:text-[#1E2FB8] transition-colors group"
+                >
+                  <span>Jadwal Pengajian</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
     </div>
