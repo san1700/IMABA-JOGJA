@@ -15,6 +15,15 @@ export const metadata: Metadata = {
   title: 'Puteri Imaba Yogyakarta | Pemberdayaan Mahasiswi Santri',
   description:
     'Profil, visi misi, dan program kerja Divisi Puteri Imaba Daerah Istimewa Yogyakarta: ruang konsolidasi, kepemimpinan, dan karya intelektual santriwati Bata-Bata.',
+  alternates: {
+    canonical: '/puteri-imaba',
+  },
+  openGraph: {
+    title: 'Puteri Imaba Yogyakarta | Pemberdayaan Mahasiswi Santri',
+    description:
+      'Profil, visi misi, dan program kerja Divisi Puteri Imaba Daerah Istimewa Yogyakarta: ruang konsolidasi, kepemimpinan, dan karya intelektual santriwati Bata-Bata.',
+    url: '/puteri-imaba',
+  },
 }
 
 export default function PuteriImabaPage() {

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
@@ -14,6 +15,29 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import { FadeUp, StaggerContainer, StaggerItem } from '@/components/motion/fade-in'
+
+export const metadata: Metadata = {
+  title: 'Beranda | Ikatan Mahasiswa Bata-Bata (IMABA) Yogyakarta',
+  description:
+    'Portal resmi IMABA Daerah Istimewa Yogyakarta: Wadah kader santri Mambaul Ulum Bata-Bata di perantauan Jogja. Menghadirkan informasi bimtren kampus, beasiswa, liputan agenda, dan ruang literasi santri.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'IMABA Yogyakarta | Ikatan Mahasiswa Bata-Bata',
+    description:
+      'Portal resmi IMABA Daerah Istimewa Yogyakarta: Wadah kader santri Mambaul Ulum Bata-Bata di perantauan Jogja.',
+    url: '/',
+    images: [
+      {
+        url: '/logo.png',
+        width: 800,
+        height: 800,
+        alt: 'IMABA Yogyakarta',
+      },
+    ],
+  },
+}
 
 export default function HomePage() {
   return (

@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   title: 'Karya Kader | Opini, Esai, Cerpen & Puisi',
   description:
     'Ruang literasi dan dialektika santri Bata-Bata di Yogyakarta. Wadah publikasi opini kritis, esai pemikiran, cerpen santri, dan sajak puisi.',
+  alternates: {
+    canonical: '/karya-kader',
+  },
+  openGraph: {
+    title: 'Karya Kader IMABA Jogja | Opini, Cerpen & Puisi',
+    description:
+      'Ruang literasi dan dialektika santri Bata-Bata di Yogyakarta. Wadah publikasi opini kritis, esai pemikiran, cerpen santri, dan sajak puisi.',
+    url: '/karya-kader',
+  },
 }
 
 // Data cadangan karya kader jika Sanity belum diisi

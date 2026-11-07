@@ -25,6 +25,15 @@ export const metadata: Metadata = {
   title: 'Informasi Kampus, Beasiswa & Bimtren 2026',
   description:
     'Panduan lengkap kuliah di Yogyakarta bagi santri Bata-Bata: direktori kampus & prodi, jalur masuk PTN/PTKIN, informasi beasiswa, brosur PMB, dan Bimtren IMABA Jogja.',
+  alternates: {
+    canonical: '/informasi-kampus',
+  },
+  openGraph: {
+    title: 'Informasi Kampus Jogja, Beasiswa & Bimtren 2026 | IMABA Jogja',
+    description:
+      'Panduan lengkap kuliah di Yogyakarta bagi santri Bata-Bata: direktori kampus & prodi, jalur masuk PTN/PTKIN, informasi beasiswa, brosur PMB, dan Bimtren IMABA Jogja.',
+    url: '/informasi-kampus',
+  },
 }
 
 // Fallback data kampus populer Jogja jika Sanity belum diisi

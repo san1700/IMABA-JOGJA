@@ -13,6 +13,7 @@ import { urlFor } from '@/sanity/lib/image'
 import { PortableText } from '@/components/portable-text'
 import { PostCard } from '@/components/cards/post-card'
 import { ReadingProgress } from '@/components/reading-progress'
+import { JsonLd } from '@/components/json-ld'
 
 interface KaryaDetailPageProps {
   params: Promise<{ slug: string }>
@@ -39,10 +40,14 @@ export async function generateMetadata({ params }: KaryaDetailPageProps): Promis
   return {
     title: `${post.title} — Karya Kader IMABA`,
     description: post.excerpt || `Naskah karya kader santri IMABA Yogyakarta: ${post.title}`,
+    alternates: {
+      canonical: `/karya-kader/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt || post.title,
       type: 'article',
+      url: `/karya-kader/${post.slug}`,
       publishedTime: post.publishedAt,
       images: [
         {
@@ -52,6 +57,12 @@ export async function generateMetadata({ params }: KaryaDetailPageProps): Promis
           alt: post.cover?.alt || post.title,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt || post.title,
+      images: [ogImageUrl],
     },
   }
 }
@@ -87,8 +98,40 @@ export default async function KaryaDetailPage({ params }: KaryaDetailPageProps) 
     ? urlFor(post.cover).width(1200).height(675).auto('format').url()
     : null
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://imabayogyakarta.org'
+  const karyaJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    headline: post.title,
+    description: post.excerpt || post.title,
+    image: coverUrl ? [coverUrl] : [`${siteUrl}/logo.png`],
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    genre: post.category?.title || 'Sastra & Opini Santri',
+    author: [
+      {
+        '@type': 'Person',
+        name: post.author?.name || 'Kader Santri IMABA Jogja',
+        jobTitle: post.author?.role || 'Kader Mahasiswa',
+      },
+    ],
+    publisher: {
+      '@type': 'Organization',
+      name: 'IMABA Yogyakarta',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/karya-kader/${post.slug}`,
+    },
+  }
+
   return (
     <article className="w-full min-h-screen bg-background py-10 sm:py-16 relative">
+      <JsonLd data={karyaJsonLd} />
       <ReadingProgress />
       {/* Container Membaca dengan Lebar Baris Ideal (65-75ch) */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

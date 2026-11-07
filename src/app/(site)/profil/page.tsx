@@ -17,6 +17,15 @@ export const metadata: Metadata = {
   title: 'Profil Organisasi, Sejarah & Struktur Pengurus DPW',
   description:
     'Mengenal lebih dekat Ikatan Mahasiswa Bata-Bata (IMABA) Daerah Istimewa Yogyakarta: sejarah pendirian, filosofi santri, AD/ART, dan struktur kepengurusan DPW.',
+  alternates: {
+    canonical: '/profil',
+  },
+  openGraph: {
+    title: 'Profil IMABA Yogyakarta | Sejarah & Struktur Pengurus',
+    description:
+      'Mengenal lebih dekat Ikatan Mahasiswa Bata-Bata (IMABA) Daerah Istimewa Yogyakarta: sejarah pendirian, filosofi santri, AD/ART, dan struktur kepengurusan DPW.',
+    url: '/profil',
+  },
 }
 
 // Fallback data pengurus inti DPW jika Sanity belum diisi

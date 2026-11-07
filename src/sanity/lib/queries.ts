@@ -261,3 +261,20 @@ export const PAGE_BY_SLUG_QUERY = groq`
   }
 `
 
+export interface SitemapPost {
+  slug: string
+  section: 'berita' | 'karya' | 'info'
+  _updatedAt?: string
+  publishedAt?: string
+}
+
+export const SITEMAP_POSTS_QUERY = groq`
+  *[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
+    "slug": slug.current,
+    section,
+    _updatedAt,
+    publishedAt
+  }
+`
+
+

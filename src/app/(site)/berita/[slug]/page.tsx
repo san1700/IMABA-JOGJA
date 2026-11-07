@@ -13,6 +13,7 @@ import { urlFor } from '@/sanity/lib/image'
 import { PortableText } from '@/components/portable-text'
 import { PostCard } from '@/components/cards/post-card'
 import { ReadingProgress } from '@/components/reading-progress'
+import { JsonLd } from '@/components/json-ld'
 
 interface PostDetailPageProps {
   params: Promise<{ slug: string }>
@@ -40,10 +41,14 @@ export async function generateMetadata({ params }: PostDetailPageProps): Promise
   return {
     title: post.title,
     description: post.excerpt || `Baca rilis berita resmi: ${post.title}`,
+    alternates: {
+      canonical: `/berita/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt || post.title,
       type: 'article',
+      url: `/berita/${post.slug}`,
       publishedTime: post.publishedAt,
       images: [
         {
@@ -53,6 +58,12 @@ export async function generateMetadata({ params }: PostDetailPageProps): Promise
           alt: post.cover?.alt || post.title,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt || post.title,
+      images: [ogImageUrl],
     },
   }
 }
@@ -91,8 +102,38 @@ export default async function BeritaDetailPage({ params }: PostDetailPageProps) 
     ? urlFor(post.cover).width(1200).height(675).auto('format').url()
     : null
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://imabayogyakarta.org'
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: post.title,
+    description: post.excerpt || post.title,
+    image: coverUrl ? [coverUrl] : [`${siteUrl}/logo.png`],
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: [
+      {
+        '@type': 'Person',
+        name: post.author?.name || 'Humas & Infokom DPW IMABA Jogja',
+      },
+    ],
+    publisher: {
+      '@type': 'Organization',
+      name: 'IMABA Yogyakarta',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/berita/${post.slug}`,
+    },
+  }
+
   return (
     <article className="w-full min-h-screen bg-background py-10 sm:py-16 relative">
+      <JsonLd data={articleJsonLd} />
       <ReadingProgress />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Tombol Kembali & Breadcrumb */}

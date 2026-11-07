@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   title: 'Berita & Agenda DPW',
   description:
     'Kumpulan berita terkini, liputan kegiatan pengkaderan, serta jadwal agenda resmi DPW IMABA Daerah Istimewa Yogyakarta.',
+  alternates: {
+    canonical: '/berita',
+  },
+  openGraph: {
+    title: 'Berita & Agenda DPW IMABA Yogyakarta',
+    description:
+      'Kumpulan berita terkini, liputan kegiatan pengkaderan, serta jadwal agenda resmi DPW IMABA Daerah Istimewa Yogyakarta.',
+    url: '/berita',
+  },
 }
 
 // Data cadangan jika Sanity belum diisi oleh pengurus
