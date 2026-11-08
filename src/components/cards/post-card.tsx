@@ -95,11 +95,11 @@ export function PostCard({
           {/* Baris Meta: Label Kategori di Kiri, Tanggal di Kanan */}
           <div className="flex items-center justify-between gap-2 mb-3">
             {post.category?.title ? (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-primary/10 text-primary dark:text-[#8B98FF] border border-primary/20">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-primary/10 text-primary dark:text-[#8B98FF] border border-primary/20 whitespace-nowrap">
                 {post.category.title}
               </span>
             ) : (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-muted text-muted-foreground">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-muted text-muted-foreground whitespace-nowrap">
                 Umum
               </span>
             )}
@@ -133,7 +133,7 @@ export function PostCard({
         <div className="pt-3 border-t border-border/60 flex items-center justify-between mt-auto">
           <Link
             href={targetHref}
-            className="text-xs font-bold text-foreground group-hover:text-primary transition-colors"
+            className="text-xs font-bold text-foreground group-hover:text-primary transition-colors whitespace-nowrap"
           >
             Baca Selengkapnya
           </Link>
@@ -142,7 +142,7 @@ export function PostCard({
           <Link
             href={targetHref}
             aria-label={`Baca selengkapnya tentang ${post.title}`}
-            className="w-8 h-8 rounded-full bg-[#1E2FB8]/10 text-primary group-hover:bg-[#1E2FB8] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm"
+            className="w-8 h-8 rounded-full bg-[#1E2FB8]/10 text-primary group-hover:bg-[#1E2FB8] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm shrink-0"
           >
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </Link>

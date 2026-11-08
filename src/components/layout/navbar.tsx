@@ -222,11 +222,11 @@ export function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-2 xl:gap-4">
           {/* Logo & Identitas Organisasi */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl p-1"
+            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl p-1 shrink-0"
           >
             <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0.5 bg-gradient-to-tr from-[#1E2FB8] via-[#4F5CF2] to-[#F9C80E] shadow-md shadow-indigo-950/50 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
               <div className="w-full h-full rounded-full bg-[#050A2E] flex items-center justify-center overflow-hidden p-1">
@@ -240,19 +240,19 @@ export function Navbar() {
                 />
               </div>
             </div>
-            <div className="flex flex-col">
-              <span className="font-heading font-extrabold text-base sm:text-lg tracking-tight text-white leading-tight flex items-center gap-1.5">
+            <div className="flex flex-col min-w-0">
+              <span className="font-heading font-extrabold text-base sm:text-lg tracking-tight text-white leading-tight flex items-center gap-1.5 whitespace-nowrap">
                 IMABA JOGJA
-                <span className="inline-block w-2 h-2 rounded-full bg-[#F9C80E] animate-pulse" />
+                <span className="inline-block w-2 h-2 rounded-full bg-[#F9C80E] animate-pulse shrink-0" />
               </span>
-              <span className="text-[11px] font-medium text-white/60 tracking-wider uppercase leading-none hidden sm:block">
+              <span className="text-[10px] xl:text-[11px] font-medium text-white/60 tracking-wider uppercase leading-none hidden xl:block whitespace-nowrap">
                 Ikatan Mahasiswa Bata-Bata
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 shrink-0">
             {NAV_ITEMS.map((item) => {
               const hasDropdown = Boolean(item.items && item.items.length > 0)
               const isActive =
@@ -267,35 +267,35 @@ export function Navbar() {
                     key={item.title}
                     href={item.href}
                     className={cn(
-                      'px-3.5 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                      'px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-medium whitespace-nowrap shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                       isActive
                         ? 'bg-white/15 text-white shadow-sm font-semibold'
                         : 'text-white/80 hover:text-white hover:bg-white/10',
                     )}
                   >
-                    {item.title}
+                    <span className="whitespace-nowrap">{item.title}</span>
                   </Link>
                 )
               }
 
               return (
-                <div key={item.title} className="relative">
+                <div key={item.title} className="relative shrink-0">
                   <button
                     type="button"
                     onClick={() => toggleDropdown(item.title)}
                     onMouseEnter={() => setActiveDropdown(item.title)}
                     aria-expanded={isOpen}
                     className={cn(
-                      'inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                      'inline-flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-medium whitespace-nowrap shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                       isOpen || isActive
                         ? 'bg-white/15 text-white shadow-sm font-semibold'
                         : 'text-white/80 hover:text-white hover:bg-white/10',
                     )}
                   >
-                    <span>{item.title}</span>
+                    <span className="whitespace-nowrap">{item.title}</span>
                     <ChevronDown
                       className={cn(
-                        'w-3.5 h-3.5 transition-transform duration-200 text-white/70',
+                        'w-3.5 h-3.5 transition-transform duration-200 text-white/70 shrink-0',
                         isOpen && 'transform rotate-180 text-white',
                       )}
                     />
@@ -347,28 +347,28 @@ export function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 xl:gap-2.5 shrink-0">
             {/* Quick Search Button */}
             <button
               type="button"
               onClick={() => setIsSearchOpen(true)}
               aria-label="Pencarian Cepat (Cmd+K)"
               title="Pencarian Cepat (Cmd+K)"
-              className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/90 border border-white/15 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/90 border border-white/15 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shrink-0"
             >
               <Search className="w-4 h-4" />
             </button>
 
             {/* Dark Mode Toggle */}
-            <ThemeToggle className="text-white" />
+            <ThemeToggle className="text-white shrink-0" />
 
             {/* Pill CTA Button dengan Lingkaran Panah */}
             <Link
               href="/informasi-kampus#bimtren"
-              className="hidden sm:inline-flex items-center gap-2.5 rounded-full pl-5 pr-2 py-1.5 bg-gradient-to-r from-[#1E2FB8] to-[#4F5CF2] hover:from-[#182696] hover:to-[#3e4be0] text-white font-semibold text-xs tracking-wide shadow-md shadow-indigo-950/40 border border-white/20 transition-all duration-300 group hover:shadow-indigo-500/25 hover:border-white/40"
+              className="hidden sm:inline-flex items-center gap-2 xl:gap-2.5 rounded-full pl-3.5 xl:pl-5 pr-1.5 xl:pr-2 py-1 xl:py-1.5 bg-gradient-to-r from-[#1E2FB8] to-[#4F5CF2] hover:from-[#182696] hover:to-[#3e4be0] text-white font-semibold text-xs tracking-wide shadow-md shadow-indigo-950/40 border border-white/20 transition-all duration-300 group hover:shadow-indigo-500/25 hover:border-white/40 whitespace-nowrap shrink-0"
             >
-              <span>Bimtren 2026</span>
-              <span className="w-7 h-7 rounded-full bg-white text-[#1E2FB8] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shadow-sm">
+              <span className="whitespace-nowrap">Bimtren 2026</span>
+              <span className="w-6 h-6 xl:w-7 xl:h-7 rounded-full bg-white text-[#1E2FB8] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shadow-sm shrink-0">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
             </Link>
@@ -378,7 +378,7 @@ export function Navbar() {
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
-              className="lg:hidden p-2 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="lg:hidden p-2 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shrink-0"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

@@ -42,7 +42,7 @@ export function SectionHeader({
           )}
         >
           {badgeIcon}
-          <span>{badge}</span>
+          <span className="whitespace-nowrap">{badge}</span>
         </div>
       )}
 
