@@ -24,10 +24,10 @@ Skill ini memandu pembangunan situs organisasi **IMABA Jogja** (Ikatan Mahasiswa
 - [x] Fase 3 - Design system (warna, font, token)
 - [x] Fase 4 - Layout global (Navbar, Footer, dark mode)
 - [x] Fase 5 - Halaman (Beranda, Berita, Karya Kader, Informasi Kampus, Profil, Puteri Imaba, 404)
-- [ ] Fase 6 - Interaksi & animasi
-- [ ] Fase 7 - SEO, performa, aksesibilitas
-- [ ] Fase 8 - Migrasi konten & redirect
-- [ ] Fase 9 - Deploy
+- [x] Fase 6 - Interaksi & animasi
+- [x] Fase 7 - SEO, performa, aksesibilitas
+- [x] Fase 8 - Migrasi konten & redirect
+- [x] Fase 9 - Deploy
 - [ ] Fase 10 - Serah terima
 
 ## 2. Aturan wajib Next.js 16 (jangan dilanggar)
