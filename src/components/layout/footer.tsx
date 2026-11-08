@@ -8,7 +8,7 @@ import {
 import { InstagramIcon, YoutubeIcon } from '@/components/icons'
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = 2026
 
   return (
     <footer className="w-full bg-[#050A2E] text-white border-t border-white/10 relative overflow-hidden">

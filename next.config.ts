@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
 
+  experimental: {
+    turbopackPluginRuntimeStrategy: "forceWorkerThreads",
+  },
+
   /* Optimasi Gambar Next.js */
   images: {
     formats: ["image/avif", "image/webp"],

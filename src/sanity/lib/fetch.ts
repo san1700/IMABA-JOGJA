@@ -1,5 +1,6 @@
 import { client } from './client'
 import type { QueryParams } from 'next-sanity'
+import { cacheLife } from 'next/cache'
 
 export async function sanityFetch<T>({
   query,
@@ -10,6 +11,9 @@ export async function sanityFetch<T>({
   params?: QueryParams
   fallback: T
 }): Promise<T> {
+  'use cache'
+  cacheLife('hours')
+
   try {
     // Jalankan fetch query dari Sanity
     const data = await client.fetch<T>(query, params)

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -17,6 +18,14 @@ import { JsonLd } from '@/components/json-ld'
 
 interface PostDetailPageProps {
   params: Promise<{ slug: string }>
+}
+
+export async function generateStaticParams() {
+  return [
+    { slug: 'pelantikan-pengurus-dpw-imaba-diy-2026' },
+    { slug: 'agenda-rutin-bimtren-2026' },
+    { slug: 'kajian-ilmiah-bulanan-turats' },
+  ]
 }
 
 // Generate Metadata Dinamis untuk SEO
@@ -68,7 +77,21 @@ export async function generateMetadata({ params }: PostDetailPageProps): Promise
   }
 }
 
-export default async function BeritaDetailPage({ params }: PostDetailPageProps) {
+export default function BeritaDetailPage({ params }: PostDetailPageProps) {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full min-h-[60vh] flex items-center justify-center">
+          <div className="animate-pulse text-muted-foreground text-sm">Memuat artikel...</div>
+        </div>
+      }
+    >
+      <BeritaDetailPageContent params={params} />
+    </Suspense>
+  )
+}
+
+async function BeritaDetailPageContent({ params }: PostDetailPageProps) {
   const { slug } = await params
 
   const post = await sanityFetch<Post | null>({

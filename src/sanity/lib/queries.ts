@@ -53,6 +53,85 @@ export interface Post {
   featured?: boolean
 }
 
+// Fallback Data Resmi (Berdasarkan Data Organisasi IMABA Yogyakarta)
+export const FALLBACK_POSTS: Post[] = [
+  {
+    _id: 'sample-1',
+    title: 'Pelantikan Pengurus DPW IMABA DIY Periode 2026/2027 Berlangsung Khidmat',
+    slug: 'pelantikan-pengurus-dpw-imaba-diy-2026',
+    section: 'berita',
+    category: { _id: 'cat-1', title: 'Liputan Acara', slug: 'liputan' },
+    author: { name: 'Humas & Infokom DPW', role: 'Pengurus DPW' },
+    excerpt:
+      'Pelantikan kepengurusan baru DPW IMABA Yogyakarta sukses diselenggarakan dengan dihadiri para sesepuh, alumni, dan ratusan santri perantauan di Yogyakarta.',
+    publishedAt: '2026-03-01T08:00:00.000Z',
+    featured: true,
+  },
+  {
+    _id: 'sample-2',
+    title: 'Agenda Rutin Bimtren 2026: Siapkan Ratusan Calon Mahasiswa Baru Masuk Kampus Impian',
+    slug: 'agenda-rutin-bimtren-2026',
+    section: 'berita',
+    category: { _id: 'cat-2', title: 'Agenda DPW', slug: 'agenda' },
+    author: { name: 'Divisi Pendidikan', role: 'Pengurus DPW' },
+    excerpt:
+      'Program tahunan Bimtren IMABA Jogja kembali dibuka untuk mendampingi calon mahasiswa dari pondok pesantren menembus seleksi SNBP, SNBT, dan Ujian Mandiri.',
+    publishedAt: '2026-02-28T10:00:00.000Z',
+    featured: false,
+  },
+  {
+    _id: 'sample-3',
+    title: 'Kajian Ilmiah Bulanan: Menjaga Sanad Keilmuan Pesantren di Tengah Arus Modernitas',
+    slug: 'kajian-ilmiah-bulanan-turats',
+    section: 'berita',
+    category: { _id: 'cat-3', title: 'Kajian & Dakwah', slug: 'kajian' },
+    author: { name: 'Divisi Kaderisasi', role: 'Pengurus DPW' },
+    excerpt:
+      'Menelaah kitab-kitab turats karya ulama nusantara dan masyaikh Bata-Bata dalam forum intelektual santri mahasiswa di Yogyakarta.',
+    publishedAt: '2026-02-25T14:30:00.000Z',
+    featured: false,
+  },
+]
+
+export const FALLBACK_KARYA: Post[] = [
+  {
+    _id: 'karya-1',
+    title: 'Menimbang Relevansi Tradisi Pesantren di Era Disrupsi Digital',
+    slug: 'relevansi-tradisi-pesantren-era-digital',
+    section: 'karya',
+    category: { _id: 'cat-opini', title: 'Opini', slug: 'opini' },
+    author: { name: 'Ahmad Faiz', role: 'Kader IMABA UIN Sunan Kalijaga' },
+    excerpt:
+      'Refleksi atas nilai-nilai kesopanan dan ketawaduan pesantren Mambaul Ulum Bata-Bata dalam menghadapi percepatan teknologi kecerdasan buatan.',
+    publishedAt: '2026-03-02T09:00:00.000Z',
+    featured: true,
+  },
+  {
+    _id: 'karya-2',
+    title: 'Surat dari Sudut Malioboro: Catatan Santri Perantau di Kota Pelajar',
+    slug: 'catatan-santri-perantau-malioboro',
+    section: 'karya',
+    category: { _id: 'cat-cerpen', title: 'Cerpen Santri', slug: 'cerpen' },
+    author: { name: 'Nurul Hidayah', role: 'Kader IMABA UNY' },
+    excerpt:
+      'Sebuah kisah fiksi tentang kerinduan seorang santri pada gemuruh lalaran nadhom Imrithi di tengah gemerlap lampu malam Malioboro.',
+    publishedAt: '2026-02-26T16:00:00.000Z',
+    featured: false,
+  },
+  {
+    _id: 'karya-3',
+    title: 'Bait-Bait Doa di Bawah Langit Mataram',
+    slug: 'bait-bait-doa-langit-mataram',
+    section: 'karya',
+    category: { _id: 'cat-puisi', title: 'Puisi', slug: 'puisi' },
+    author: { name: 'M. Rizqi Pratama', role: 'Kader IMABA UGM' },
+    excerpt:
+      'Kumpulan sajak tentang perjalanan menuntut ilmu, aroma kitab kuning yang lapuk, dan ikhtiar merajut masa depan di Yogyakarta.',
+    publishedAt: '2026-02-20T19:00:00.000Z',
+    featured: false,
+  },
+]
+
 export interface Campus {
   _id: string
   name: string

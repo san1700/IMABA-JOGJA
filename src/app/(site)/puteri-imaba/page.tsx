@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { InstagramIcon } from '@/components/icons'
 import { FadeUp, StaggerContainer, StaggerItem } from '@/components/motion/fade-in'
+import { SectionHeader } from '@/components/ui/section-header'
 
 export const metadata: Metadata = {
   title: 'Puteri Imaba Yogyakarta | Pemberdayaan Mahasiswi Santri',
@@ -144,18 +145,13 @@ export default function PuteriImabaPage() {
       {/* ============================================================ */}
       <section id="program" className="w-full bg-muted/40 py-16 sm:py-24 border-t border-border scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E3262A]/10 text-[#E3262A] text-xs font-bold mb-3">
-              <Award className="w-3.5 h-3.5" />
-              <span>Agenda Rutin</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-3">
-              Program Kerja Unggulan Puteri Imaba
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Aktivitas terencana yang menyelaraskan kedalaman spiritual, wacana intelektual, dan ketrampilan terapan.
-            </p>
-          </div>
+          <SectionHeader
+            align="center"
+            badge="Agenda Rutin"
+            badgeIcon={<Award className="w-3.5 h-3.5 text-[#E3262A]" />}
+            title="Program Kerja Unggulan Puteri Imaba"
+            description="Aktivitas terencana yang menyelaraskan kedalaman spiritual, wacana intelektual, dan ketrampilan terapan."
+          />
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <StaggerItem>

@@ -12,6 +12,7 @@ import { sanityFetch } from '@/sanity/lib/fetch'
 import { MEMBERS_QUERY, type Member } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/image'
 import { FadeUp, StaggerContainer, StaggerItem } from '@/components/motion/fade-in'
+import { SectionHeader } from '@/components/ui/section-header'
 
 export const metadata: Metadata = {
   title: 'Profil Organisasi, Sejarah & Struktur Pengurus DPW',
@@ -228,19 +229,13 @@ export default async function ProfilPage() {
       {/* ============================================================ */}
       <section id="ad-art" className="w-full bg-muted/40 py-16 sm:py-24 border-y border-border scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-3">
-              <FileText className="w-3.5 h-3.5" />
-              <span>Konstitusi Organisasi</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-4">
-              Anggaran Dasar & Anggaran Rumah Tangga (AD/ART)
-            </h2>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Pedoman konstitusional yang mengatur tata kelola organisasi, syarat keanggotaan,
-              kewajiban pengurus, serta mekanisme musyawarah wilayah di Yogyakarta.
-            </p>
-          </div>
+          <SectionHeader
+            align="left"
+            badge="Konstitusi Organisasi"
+            badgeIcon={<FileText className="w-3.5 h-3.5 text-[#F9C80E]" />}
+            title="Anggaran Dasar & Anggaran Rumah Tangga (AD/ART)"
+            description="Pedoman konstitusional yang mengatur tata kelola organisasi, syarat keanggotaan, kewajiban pengurus, serta mekanisme musyawarah wilayah di Yogyakarta."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-7 rounded-3xl bg-card border border-border">
@@ -280,18 +275,13 @@ export default async function ProfilPage() {
       {/* SECTION 3: STRUKTUR PENGURUS DPW */}
       {/* ============================================================ */}
       <section id="struktur" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 scroll-mt-20">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-3">
-            <Users className="w-3.5 h-3.5" />
-            <span>Jajaran Kepengurusan</span>
-          </div>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-3">
-            Struktur Pengurus DPW IMABA DIY
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Amanah pengabdian kader santri Mambaul Ulum Bata-Bata periode masa khidmah aktif.
-          </p>
-        </div>
+        <SectionHeader
+          align="center"
+          badge="Jajaran Kepengurusan"
+          badgeIcon={<Users className="w-3.5 h-3.5 text-[#F9C80E]" />}
+          title="Struktur Pengurus DPW IMABA DIY"
+          description="Amanah pengabdian kader santri Mambaul Ulum Bata-Bata periode masa khidmah aktif."
+        />
 
         {/* Grid Anggota Pengurus */}
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -7,12 +7,45 @@
  * https://github.com/sanity-io/next-sanity
  */
 
+import type { Metadata, Viewport } from 'next'
+import { Suspense } from 'react'
+import { connection } from 'next/server'
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../../sanity.config'
 
+export const metadata: Metadata = {
+  title: 'Sanity Studio — IMABA Jogja',
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
-export { metadata, viewport } from 'next-sanity/studio'
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
+export function generateStaticParams() {
+  return [{ tool: [] }]
+}
+
+async function StudioDynamicMarker() {
+  await connection()
+  return null
+}
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full h-screen flex items-center justify-center bg-[#050A2E] text-white">
+          <p className="animate-pulse text-sm">Memuat Studio IMABA...</p>
+        </div>
+      }
+    >
+      <StudioDynamicMarker />
+      <NextStudio config={config} />
+    </Suspense>
+  )
 }

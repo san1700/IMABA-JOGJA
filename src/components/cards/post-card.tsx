@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Calendar, User, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import type { Post } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/image'
 import { cn } from '@/lib/utils'
@@ -24,7 +24,7 @@ export function PostCard({
   const formattedDate = post.publishedAt
     ? new Date(post.publishedAt).toLocaleDateString('id-ID', {
         day: 'numeric',
-        month: 'long',
+        month: 'short',
         year: 'numeric',
       })
     : ''
@@ -35,7 +35,7 @@ export function PostCard({
     coverUrl = urlFor(post.cover).width(800).height(450).auto('format').url()
   }
 
-  // Aspek rasio kelas
+  // Aspek rasio gambar
   const ratioClasses = {
     video: 'aspect-[16/10]',
     square: 'aspect-square',
@@ -45,87 +45,109 @@ export function PostCard({
   return (
     <article
       className={cn(
-        'group flex flex-col bg-card border border-border rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-primary/40 transition-all duration-300 card-radius-large',
+        'group relative flex flex-col transition-all duration-300',
         className,
       )}
     >
-      {/* Gambar Cover */}
-      <Link href={targetHref} className="relative w-full overflow-hidden bg-muted block">
-        <div className={cn('relative w-full overflow-hidden', ratioClasses)}>
-          {coverUrl ? (
-            <Image
-              src={coverUrl}
-              alt={post.cover?.alt || post.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#050A2E] to-[#1E2FB8] flex items-center justify-center p-6 text-center">
-              <span className="font-heading font-bold text-white/60 text-sm tracking-wide uppercase">
-                {post.category?.title || 'IMABA Yogyakarta'}
-              </span>
-            </div>
-          )}
+      {/* 1. Gambar Cover di Atas */}
+      <Link
+        href={targetHref}
+        className={cn(
+          'relative w-full overflow-hidden rounded-3xl bg-muted block shadow-sm group-hover:shadow-md transition-shadow',
+          ratioClasses,
+        )}
+      >
+        {coverUrl ? (
+          <Image
+            src={coverUrl}
+            alt={post.cover?.alt || post.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-[#050A2E] via-[#0D1654] to-[#1E2FB8] flex items-center justify-center p-6 text-center">
+            <span className="font-heading font-bold text-white/70 text-xs tracking-wider uppercase">
+              {post.category?.title || 'IMABA Yogyakarta'}
+            </span>
+          </div>
+        )}
 
-          {/* Badge Kategori Melayang */}
-          {post.category?.title && (
-            <div className="absolute top-3.5 left-3.5 z-10">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#050A2E]/80 backdrop-blur-md text-white border border-white/20 shadow-sm">
-                {post.category.title}
-              </span>
-            </div>
-          )}
-        </div>
+        {/* Gradien Gelap di Atas Foto agar Kontras Teks Memenuhi Standar WCAG AA */}
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none"
+          aria-hidden="true"
+        />
+
+        {/* Badge Kanal di Atas Foto dengan Kontras Aman */}
+        {post.section && (
+          <div className="absolute top-3.5 left-3.5 z-10">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md text-white border border-white/20 shadow-sm">
+              {post.section === 'karya' ? 'Karya Kader' : 'Warta DPW'}
+            </span>
+          </div>
+        )}
       </Link>
 
-      {/* Konten Kartu */}
-      <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+      {/* 2. Badan Putih Sedikit Menimpa Gambar (Floating Overlap ala UNU Jogja) */}
+      <div className="relative -mt-10 sm:-mt-12 mx-3 sm:mx-4 p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#0c1445] border border-border/80 shadow-lg shadow-black/10 dark:shadow-black/40 flex flex-col justify-between z-10 transition-transform duration-300 group-hover:-translate-y-1">
         <div>
-          {/* Metadata: Tanggal & Penulis */}
-          <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3 flex-wrap">
-            {formattedDate && (
-              <span className="inline-flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-primary" />
-                <time dateTime={post.publishedAt}>{formattedDate}</time>
+          {/* Baris Meta: Label Kategori di Kiri, Tanggal di Kanan */}
+          <div className="flex items-center justify-between gap-2 mb-3">
+            {post.category?.title ? (
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-primary/10 text-primary dark:text-[#8B98FF] border border-primary/20">
+                {post.category.title}
+              </span>
+            ) : (
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-muted text-muted-foreground">
+                Umum
               </span>
             )}
-            {post.author?.name && (
-              <span className="inline-flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-muted-foreground" />
-                <span>{post.author.name}</span>
-              </span>
+
+            {formattedDate && (
+              <time
+                dateTime={post.publishedAt}
+                className="text-[11px] font-medium text-muted-foreground whitespace-nowrap"
+              >
+                {formattedDate}
+              </time>
             )}
           </div>
 
-          {/* Judul Artikel */}
-          <h3 className="font-heading font-extrabold text-lg sm:text-xl text-foreground group-hover:text-primary transition-colors leading-snug mb-3 line-clamp-2">
-            <Link href={targetHref}>{post.title}</Link>
+          {/* Judul Tebal */}
+          <h3 className="font-heading font-extrabold text-base sm:text-lg text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2 mb-2.5">
+            <Link href={targetHref} className="focus:outline-none focus-visible:underline">
+              {post.title}
+            </Link>
           </h3>
 
           {/* Ringkasan Singkat (Excerpt) */}
           {post.excerpt && (
-            <p className="font-sans text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-6">
+            <p className="font-sans text-xs sm:text-sm text-muted-foreground line-clamp-2 sm:line-clamp-3 leading-relaxed mb-5">
               {post.excerpt}
             </p>
           )}
         </div>
 
-        {/* Footer Kartu & Link Baca */}
-        <div className="pt-4 border-t border-border flex items-center justify-between mt-auto">
-          <span className="text-xs font-semibold text-primary group-hover:underline inline-flex items-center gap-1.5">
+        {/* Footer: Tautan & Tombol Bulat Berpanah (Signature Round Arrow Button) */}
+        <div className="pt-3 border-t border-border/60 flex items-center justify-between mt-auto">
+          <Link
+            href={targetHref}
+            className="text-xs font-bold text-foreground group-hover:text-primary transition-colors"
+          >
             Baca Selengkapnya
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-          </span>
+          </Link>
 
-          {post.section && (
-            <span className="text-[11px] text-muted-foreground uppercase font-medium tracking-wider">
-              {post.section === 'karya' ? 'Karya Kader' : 'Berita DPW'}
-            </span>
-          )}
+          {/* Tombol Bulat Berpanah */}
+          <Link
+            href={targetHref}
+            aria-label={`Baca selengkapnya tentang ${post.title}`}
+            className="w-8 h-8 rounded-full bg-[#1E2FB8]/10 text-primary group-hover:bg-[#1E2FB8] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm"
+          >
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
       </div>
     </article>
   )
 }
-

@@ -92,3 +92,4 @@ Aturan pengalihan otomatis (*301 Permanent Redirect*) telah diaktifkan pada `nex
 - `/putri-imaba`, `/putri` ➔ `/puteri-imaba`
 
 Dengan skema ini, peringkat pencarian Google dari situs lama tidak akan hilang, dan pengunjung lama tidak akan mengalami error 404.
+

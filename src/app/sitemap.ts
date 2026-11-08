@@ -4,42 +4,43 @@ import { SITEMAP_POSTS_QUERY, type SitemapPost } from '@/sanity/lib/queries'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://imabayogyakarta.org'
+  const defaultDate = '2026-03-01T00:00:00.000Z'
 
   // Rute-rute statis utama portal IMABA Jogja
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}`,
-      lastModified: new Date(),
+      lastModified: defaultDate,
       changeFrequency: 'daily',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/berita`,
-      lastModified: new Date(),
+      lastModified: defaultDate,
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/informasi-kampus`,
-      lastModified: new Date(),
+      lastModified: defaultDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/karya-kader`,
-      lastModified: new Date(),
+      lastModified: defaultDate,
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/profil`,
-      lastModified: new Date(),
+      lastModified: defaultDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/puteri-imaba`,
-      lastModified: new Date(),
+      lastModified: defaultDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -74,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return {
       url: `${baseUrl}${pathPrefix}/${post.slug}`,
-      lastModified: post._updatedAt || post.publishedAt || new Date().toISOString(),
+      lastModified: post._updatedAt || post.publishedAt || defaultDate,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     }

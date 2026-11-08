@@ -20,6 +20,7 @@ import {
 } from '@/sanity/lib/queries'
 import { ScholarshipCard } from '@/components/cards/scholarship-card'
 import { CampusFilterTabs } from '@/components/campus-filter-tabs'
+import { SectionHeader } from '@/components/ui/section-header'
 
 export const metadata: Metadata = {
   title: 'Informasi Kampus, Beasiswa & Bimtren 2026',
@@ -309,20 +310,13 @@ export default async function InformasiKampusPage() {
       {/* SECTION 2: DIREKTORI KAMPUS JOGJA */}
       {/* ============================================================ */}
       <section id="kampus" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 scroll-mt-20">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-3">
-              <School className="w-3.5 h-3.5" />
-              <span>Direktori Perguruan Tinggi</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-3xl text-foreground">
-              Kampus Populer di Daerah Istimewa Yogyakarta
-            </h2>
-          </div>
-          <p className="text-sm text-muted-foreground max-w-sm">
-            Tempat ratusan kader santri Mambaul Ulum Bata-Bata menimba ilmu di berbagai disiplin.
-          </p>
-        </div>
+        <SectionHeader
+          align="center"
+          badge="Direktori Perguruan Tinggi"
+          badgeIcon={<School className="w-3.5 h-3.5 text-[#F9C80E]" />}
+          title="Kampus Populer di Daerah Istimewa Yogyakarta"
+          description="Tempat ratusan kader santri Mambaul Ulum Bata-Bata menimba ilmu di berbagai disiplin akademik dan keagamaan."
+        />
 
         <CampusFilterTabs campuses={displayCampuses} />
       </section>
@@ -332,14 +326,13 @@ export default async function InformasiKampusPage() {
       {/* ============================================================ */}
       <section id="jalur-masuk" className="w-full bg-muted/40 py-16 sm:py-20 border-y border-border scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-heading font-extrabold text-3xl text-foreground mb-3">
-              Jalur Masuk Kuliah di Indonesia
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Ketahui karakteristik masing-masing jalur seleksi agar strategi memilih prodi lebih matang.
-            </p>
-          </div>
+          <SectionHeader
+            align="center"
+            badge="Jalur Seleksi Nasional & Mandiri"
+            badgeIcon={<Sparkles className="w-3.5 h-3.5 text-[#F9C80E]" />}
+            title="Jalur Masuk Kuliah di Indonesia"
+            description="Ketahui karakteristik masing-masing jalur seleksi agar strategi memilih program studi lebih matang."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-6 rounded-3xl bg-card border border-border">
@@ -393,20 +386,13 @@ export default async function InformasiKampusPage() {
       {/* SECTION 4: INFORMASI BEASISWA AKTIF */}
       {/* ============================================================ */}
       <section id="beasiswa" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 scroll-mt-20">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-3">
-              <Award className="w-3.5 h-3.5" />
-              <span>Pusat Peluang Beasiswa</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-3xl text-foreground">
-              Informasi Beasiswa untuk Santri & Mahasiswa
-            </h2>
-          </div>
-          <p className="text-sm text-muted-foreground max-w-sm">
-            Bantuan biaya pendidikan, pembebasan UKT, dan uang saku bulanan dari berbagai instansi.
-          </p>
-        </div>
+        <SectionHeader
+          align="center"
+          badge="Pusat Peluang Beasiswa"
+          badgeIcon={<Award className="w-3.5 h-3.5 text-[#F9C80E]" />}
+          title="Informasi Beasiswa untuk Santri & Mahasiswa"
+          description="Bantuan biaya pendidikan, pembebasan UKT, dan uang saku bulanan dari berbagai instansi pemerintah dan swasta."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayScholarships.map((sch) => (
@@ -420,20 +406,13 @@ export default async function InformasiKampusPage() {
       {/* ============================================================ */}
       <section id="unduhan" className="w-full bg-muted/40 py-16 sm:py-20 border-t border-border scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-3">
-                <Download className="w-3.5 h-3.5" />
-                <span>Dokumen & Unduhan</span>
-              </div>
-              <h2 className="font-heading font-extrabold text-3xl text-foreground">
-                Brosur Kampus & Panduan Masuk Kuliah
-              </h2>
-            </div>
-            <p className="text-sm text-muted-foreground max-w-sm">
-              Unduh panduan resmi PMB, materi tryout Bimtren, dan panduan beasiswa dalam format PDF.
-            </p>
-          </div>
+          <SectionHeader
+            align="center"
+            badge="Dokumen & Unduhan"
+            badgeIcon={<Download className="w-3.5 h-3.5 text-[#F9C80E]" />}
+            title="Brosur Kampus & Panduan Masuk Kuliah"
+            description="Unduh panduan resmi PMB, materi tryout Bimtren, dan panduan beasiswa dalam format PDF."
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {brochures && brochures.length > 0 ? (

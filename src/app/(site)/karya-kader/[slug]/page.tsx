@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -17,6 +18,14 @@ import { JsonLd } from '@/components/json-ld'
 
 interface KaryaDetailPageProps {
   params: Promise<{ slug: string }>
+}
+
+export async function generateStaticParams() {
+  return [
+    { slug: 'relevansi-tradisi-pesantren-era-digital' },
+    { slug: 'catatan-santri-perantau-malioboro' },
+    { slug: 'bait-bait-doa-langit-mataram' },
+  ]
 }
 
 export async function generateMetadata({ params }: KaryaDetailPageProps): Promise<Metadata> {
@@ -67,7 +76,21 @@ export async function generateMetadata({ params }: KaryaDetailPageProps): Promis
   }
 }
 
-export default async function KaryaDetailPage({ params }: KaryaDetailPageProps) {
+export default function KaryaDetailPage({ params }: KaryaDetailPageProps) {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full min-h-[60vh] flex items-center justify-center">
+          <div className="animate-pulse text-muted-foreground text-sm">Memuat naskah karya...</div>
+        </div>
+      }
+    >
+      <KaryaDetailPageContent params={params} />
+    </Suspense>
+  )
+}
+
+async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
   const { slug } = await params
 
   const post = await sanityFetch<Post | null>({

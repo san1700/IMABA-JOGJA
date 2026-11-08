@@ -1,7 +1,14 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Feather, PenTool } from 'lucide-react'
 import { sanityFetch } from '@/sanity/lib/fetch'
-import { POSTS_QUERY, CATEGORIES_QUERY, type Post, type Category } from '@/sanity/lib/queries'
+import {
+  POSTS_QUERY,
+  CATEGORIES_QUERY,
+  FALLBACK_KARYA,
+  type Post,
+  type Category,
+} from '@/sanity/lib/queries'
 import { PostFilterTabs } from '@/components/post-filter-tabs'
 
 export const metadata: Metadata = {
@@ -19,51 +26,11 @@ export const metadata: Metadata = {
   },
 }
 
-// Data cadangan karya kader jika Sanity belum diisi
-const FALLBACK_KARYA: Post[] = [
-  {
-    _id: 'karya-1',
-    title: 'Menimbang Relevansi Tradisi Pesantren di Era Disrupsi Digital',
-    slug: 'relevansi-tradisi-pesantren-era-digital',
-    section: 'karya',
-    category: { _id: 'cat-opini', title: 'Opini', slug: 'opini' },
-    author: { name: 'Ahmad Faiz', role: 'Kader IMABA UIN Sunan Kalijaga' },
-    excerpt:
-      'Refleksi atas nilai-nilai kesopanan dan ketawaduan pesantren Mambaul Ulum Bata-Bata dalam menghadapi percepatan teknologi kecerdasan buatan.',
-    publishedAt: new Date().toISOString(),
-    featured: true,
-  },
-  {
-    _id: 'karya-2',
-    title: 'Surat dari Sudut Malioboro: Catatan Santri Perantau di Kota Pelajar',
-    slug: 'catatan-santri-perantau-malioboro',
-    section: 'karya',
-    category: { _id: 'cat-cerpen', title: 'Cerpen Santri', slug: 'cerpen' },
-    author: { name: 'Nurul Hidayah', role: 'Kader IMABA UNY' },
-    excerpt:
-      'Sebuah kisah fiksi tentang kerinduan seorang santri pada gemuruh lalaran nadhom Imrithi di tengah gemerlap lampu malam Malioboro.',
-    publishedAt: new Date(Date.now() - 86400000 * 3).toISOString(),
-    featured: false,
-  },
-  {
-    _id: 'karya-3',
-    title: 'Bait-Bait Doa di Bawah Langit Mataram',
-    slug: 'bait-bait-doa-langit-mataram',
-    section: 'karya',
-    category: { _id: 'cat-puisi', title: 'Puisi', slug: 'puisi' },
-    author: { name: 'M. Rizqi Pratama', role: 'Kader IMABA UGM' },
-    excerpt:
-      'Kumpulan sajak tentang perjalanan menuntut ilmu, aroma kitab kuning yang lapuk, dan ikhtiar merajut masa depan di Yogyakarta.',
-    publishedAt: new Date(Date.now() - 86400000 * 7).toISOString(),
-    featured: false,
-  },
-]
-
 interface KaryaKaderPageProps {
   searchParams: Promise<{ kategori?: string }>
 }
 
-export default async function KaryaKaderPage({ searchParams }: KaryaKaderPageProps) {
+async function KaryaKaderContent({ searchParams }: KaryaKaderPageProps) {
   const resolvedParams = await searchParams
   const categoryFilter = resolvedParams.kategori || null
 
@@ -86,6 +53,17 @@ export default async function KaryaKaderPage({ searchParams }: KaryaKaderPagePro
 
   const displayPosts = posts && posts.length > 0 ? posts : FALLBACK_KARYA
 
+  return (
+    <PostFilterTabs
+      posts={displayPosts}
+      categories={categories}
+      hrefPrefix="/karya-kader"
+      initialCategory={categoryFilter}
+    />
+  )
+}
+
+export default function KaryaKaderPage({ searchParams }: KaryaKaderPageProps) {
   return (
     <div className="w-full min-h-screen bg-background">
       {/* Header Banner Kanal Karya Kader */}
@@ -114,12 +92,15 @@ export default async function KaryaKaderPage({ searchParams }: KaryaKaderPagePro
 
       {/* Main Content Area */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <PostFilterTabs
-          posts={displayPosts}
-          categories={categories}
-          hrefPrefix="/karya-kader"
-          initialCategory={categoryFilter}
-        />
+        <Suspense
+          fallback={
+            <div className="w-full py-16 text-center text-muted-foreground animate-pulse">
+              Memuat arsip karya kader...
+            </div>
+          }
+        >
+          <KaryaKaderContent searchParams={searchParams} />
+        </Suspense>
 
         {/* CTA Kirim Tulisan */}
         <div className="mt-20 p-8 sm:p-12 rounded-[32px] bg-card border border-border flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">

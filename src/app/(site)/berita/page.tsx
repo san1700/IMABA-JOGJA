@@ -1,7 +1,14 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Newspaper } from 'lucide-react'
 import { sanityFetch } from '@/sanity/lib/fetch'
-import { POSTS_QUERY, CATEGORIES_QUERY, type Post, type Category } from '@/sanity/lib/queries'
+import {
+  POSTS_QUERY,
+  CATEGORIES_QUERY,
+  FALLBACK_POSTS,
+  type Post,
+  type Category,
+} from '@/sanity/lib/queries'
 import { PostFilterTabs } from '@/components/post-filter-tabs'
 
 export const metadata: Metadata = {
@@ -19,51 +26,11 @@ export const metadata: Metadata = {
   },
 }
 
-// Data cadangan jika Sanity belum diisi oleh pengurus
-const FALLBACK_POSTS: Post[] = [
-  {
-    _id: 'sample-1',
-    title: 'Pelantikan Pengurus DPW IMABA DIY Periode 2026/2027 Berlangsung Khidmat',
-    slug: 'pelantikan-pengurus-dpw-imaba-diy-2026',
-    section: 'berita',
-    category: { _id: 'cat-1', title: 'Liputan Acara', slug: 'liputan' },
-    author: { name: 'Humas & Infokom DPW', role: 'Pengurus DPW' },
-    excerpt:
-      'Pelantikan kepengurusan baru DPW IMABA Yogyakarta sukses diselenggarakan dengan dihadiri para sesepuh, alumni, dan ratusan santri perantauan di Yogyakarta.',
-    publishedAt: new Date().toISOString(),
-    featured: true,
-  },
-  {
-    _id: 'sample-2',
-    title: 'Agenda Rutin Bimtren 2026: Siapkan Ratusan Calon Mahasiswa Baru Masuk Kampus Impian',
-    slug: 'agenda-rutin-bimtren-2026',
-    section: 'berita',
-    category: { _id: 'cat-2', title: 'Agenda DPW', slug: 'agenda' },
-    author: { name: 'Divisi Pendidikan', role: 'Pengurus DPW' },
-    excerpt:
-      'Program tahunan Bimtren IMABA Jogja kembali dibuka untuk mendampingi calon mahasiswa dari pondok pesantren menembus seleksi SNBP, SNBT, dan Ujian Mandiri.',
-    publishedAt: new Date(Date.now() - 86400000 * 2).toISOString(),
-    featured: false,
-  },
-  {
-    _id: 'sample-3',
-    title: 'Kajian Ilmiah Bulanan: Menjaga Sanad Keilmuan Pesantren di Tengah Arus Modernitas',
-    slug: 'kajian-ilmiah-bulanan-turats',
-    section: 'berita',
-    category: { _id: 'cat-3', title: 'Kajian & Dakwah', slug: 'kajian' },
-    author: { name: 'Divisi Kaderisasi', role: 'Pengurus DPW' },
-    excerpt:
-      'Menelaah kitab-kitab turats karya ulama nusantara dan masyaikh Bata-Bata dalam forum intelektual santri mahasiswa di Yogyakarta.',
-    publishedAt: new Date(Date.now() - 86400000 * 5).toISOString(),
-    featured: false,
-  },
-]
-
 interface BeritaPageProps {
   searchParams: Promise<{ kategori?: string }>
 }
 
-export default async function BeritaPage({ searchParams }: BeritaPageProps) {
+async function BeritaContent({ searchParams }: BeritaPageProps) {
   const resolvedParams = await searchParams
   const categoryFilter = resolvedParams.kategori || null
 
@@ -87,6 +54,17 @@ export default async function BeritaPage({ searchParams }: BeritaPageProps) {
 
   const displayPosts = posts && posts.length > 0 ? posts : FALLBACK_POSTS
 
+  return (
+    <PostFilterTabs
+      posts={displayPosts}
+      categories={categories}
+      hrefPrefix="/berita"
+      initialCategory={categoryFilter}
+    />
+  )
+}
+
+export default function BeritaPage({ searchParams }: BeritaPageProps) {
   return (
     <div className="w-full min-h-screen bg-background">
       {/* Header Banner Kanal */}
@@ -116,12 +94,15 @@ export default async function BeritaPage({ searchParams }: BeritaPageProps) {
 
       {/* Main Content Area */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <PostFilterTabs
-          posts={displayPosts}
-          categories={categories}
-          hrefPrefix="/berita"
-          initialCategory={categoryFilter}
-        />
+        <Suspense
+          fallback={
+            <div className="w-full py-16 text-center text-muted-foreground animate-pulse">
+              Memuat arsip berita...
+            </div>
+          }
+        >
+          <BeritaContent searchParams={searchParams} />
+        </Suspense>
       </section>
     </div>
   )
