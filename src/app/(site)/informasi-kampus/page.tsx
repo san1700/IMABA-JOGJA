@@ -185,23 +185,23 @@ export default async function InformasiKampusPage() {
   return (
     <div className="w-full min-h-screen bg-background">
       {/* Header Banner */}
-      <section className="relative w-full bg-[#050A2E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
+      <section className="relative w-full bg-[#14120E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
         <div
-          className="absolute top-0 right-1/4 w-96 h-96 bg-[#1E2FB8]/25 rounded-full blur-3xl pointer-events-none"
+          className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-white/90 mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-eyebrow text-white/90 mb-4">
             <GraduationCap className="w-3.5 h-3.5 text-[#F9C80E]" />
             <span>Gerbang Pendidikan Santri di Jogja</span>
           </div>
 
-          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-5">
+          <h1 className="font-heading font-extrabold text-[clamp(32px,1.8rem+2vw,52px)] tracking-tight text-white leading-tight mb-5">
             Informasi Kampus, Beasiswa & Bimtren
           </h1>
 
-          <p className="font-sans text-base sm:text-lg text-white/70 max-w-3xl leading-relaxed mb-8">
+          <p className="font-sans text-lead text-white/85 max-w-[60ch] leading-relaxed mb-8">
             Panduan terlengkap bagi calon mahasiswa dan kader santri Mambaul Ulum Bata-Bata dalam
             merencanakan studi, menembus kampus impian, dan meraih beasiswa di Kota Pelajar.
           </p>
@@ -210,7 +210,7 @@ export default async function InformasiKampusPage() {
           <div className="flex flex-wrap items-center gap-2.5">
             <a
               href="#bimtren"
-              className="px-4 py-2 rounded-full text-xs font-semibold bg-[#F9C80E] text-[#050A2E] hover:bg-yellow-300 transition-colors shadow-sm"
+              className="px-4 py-2 rounded-full text-xs font-semibold bg-[#C5A059] text-[#14120E] hover:bg-[#D4B36D] transition-colors shadow-sm"
             >
               ⭐ Program Bimtren 2026
             </a>
@@ -240,7 +240,7 @@ export default async function InformasiKampusPage() {
       {/* SECTION 1: PROGRAM UNGGULAN BIMTREN IMABA JOGJA 2026 */}
       {/* ============================================================ */}
       <section id="bimtren" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 scroll-mt-20">
-        <div className="rounded-[32px] p-8 sm:p-12 bg-gradient-to-br from-[#050A2E] via-[#0B1446] to-[#1E2FB8] text-white shadow-2xl border border-white/15 relative overflow-hidden">
+        <div className="rounded-[32px] p-8 sm:p-12 bg-gradient-to-br from-[#14120E] via-[#1F1A14] to-[#2A241D] text-white shadow-2xl border border-white/15 relative overflow-hidden">
           <div className="relative z-10 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-xs font-bold text-[#F9C80E] border border-white/20 mb-4">
               <Sparkles className="w-3.5 h-3.5" />
@@ -295,10 +295,10 @@ export default async function InformasiKampusPage() {
               href="https://wa.me/6281234567890?text=Halo%20Pengurus%20IMABA%20Jogja,%20saya%20ingin%20mendaftar%20Bimtren%202026"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-pill-arrow bg-[#F9C80E] hover:bg-yellow-300 text-[#050A2E] shadow-xl group inline-flex"
+              className="btn-pill-arrow bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] shadow-xl group inline-flex"
             >
               <span>Daftar Bimtren IMABA 2026</span>
-              <span className="arrow-disc bg-[#050A2E] text-white">
+              <span className="arrow-disc bg-[#14120E] text-[#C5A059]">
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </span>
             </a>
@@ -336,7 +336,7 @@ export default async function InformasiKampusPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-6 rounded-3xl bg-card border border-border">
-              <span className="w-8 h-8 rounded-full bg-[#1E2FB8]/15 text-primary flex items-center justify-center font-bold text-xs mb-4">
+              <span className="w-8 h-8 rounded-full bg-[#C5A059]/15 text-[#C5A059] flex items-center justify-center font-bold text-xs mb-4">
                 01
               </span>
               <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">SNBP / SNBT</h3>
@@ -369,7 +369,7 @@ export default async function InformasiKampusPage() {
             </div>
 
             <div className="p-6 rounded-3xl bg-card border border-border">
-              <span className="w-8 h-8 rounded-full bg-[#4F5CF2]/15 text-[#4F5CF2] flex items-center justify-center font-bold text-xs mb-4">
+              <span className="w-8 h-8 rounded-full bg-[#C5A059]/15 text-[#E6B75B] flex items-center justify-center font-bold text-xs mb-4">
                 04
               </span>
               <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">Jalur Khusus Santri</h3>

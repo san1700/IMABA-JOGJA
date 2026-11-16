@@ -39,7 +39,7 @@ export default function StudioPage() {
   return (
     <Suspense
       fallback={
-        <div className="w-full h-screen flex items-center justify-center bg-[#050A2E] text-white">
+        <div className="w-full h-screen flex items-center justify-center bg-[#14120E] text-white">
           <p className="animate-pulse text-sm">Memuat Studio IMABA...</p>
         </div>
       }

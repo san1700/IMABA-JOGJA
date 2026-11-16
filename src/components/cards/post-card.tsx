@@ -66,7 +66,7 @@ export function PostCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#050A2E] via-[#0D1654] to-[#1E2FB8] flex items-center justify-center p-6 text-center">
+          <div className="w-full h-full bg-gradient-to-br from-[#14120E] via-[#1F1A14] to-[#2A241D] flex items-center justify-center p-6 text-center">
             <span className="font-heading font-bold text-white/70 text-xs tracking-wider uppercase">
               {post.category?.title || 'IMABA Yogyakarta'}
             </span>
@@ -90,16 +90,16 @@ export function PostCard({
       </Link>
 
       {/* 2. Badan Putih Sedikit Menimpa Gambar (Floating Overlap ala UNU Jogja) */}
-      <div className="relative -mt-10 sm:-mt-12 mx-3 sm:mx-4 p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#0c1445] border border-border/80 shadow-lg shadow-black/10 dark:shadow-black/40 flex flex-col justify-between z-10 transition-transform duration-300 group-hover:-translate-y-1">
+      <div className="relative -mt-10 sm:-mt-12 mx-3 sm:mx-4 p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#1F1A14] border border-border/80 shadow-lg shadow-black/10 dark:shadow-black/40 flex flex-col justify-between z-10 transition-transform duration-300 group-hover:-translate-y-1">
         <div>
           {/* Baris Meta: Label Kategori di Kiri, Tanggal di Kanan */}
           <div className="flex items-center justify-between gap-2 mb-3">
             {post.category?.title ? (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-primary/10 text-primary dark:text-[#8B98FF] border border-primary/20 whitespace-nowrap">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-caption-label bg-primary/10 text-primary dark:text-[#C5A059] border border-primary/20 whitespace-nowrap">
                 {post.category.title}
               </span>
             ) : (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-muted text-muted-foreground whitespace-nowrap">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-caption-label bg-muted text-muted-foreground whitespace-nowrap">
                 Umum
               </span>
             )}
@@ -107,7 +107,7 @@ export function PostCard({
             {formattedDate && (
               <time
                 dateTime={post.publishedAt}
-                className="text-[11px] font-medium text-muted-foreground whitespace-nowrap"
+                className="text-[12px] font-medium text-muted-foreground whitespace-nowrap"
               >
                 {formattedDate}
               </time>
@@ -115,7 +115,7 @@ export function PostCard({
           </div>
 
           {/* Judul Post */}
-          <h3 className="font-heading font-normal text-[18px] text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2 mb-2.5">
+          <h3 className="font-heading text-h3-card text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2 mb-2.5">
             <Link href={targetHref} className="focus:outline-none focus-visible:underline">
               {post.title}
             </Link>
@@ -123,7 +123,7 @@ export function PostCard({
 
           {/* Ringkasan Singkat (Excerpt) */}
           {post.excerpt && (
-            <p className="font-sans text-xs sm:text-sm text-muted-foreground line-clamp-2 sm:line-clamp-3 leading-relaxed mb-5">
+            <p className="font-sans text-body-fluid text-muted-foreground line-clamp-2 sm:line-clamp-3 leading-relaxed mb-5">
               {post.excerpt}
             </p>
           )}
@@ -133,7 +133,7 @@ export function PostCard({
         <div className="pt-3 border-t border-border/60 flex items-center justify-between mt-auto">
           <Link
             href={targetHref}
-            className="text-xs font-bold text-foreground group-hover:text-primary transition-colors whitespace-nowrap"
+            className="text-[13px] font-semibold text-foreground group-hover:text-primary transition-colors whitespace-nowrap"
           >
             Baca Selengkapnya
           </Link>
@@ -142,7 +142,7 @@ export function PostCard({
           <Link
             href={targetHref}
             aria-label={`Baca selengkapnya tentang ${post.title}`}
-            className="w-8 h-8 rounded-full bg-[#1E2FB8]/10 text-primary group-hover:bg-[#1E2FB8] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm shrink-0"
+            className="w-8 h-8 rounded-full bg-[#C5A059]/10 text-primary group-hover:bg-[#C5A059] group-hover:text-[#14120E] flex items-center justify-center transition-all duration-300 shadow-sm shrink-0"
           >
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </Link>

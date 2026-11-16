@@ -204,11 +204,11 @@ export function SearchModal({
   const getIcon = (type: SearchItem['type']) => {
     switch (type) {
       case 'kampus':
-        return <GraduationCap className="w-4 h-4 text-[#4F5CF2]" />
+        return <GraduationCap className="w-4 h-4 text-[#C5A059]" />
       case 'beasiswa':
         return <Award className="w-4 h-4 text-[#F9C80E]" />
       case 'berita':
-        return <FileText className="w-4 h-4 text-[#1E2FB8]" />
+        return <FileText className="w-4 h-4 text-[#E6B75B]" />
       case 'karya':
         return <FileText className="w-4 h-4 text-[#1FA83C]" />
       case 'profil':
@@ -226,7 +226,7 @@ export function SearchModal({
       onClick={handleClose}
     >
       <div
-        className="w-full max-w-2xl rounded-3xl bg-[#050A2E] text-white border border-white/20 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+        className="w-full max-w-2xl rounded-3xl bg-[#14120E] text-white border border-white/20 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={handleKeyDown}
       >
@@ -272,7 +272,7 @@ export function SearchModal({
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={`flex items-start justify-between gap-3 p-3.5 rounded-2xl cursor-pointer transition-all duration-150 ${
                     isSelected
-                      ? 'bg-gradient-to-r from-[#1E2FB8] to-[#4F5CF2] text-white shadow-md'
+                      ? 'bg-[#C5A059] text-[#14120E] shadow-md'
                       : 'hover:bg-white/[0.06] text-white/90'
                   }`}
                 >

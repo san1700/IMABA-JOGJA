@@ -169,7 +169,7 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
           </Link>
 
           {post.category?.title && (
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#1E2FB8]/10 text-[#1E2FB8] dark:text-[#4F5CF2] border border-[#1E2FB8]/20">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#C5A059]/10 text-[#C5A059] dark:text-[#E6B75B] border border-[#C5A059]/20">
               <Feather className="w-3 h-3" />
               {post.category.title}
             </span>
@@ -178,7 +178,7 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
 
         {/* Header Judul & Penulis */}
         <header className="mb-10 text-center">
-          <h1 className="font-heading font-normal text-[28px] text-foreground leading-snug tracking-tight mb-6">
+          <h1 className="font-heading font-extrabold text-[clamp(28px,1.6rem+1.8vw,44px)] text-foreground leading-tight tracking-tight mb-6">
             {post.title}
           </h1>
 
@@ -224,14 +224,14 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
         {/* Kartu Profil Penulis */}
         <div className="mt-16 pt-8 border-t border-border">
           <div className="p-6 sm:p-8 rounded-3xl bg-card border border-border flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#1E2FB8] to-[#4F5CF2] text-white flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-md">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#C5A059] to-[#E6B75B] text-[#14120E] flex items-center justify-center font-bold text-xl flex-shrink-0 shadow-md">
               {post.author?.name ? post.author.name[0] : 'K'}
             </div>
             <div className="flex-1">
-              <span className="text-xs font-bold text-primary uppercase tracking-wider block mb-1">
+              <span className="text-caption-label text-primary block mb-1">
                 Kader Penulis
               </span>
-              <h3 className="font-heading font-normal text-[18px] text-foreground mb-1">
+              <h3 className="font-heading text-h3-card text-foreground mb-1">
                 {post.author?.name || 'Kader Santri IMABA'}
               </h3>
               {post.author?.campus && (
@@ -240,7 +240,7 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
                 </p>
               )}
               {post.author?.bio && (
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed max-w-[65ch]">
                   {post.author.bio}
                 </p>
               )}
@@ -253,9 +253,9 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
       {relatedPosts && relatedPosts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-16 border-t border-border">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="font-heading font-normal text-[18px] text-foreground">
+            <h2 className="font-heading text-h2-fluid text-foreground">
               Karya Kader Lainnya
-            </h3>
+            </h2>
             <Link
               href="/karya-kader"
               className="text-xs font-semibold text-primary hover:underline"

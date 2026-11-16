@@ -11,14 +11,14 @@ export function Footer() {
   const currentYear = 2026
 
   return (
-    <footer className="w-full bg-[#050A2E] text-white border-t border-white/10 relative overflow-hidden">
+    <footer className="w-full bg-[#14120E] text-white border-t border-white/10 relative overflow-hidden">
       {/* Subtle background glow accents */}
       <div
-        className="absolute top-0 left-1/4 w-96 h-96 bg-[#1E2FB8]/15 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-0 left-1/4 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"
         aria-hidden="true"
       />
       <div
-        className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4F5CF2]/15 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"
         aria-hidden="true"
       />
 
@@ -27,8 +27,8 @@ export function Footer() {
           {/* Brand Info & Pesantren Motto */}
           <div className="lg:col-span-2 flex flex-col gap-5">
             <Link href="/" className="inline-flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-full p-0.5 bg-gradient-to-tr from-[#1E2FB8] via-[#4F5CF2] to-[#F9C80E] flex-shrink-0 shadow-lg shadow-indigo-950/60">
-                <div className="w-full h-full rounded-full bg-[#050A2E] flex items-center justify-center p-1.5 overflow-hidden">
+              <div className="w-12 h-12 rounded-full p-0.5 bg-gradient-to-tr from-[#C5A059] via-[#E6B75B] to-[#C5A059] flex-shrink-0 shadow-lg shadow-black/60">
+                <div className="w-full h-full rounded-full bg-[#14120E] flex items-center justify-center p-1.5 overflow-hidden">
                   <Image
                     src="/logo.png"
                     alt="Logo IMABA Yogyakarta"
@@ -56,7 +56,7 @@ export function Footer() {
 
             {/* Slogan Pesantren Pill Badge */}
             <div className="glass-pill rounded-2xl p-4 max-w-md border border-white/15 bg-white/[0.04]">
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#F9C80E] mb-1">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#C5A059] mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Motto Pondok Pesantren</span>
               </div>
@@ -72,7 +72,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram IMABA Yogyakarta"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#1E2FB8] text-white/80 hover:text-white border border-white/15 flex items-center justify-center transition-all duration-300 hover:scale-105"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#C5A059] hover:text-[#14120E] text-white/80 hover:text-white border border-white/15 flex items-center justify-center transition-all duration-300 hover:scale-105"
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
@@ -88,7 +88,7 @@ export function Footer() {
               <a
                 href="mailto:dpw@imabayogyakarta.com"
                 aria-label="Email Resmi IMABA Yogyakarta"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#4F5CF2] text-white/80 hover:text-white border border-white/15 flex items-center justify-center transition-all duration-300 hover:scale-105"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#C5A059] hover:text-[#14120E] text-white/80 hover:text-white border border-white/15 flex items-center justify-center transition-all duration-300 hover:scale-105"
               >
                 <Mail className="w-4 h-4" />
               </a>
@@ -98,7 +98,7 @@ export function Footer() {
           {/* Kolom 1: Profil Organisasi */}
           <div className="flex flex-col gap-3">
             <h3 className="font-heading text-sm font-bold tracking-wider uppercase text-white/90 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1E2FB8]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
               Profil & Struktur
             </h3>
             <ul className="flex flex-col gap-2.5 text-sm text-white/70">
@@ -187,7 +187,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/informasi-kampus#bimtren"
-                  className="text-[#F9C80E] font-semibold hover:text-white hover:translate-x-1 inline-flex items-center gap-1 transition-all"
+                  className="text-[#C5A059] font-semibold hover:text-white hover:translate-x-1 inline-flex items-center gap-1 transition-all"
                 >
                   Program Bimtren 2026
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -260,7 +260,7 @@ export function Footer() {
               Konstitusi Organisasi
             </Link>
             <span>&bull;</span>
-            <Link href="/studio" className="hover:text-[#F9C80E] transition-colors">
+            <Link href="/studio" className="hover:text-[#C5A059] transition-colors">
               Sanity Studio
             </Link>
             <span>&bull;</span>

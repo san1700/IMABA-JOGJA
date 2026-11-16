@@ -5,13 +5,28 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-imaba-navy: #050a2e;
-  --color-imaba-blue: #1e2fb8;
-  --color-imaba-indigo: #4f5cf2;
-  --color-imaba-light: #eef1f9;
-  --color-imaba-yellow: #f9c80e;
-  --color-imaba-green: #1fa83c;
-  --color-imaba-red: #e3262a;
+  /* ======================================================
+     Palet Utama: Dark Charcoal Espresso & Royal Gold
+     (Terinspirasi gaya UNU Yogyakarta — tanpa neon/AI tropes)
+     ====================================================== */
+  --color-imaba-espresso:  #14120E; /* latar gelap utama */
+  --color-imaba-bronze:    #1F1A14; /* panel/kartu gelap */
+  --color-imaba-gold:      #C5A059; /* aksen emas kebesaran */
+  --color-imaba-gold-lt:   #E6B75B; /* emas terang untuk H1 */
+  --color-imaba-ivory:     #F3EFEA; /* teks & latar putih gading */
+  --color-imaba-sand:      #E5D7B7; /* teks sekunder hangat */
+  --color-imaba-muted:     #A39987; /* teks muted hangat */
+  --color-imaba-border:    #2D2822; /* border subtle */
+  --color-imaba-border-lt: #3E3428; /* border lebih terang */
+
+  /* Alias semantik yang tetap dipakai komponennya */
+  --color-imaba-navy:   #14120E;
+  --color-imaba-blue:   #C5A059;
+  --color-imaba-indigo: #E6B75B;
+  --color-imaba-light:  #F3EFEA;
+  --color-imaba-yellow: #C5A059;
+  --color-imaba-green:  #5E9B72;
+  --color-imaba-red:    #e3262a;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -33,8 +48,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-heading: var(--font-figtree), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-article: var(--font-article), Newsreader, Georgia, Cambria, serif;
 
   --radius-sm: calc(var(--radius) * 0.6);
@@ -47,50 +62,56 @@
 }
 
 :root {
-  /* Latar terang #EEF1F9 & Foreground Navy #050A2E */
-  --background: #eef1f9;
-  --foreground: #050a2e;
-  --card: #ffffff;
-  --card-foreground: #050a2e;
-  --popover: #ffffff;
-  --popover-foreground: #050a2e;
-  --primary: #1e2fb8;
-  --primary-foreground: #ffffff;
-  --secondary: #e2e7f6;
-  --secondary-foreground: #1e2fb8;
-  --muted: #e4eaf7;
-  --muted-foreground: #4a567c;
-  --accent: #4f5cf2;
-  --accent-foreground: #ffffff;
-  --destructive: #e3262a;
+  /* =============================================
+     MODE TERANG → Latar Kertas Gading Hangat
+     Cocok untuk bagian konten editorial & artikel
+     ============================================= */
+  --background: #F3EFEA;         /* Ivory Warm Paper */
+  --foreground: #1A1612;         /* Espresso Near-Black */
+  --card:            #FFFFFF;
+  --card-foreground: #1A1612;
+  --popover:            #FFFFFF;
+  --popover-foreground: #1A1612;
+  --primary:            #C5A059; /* Royal Gold */
+  --primary-foreground: #14120E;
+  --secondary:          #EDE8E0;
+  --secondary-foreground: #3A3025;
+  --muted:              #EAE4DA;
+  --muted-foreground:   #7A6E60;
+  --accent:             #E6B75B; /* Gold Light */
+  --accent-foreground:  #14120E;
+  --destructive:        #e3262a;
   --destructive-foreground: #ffffff;
-  --border: #d6e0f2;
-  --input: #d6e0f2;
-  --ring: #4f5cf2;
+  --border: #DDD5C8;
+  --input:  #DDD5C8;
+  --ring:   #C5A059;
   --radius: 1rem;
 }
 
 .dark {
-  /* Deep Navy #050A2E & Foreground Luminous */
-  --background: #050a2e;
-  --foreground: #eef1f9;
-  --card: #09103c;
-  --card-foreground: #eef1f9;
-  --popover: #09103c;
-  --popover-foreground: #eef1f9;
-  --primary: #4f5cf2;
-  --primary-foreground: #ffffff;
-  --secondary: #101a52;
-  --secondary-foreground: #d0d9fe;
-  --muted: #0e1646;
-  --muted-foreground: #8a96be;
-  --accent: #1e2fb8;
-  --accent-foreground: #ffffff;
-  --destructive: #e3262a;
+  /* =============================================
+     MODE GELAP → Espresso Charcoal & Royal Gold
+     Ini adalah palet utama "Opsi 4" yang diminta
+     ============================================= */
+  --background: #14120E;         /* Espresso Charcoal */
+  --foreground: #F3EFEA;         /* Ivory White */
+  --card:            #1F1A14;    /* Bronze Dark */
+  --card-foreground: #F3EFEA;
+  --popover:            #1F1A14;
+  --popover-foreground: #F3EFEA;
+  --primary:            #C5A059; /* Royal Gold */
+  --primary-foreground: #14120E;
+  --secondary:          #2A241D;
+  --secondary-foreground: #E5D7B7;
+  --muted:              #231E18;
+  --muted-foreground:   #A39987;
+  --accent:             #E6B75B; /* Gold Light untuk highlight */
+  --accent-foreground:  #14120E;
+  --destructive:        #e3262a;
   --destructive-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.12);
-  --input: rgba(255, 255, 255, 0.15);
-  --ring: #4f5cf2;
+  --border: #2D2822;
+  --input:  #2D2822;
+  --ring:   #C5A059;
 }
 
 @layer base {
@@ -98,52 +119,130 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   html {
     @apply font-sans scroll-smooth;
   }
+  /* Base Semantik Skala Tipografi Terpusat */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-style: normal;
   }
   h1, .h1 {
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.3;
-    letter-spacing: -0.015em;
+    font-size: clamp(36px, 2rem + 3.5vw, 72px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
   }
   h2, .h2 {
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.35;
+    font-size: clamp(28px, 1.5rem + 1.8vw, 48px);
+    font-weight: 700;
+    line-height: 1.2;
     letter-spacing: -0.01em;
   }
   h3, .h3 {
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.4;
-    letter-spacing: -0.005em;
+    font-size: clamp(18px, 1.05rem + 0.5vw, 22px);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  p {
+    font-size: clamp(14px, 0.85rem + 0.25vw, 16px);
+    line-height: 1.6;
+    max-width: 65ch;
   }
   ::selection {
-    background-color: #1e2fb8;
-    color: #ffffff;
+    background-color: #C5A059;
+    color: #14120E;
   }
 }
 
-/* Komponen Efek Desain Khusus IMABA */
+/* ==========================================================================
+   Skala Utilitas Tipografi Terpusat (Fluid Clamp Token & Utilities)
+   ========================================================================== */
+@utility text-eyebrow {
+  font-size: clamp(12px, 0.75rem + 0.25vw, 14px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@utility text-display {
+  font-size: clamp(36px, 2.25rem + 3.2vw, 72px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+  text-wrap: balance;
+}
+
+@utility text-lead {
+  font-size: clamp(17px, 1.05rem + 0.35vw, 20px);
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+@utility text-h2-fluid {
+  font-size: clamp(28px, 1.75rem + 1.8vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+@utility text-h3-card {
+  font-size: clamp(18px, 1.1rem + 0.35vw, 22px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@utility text-body-fluid {
+  font-size: clamp(14px, 0.875rem + 0.2vw, 16px);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+@utility text-caption-label {
+  font-size: clamp(12px, 0.75rem + 0.1vw, 13px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@utility text-nav-link {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+@utility text-nav-link-active {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+@utility text-nav-brand {
+  font-size: clamp(18px, 1.1rem + 0.25vw, 20px);
+  font-weight: 700;
+}
+
+@utility text-nav-subbrand {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* Komponen Efek Desain Khusus IMABA — Palet Espresso & Gold */
 @layer components {
-  /* Kartu Kaca Melayang (Glassmorphism Card) */
+  /* Kartu Kaca Melayang (Glassmorphism Card) — Warm Gold Tinted */
   .glass-card {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(197, 160, 89, 0.08);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 24px 48px -12px rgba(5, 10, 46, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(197, 160, 89, 0.18);
+    box-shadow: 0 24px 48px -12px rgba(20, 18, 14, 0.55), inset 0 1px 1px 0 rgba(255, 255, 255, 0.10);
   }
 
   .glass-card-hover {
@@ -151,29 +250,29 @@
   }
   .glass-card-hover:hover {
     transform: translateY(-4px);
-    border-color: rgba(79, 92, 242, 0.5);
-    box-shadow: 0 32px 64px -16px rgba(79, 92, 242, 0.35), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+    border-color: rgba(197, 160, 89, 0.45);
+    box-shadow: 0 32px 64px -16px rgba(197, 160, 89, 0.20), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
   }
 
-  /* Badge Pil Kaca (Glass Pill Badge) */
+  /* Badge Pil Kaca — Gold Tint */
   .glass-pill {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(197, 160, 89, 0.12);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(197, 160, 89, 0.25);
   }
 
-  /* Kolom Vertikal 3D Bergradasi (Vertical Fluted Pillars) di Hero Navy */
+  /* Kolom Vertikal 3D Bergradasi (Vertical Fluted Pillars) di Hero Espresso */
   .hero-fluted-pillar {
     background: linear-gradient(
       180deg,
-      rgba(30, 47, 184, 0.04) 0%,
-      rgba(79, 92, 242, 0.22) 40%,
-      rgba(30, 47, 184, 0.32) 75%,
-      rgba(5, 10, 46, 0.85) 100%
+      rgba(197, 160, 89, 0.04) 0%,
+      rgba(197, 160, 89, 0.15) 40%,
+      rgba(197, 160, 89, 0.22) 75%,
+      rgba(20, 18, 14, 0.85) 100%
     );
     border-radius: 9999px;
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.08);
   }
 
   /* Tombol Pil dengan Lingkaran Panah */
@@ -203,11 +302,11 @@
   /* Kartu Putih Berradius Besar */
   .card-radius-large {
     border-radius: 1.75rem;
-    box-shadow: 0 16px 36px -10px rgba(5, 10, 46, 0.06);
+    box-shadow: 0 16px 36px -10px rgba(20, 18, 14, 0.08);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card-radius-large:hover {
     transform: translateY(-3px);
-    box-shadow: 0 24px 48px -12px rgba(30, 47, 184, 0.12);
+    box-shadow: 0 24px 48px -12px rgba(197, 160, 89, 0.15);
   }
 }

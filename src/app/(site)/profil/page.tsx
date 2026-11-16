@@ -101,23 +101,23 @@ export default async function ProfilPage() {
   return (
     <div className="w-full min-h-screen bg-background">
       {/* Header Banner */}
-      <section className="relative w-full bg-[#050A2E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
+      <section className="relative w-full bg-[#14120E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
         <div
-          className="absolute top-0 right-1/4 w-96 h-96 bg-[#1E2FB8]/25 rounded-full blur-3xl pointer-events-none"
+          className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-white/90 mb-4">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#F9C80E]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-eyebrow text-white/90 mb-4">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Tentang IMABA Yogyakarta</span>
           </div>
 
-          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-5">
+          <h1 className="font-heading font-extrabold text-[clamp(32px,1.8rem+2vw,52px)] tracking-tight text-white leading-tight mb-5">
             Profil, Sejarah & Struktur Organisasi
           </h1>
 
-          <p className="font-sans text-base sm:text-lg text-white/70 max-w-3xl leading-relaxed mb-8">
+          <p className="font-sans text-lead text-white/85 max-w-[60ch] leading-relaxed mb-8">
             Mengenal perjalanan panjang ikatan kekeluargaan santri Mambaul Ulum Bata-Bata di tanah
             perantauan Yogyakarta, berasaskan keislaman Ahlussunnah wal Jama&apos;ah dan pengabdian umat.
           </p>
@@ -125,7 +125,7 @@ export default async function ProfilPage() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#sejarah"
-              className="px-4 py-2 rounded-full text-xs font-semibold bg-white text-[#050A2E] hover:bg-gray-100 transition-colors shadow-sm"
+              className="px-4 py-2 rounded-full text-xs font-semibold bg-[#C5A059] text-[#14120E] hover:bg-[#D4B36D] transition-colors shadow-sm"
             >
               Sejarah & Filosofi
             </a>
@@ -192,29 +192,29 @@ export default async function ProfilPage() {
             </div>
 
             <div className="lg:col-span-5 flex flex-col gap-5">
-              <div className="p-8 rounded-[32px] bg-gradient-to-br from-[#050A2E] to-[#1E2FB8] text-white shadow-xl">
-                <h3 className="font-heading font-normal text-[18px] mb-3 text-[#F9C80E] flex items-center gap-2">
+              <div className="p-8 rounded-[32px] bg-gradient-to-br from-[#1F1A14] to-[#2A241D] border border-[#C5A059]/20 text-white shadow-xl">
+                <h3 className="font-heading font-normal text-[18px] mb-3 text-[#C5A059] flex items-center gap-2">
                   <Sparkles className="w-5 h-5" /> 5 Pilar Gerakan IMABA Jogja
                 </h3>
                 <ul className="space-y-3.5 text-sm text-white/90">
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
                     <span><strong>Ketauhidan:</strong> Berpijak pada akidah Ahlussunnah wal Jama&apos;ah</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
                     <span><strong>Intelektualitas:</strong> Menjunjung tinggi nalar kritis & riset ilmiah</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
                     <span><strong>Kekeluargaan:</strong> Silaturahmi lintas generasi dan kampus</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
                     <span><strong>Kemandirian:</strong> Berjiwa wirausaha dan solutif bagi masyarakat</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-[#F9C80E]" />
+                    <span className="w-2 h-2 rounded-full bg-[#C5A059]" />
                     <span><strong>Pengabdian:</strong> Berkhidmah untuk agama, bangsa, dan almamater</span>
                   </li>
                 </ul>
@@ -232,7 +232,7 @@ export default async function ProfilPage() {
           <SectionHeader
             align="left"
             badge="Konstitusi Organisasi"
-            badgeIcon={<FileText className="w-3.5 h-3.5 text-[#F9C80E]" />}
+            badgeIcon={<FileText className="w-3.5 h-3.5 text-[#C5A059]" />}
             title="Anggaran Dasar & Anggaran Rumah Tangga (AD/ART)"
             description="Pedoman konstitusional yang mengatur tata kelola organisasi, syarat keanggotaan, kewajiban pengurus, serta mekanisme musyawarah wilayah di Yogyakarta."
           />
@@ -278,7 +278,7 @@ export default async function ProfilPage() {
         <SectionHeader
           align="center"
           badge="Jajaran Kepengurusan"
-          badgeIcon={<Users className="w-3.5 h-3.5 text-[#F9C80E]" />}
+          badgeIcon={<Users className="w-3.5 h-3.5 text-[#C5A059]" />}
           title="Struktur Pengurus DPW IMABA DIY"
           description="Amanah pengabdian kader santri Mambaul Ulum Bata-Bata periode masa khidmah aktif."
         />
@@ -295,7 +295,7 @@ export default async function ProfilPage() {
               <StaggerItem key={member._id}>
                 <div className="h-full card-radius-large p-7 bg-card border border-border flex flex-col items-center text-center group hover:border-primary/50 transition-all">
                   {/* Foto / Avatar */}
-                  <div className="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-[#1E2FB8] via-[#4F5CF2] to-[#F9C80E] mb-5 shadow-md">
+                  <div className="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-[#C5A059] via-[#E6B75B] to-[#C5A059] mb-5 shadow-md">
                     <div className="w-full h-full rounded-full bg-muted flex items-center justify-center overflow-hidden text-2xl font-bold font-heading text-primary">
                       {photoUrl ? (
                         <Image

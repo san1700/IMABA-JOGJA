@@ -27,10 +27,10 @@ export default function NotFound() {
         {/* Tombol Utama */}
         <Link
           href="/"
-          className="btn-pill-arrow bg-[#1E2FB8] hover:bg-[#162494] text-white shadow-xl shadow-blue-900/20 mb-8 inline-flex"
+          className="btn-pill-arrow bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] shadow-xl shadow-black/20 mb-8 inline-flex"
         >
           <span>Kembali ke Beranda</span>
-          <span className="arrow-disc bg-white text-[#1E2FB8]">
+          <span className="arrow-disc bg-[#14120E] text-[#C5A059]">
             <Home className="w-4 h-4" />
           </span>
         </Link>

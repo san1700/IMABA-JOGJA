@@ -35,10 +35,10 @@ export function SectionHeader({
       {badge && (
         <div
           className={cn(
-            'inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-sm',
+            'inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-eyebrow mb-4 shadow-sm',
             isDark
               ? 'glass-pill text-white/90 border-white/20'
-              : 'bg-[#1E2FB8]/10 text-[#1E2FB8] dark:bg-white/10 dark:text-[#D8E0FF] border border-[#1E2FB8]/15 dark:border-white/15',
+              : 'bg-[#C5A059]/10 text-[#C5A059] dark:bg-[#C5A059]/15 dark:text-[#E6B75B] border border-[#C5A059]/25 dark:border-[#C5A059]/30',
           )}
         >
           {badgeIcon}
@@ -49,8 +49,8 @@ export function SectionHeader({
       {/* Judul Utama */}
       <h2
         className={cn(
-          'font-heading font-normal text-[22px] tracking-tight leading-snug mb-3',
-          isDark ? 'text-white' : 'text-[#050A2E] dark:text-white',
+          'font-heading text-h2-fluid tracking-tight leading-snug mb-3',
+          isDark ? 'text-white' : 'text-[#14120E] dark:text-white',
         )}
       >
         {title}
@@ -60,8 +60,8 @@ export function SectionHeader({
       {description && (
         <p
           className={cn(
-            'font-sans text-base sm:text-lg leading-relaxed max-w-2xl',
-            isDark ? 'text-white/75' : 'text-foreground/75 dark:text-white/70',
+            'font-sans text-body-fluid leading-relaxed max-w-[65ch]',
+            isDark ? 'text-white/80' : 'text-foreground/80 dark:text-white/75',
           )}
         >
           {description}

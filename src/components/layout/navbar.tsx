@@ -217,8 +217,8 @@ export function Navbar() {
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
         isScrolled
-          ? 'bg-[#050A2E]/85 dark:bg-[#050A2E]/90 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20 py-3'
-          : 'bg-[#050A2E] text-white py-4 border-b border-white/5',
+          ? 'bg-[#14120E]/90 backdrop-blur-xl border-b border-[#C5A059]/20 shadow-lg shadow-black/30 py-3'
+          : 'bg-[#14120E] text-white py-4 border-b border-[#2D2822]',
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -228,8 +228,8 @@ export function Navbar() {
             href="/"
             className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl p-1 shrink-0"
           >
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0.5 bg-gradient-to-tr from-[#1E2FB8] via-[#4F5CF2] to-[#F9C80E] shadow-md shadow-indigo-950/50 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
-              <div className="w-full h-full rounded-full bg-[#050A2E] flex items-center justify-center overflow-hidden p-1">
+            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0.5 bg-gradient-to-tr from-[#C5A059] via-[#E6B75B] to-[#C5A059] shadow-md shadow-black/50 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+              <div className="w-full h-full rounded-full bg-[#14120E] flex items-center justify-center overflow-hidden p-1">
                 <Image
                   src="/logo.png"
                   alt="Logo IMABA Yogyakarta"
@@ -241,11 +241,11 @@ export function Navbar() {
               </div>
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="font-heading font-extrabold text-base sm:text-lg tracking-tight text-white leading-tight flex items-center gap-1.5 whitespace-nowrap">
+              <span className="font-heading font-bold text-nav-brand tracking-tight text-[#E5D7B7] leading-tight flex items-center gap-1.5 whitespace-nowrap">
                 IMABA JOGJA
-                <span className="inline-block w-2 h-2 rounded-full bg-[#F9C80E] animate-pulse shrink-0" />
+                <span className="inline-block w-2 h-2 rounded-full bg-[#C5A059] animate-pulse shrink-0" />
               </span>
-              <span className="text-[10px] xl:text-[11px] font-medium text-white/60 tracking-wider uppercase leading-none hidden xl:block whitespace-nowrap">
+              <span className="text-nav-subbrand text-[#C5A059]/80 leading-none hidden xl:block whitespace-nowrap">
                 Ikatan Mahasiswa Bata-Bata
               </span>
             </div>
@@ -267,10 +267,10 @@ export function Navbar() {
                     key={item.title}
                     href={item.href}
                     className={cn(
-                      'px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-medium whitespace-nowrap shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                      'px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-full text-nav-link whitespace-nowrap shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                       isActive
-                        ? 'bg-white/15 text-white shadow-sm font-semibold'
-                        : 'text-white/80 hover:text-white hover:bg-white/10',
+                        ? 'bg-[#C5A059]/20 text-[#E6B75B] shadow-sm font-semibold'
+                        : 'text-[#D5CEBF] hover:text-white hover:bg-[#C5A059]/10',
                     )}
                   >
                     <span className="whitespace-nowrap">{item.title}</span>
@@ -286,10 +286,10 @@ export function Navbar() {
                     onMouseEnter={() => setActiveDropdown(item.title)}
                     aria-expanded={isOpen}
                     className={cn(
-                      'inline-flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-medium whitespace-nowrap shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                      'inline-flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-full text-nav-link whitespace-nowrap shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                       isOpen || isActive
-                        ? 'bg-white/15 text-white shadow-sm font-semibold'
-                        : 'text-white/80 hover:text-white hover:bg-white/10',
+                        ? 'bg-[#C5A059]/20 text-[#E6B75B] shadow-sm font-semibold'
+                        : 'text-[#D5CEBF] hover:text-white hover:bg-[#C5A059]/10',
                     )}
                   >
                     <span className="whitespace-nowrap">{item.title}</span>
@@ -305,7 +305,7 @@ export function Navbar() {
                   {isOpen && (
                     <div
                       onMouseLeave={() => setActiveDropdown(null)}
-                      className="absolute top-full left-0 mt-2 w-80 sm:w-96 rounded-2xl p-2.5 bg-[#050A2E]/95 backdrop-blur-2xl border border-white/15 shadow-2xl shadow-black/50 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+                      className="absolute top-full left-0 mt-2 w-80 sm:w-96 rounded-2xl p-2.5 bg-[#14120E]/95 backdrop-blur-2xl border border-[#C5A059]/20 shadow-2xl shadow-black/60 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
                     >
                       <div className="flex flex-col gap-1">
                         {item.items?.map((sub) => {
@@ -317,12 +317,12 @@ export function Navbar() {
                               onClick={() => setActiveDropdown(null)}
                               className="group flex items-start gap-3.5 p-3 rounded-xl transition-all duration-200 hover:bg-white/10 focus:outline-none focus:bg-white/10"
                             >
-                              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#1E2FB8]/30 to-[#4F5CF2]/20 border border-white/15 flex items-center justify-center text-white/90 group-hover:scale-105 group-hover:bg-[#4F5CF2] group-hover:text-white transition-all flex-shrink-0 mt-0.5">
+                              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#C5A059]/30 to-[#E6B75B]/20 border border-[#C5A059]/20 flex items-center justify-center text-[#C5A059] group-hover:scale-105 group-hover:bg-[#C5A059] group-hover:text-[#14120E] transition-all flex-shrink-0 mt-0.5">
                                 <Icon className="w-4 h-4" />
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-sm font-semibold text-white group-hover:text-[#F9C80E] transition-colors truncate">
+                                  <span className="text-sm font-semibold text-white group-hover:text-[#C5A059] transition-colors truncate">
                                     {sub.title}
                                   </span>
                                   {sub.badge && (
@@ -365,10 +365,10 @@ export function Navbar() {
             {/* Pill CTA Button dengan Lingkaran Panah */}
             <Link
               href="/informasi-kampus#bimtren"
-              className="hidden sm:inline-flex items-center gap-2 xl:gap-2.5 rounded-full pl-3.5 xl:pl-5 pr-1.5 xl:pr-2 py-1 xl:py-1.5 bg-gradient-to-r from-[#1E2FB8] to-[#4F5CF2] hover:from-[#182696] hover:to-[#3e4be0] text-white font-semibold text-xs tracking-wide shadow-md shadow-indigo-950/40 border border-white/20 transition-all duration-300 group hover:shadow-indigo-500/25 hover:border-white/40 whitespace-nowrap shrink-0"
+              className="hidden sm:inline-flex items-center gap-2 xl:gap-2.5 rounded-full pl-3.5 xl:pl-5 pr-1.5 xl:pr-2 py-1 xl:py-1.5 bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] font-bold text-xs tracking-wide shadow-md shadow-black/30 border border-[#E6B75B]/30 transition-all duration-300 group whitespace-nowrap shrink-0"
             >
               <span className="whitespace-nowrap">Bimtren 2026</span>
-              <span className="w-6 h-6 xl:w-7 xl:h-7 rounded-full bg-white text-[#1E2FB8] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shadow-sm shrink-0">
+              <span className="w-6 h-6 xl:w-7 xl:h-7 rounded-full bg-[#14120E] text-[#C5A059] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shadow-sm shrink-0">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
             </Link>
@@ -388,7 +388,7 @@ export function Navbar() {
 
       {/* Mobile Menu Drawer / Sheet */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[69px] bottom-0 bg-[#050A2E]/95 backdrop-blur-2xl z-40 border-t border-white/10 overflow-y-auto p-4 sm:p-6 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="lg:hidden fixed inset-x-0 top-[69px] bottom-0 bg-[#14120E]/97 backdrop-blur-2xl z-40 border-t border-[#2D2822] overflow-y-auto p-4 sm:p-6 animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col gap-2 max-w-lg mx-auto pb-12">
             {NAV_ITEMS.map((item) => {
               const hasDropdown = Boolean(item.items && item.items.length > 0)
@@ -434,7 +434,7 @@ export function Navbar() {
                             onClick={() => setMobileMenuOpen(false)}
                             className="flex items-center gap-3 p-2.5 rounded-lg text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors"
                           >
-                            <div className="w-7 h-7 rounded-md bg-[#1E2FB8]/40 flex items-center justify-center text-white/90 flex-shrink-0">
+                            <div className="w-7 h-7 rounded-md bg-[#C5A059]/20 text-[#C5A059] flex items-center justify-center text-white/90 flex-shrink-0">
                               <Icon className="w-3.5 h-3.5" />
                             </div>
                             <div className="flex-1 min-w-0">
@@ -459,10 +459,10 @@ export function Navbar() {
               <Link
                 href="/informasi-kampus#bimtren"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-3 rounded-full py-3 px-6 bg-gradient-to-r from-[#1E2FB8] to-[#4F5CF2] text-white font-semibold text-sm shadow-lg shadow-indigo-950/50"
+                className="w-full flex items-center justify-center gap-3 rounded-full py-3 px-6 bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] font-bold text-sm shadow-lg shadow-black/30"
               >
                 <span>Bimbingan Masuk Kampus (Bimtren 2026)</span>
-                <span className="w-6 h-6 rounded-full bg-white text-[#1E2FB8] flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full bg-[#14120E] text-[#C5A059] flex items-center justify-center">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </Link>

@@ -67,23 +67,23 @@ export default function KaryaKaderPage({ searchParams }: KaryaKaderPageProps) {
   return (
     <div className="w-full min-h-screen bg-background">
       {/* Header Banner Kanal Karya Kader */}
-      <section className="relative w-full bg-[#050A2E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
+      <section className="relative w-full bg-[#14120E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
         <div
-          className="absolute top-0 right-1/4 w-96 h-96 bg-[#4F5CF2]/20 rounded-full blur-3xl pointer-events-none"
+          className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-white/90 mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-eyebrow text-white/90 mb-4">
             <Feather className="w-3.5 h-3.5 text-[#F9C80E]" />
             <span>Mimbar Literasi & Pemikiran Santri</span>
           </div>
 
-          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-3">
+          <h1 className="font-heading font-extrabold text-[clamp(32px,1.8rem+2vw,52px)] tracking-tight text-white leading-tight mb-3">
             Karya Kader IMABA
           </h1>
 
-          <p className="font-sans text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed">
+          <p className="font-sans text-lead text-white/85 max-w-[60ch] leading-relaxed">
             Menghidupkan tradisi literasi pesantren di tengah dinamika akademis Yogyakarta.
             Wadah ekspresi gagasan kritis, renungan sastra, dan karya tulis kader.
           </p>
@@ -120,10 +120,10 @@ export default function KaryaKaderPage({ searchParams }: KaryaKaderPageProps) {
 
           <a
             href="mailto:redaksi@imabayogyakarta.com?subject=Pengiriman%20Karya%20Kader%20IMABA"
-            className="btn-pill-arrow bg-[#1E2FB8] hover:bg-[#162494] text-white flex-shrink-0"
+            className="btn-pill-arrow bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] flex-shrink-0"
           >
             <span>Kirim Naskah Tulisan</span>
-            <span className="arrow-disc bg-white text-[#1E2FB8]">
+            <span className="arrow-disc bg-[#14120E] text-[#C5A059]">
               &rarr;
             </span>
           </a>

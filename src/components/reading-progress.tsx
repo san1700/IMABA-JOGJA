@@ -18,7 +18,7 @@ export function ReadingProgress() {
     >
       <motion.div
         style={{ scaleX, transformOrigin: '0%' }}
-        className="h-full w-full bg-gradient-to-r from-[#1E2FB8] via-[#4F5CF2] to-[#F9C80E] shadow-sm shadow-[#4F5CF2]/50"
+        className="h-full w-full bg-gradient-to-r from-[#C5A059] via-[#E6B75B] to-[#C5A059] shadow-sm shadow-[#C5A059]/30"
       />
     </div>
   )

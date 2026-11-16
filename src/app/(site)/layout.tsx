@@ -10,7 +10,7 @@ export default function SiteLayout({
 }) {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
-      <Suspense fallback={<div className="h-20 w-full bg-[#050A2E]" />}>
+      <Suspense fallback={<div className="h-20 w-full bg-[#14120E]" />}>
         <Navbar />
       </Suspense>
       <main className="flex-1 flex flex-col">{children}</main>

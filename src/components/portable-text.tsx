@@ -20,17 +20,17 @@ export function PortableText({ value, className = '', isLiterary = false }: Port
   const components: PortableTextComponents = {
     block: {
       h1: ({ children }) => (
-        <h1 className="font-heading font-normal text-[28px] text-foreground mt-8 mb-4 tracking-tight leading-snug">
+        <h2 className="font-heading text-h2-fluid text-foreground mt-8 mb-4 tracking-tight leading-snug">
           {children}
-        </h1>
+        </h2>
       ),
       h2: ({ children }) => (
-        <h2 className="font-heading font-normal text-[22px] text-foreground mt-7 mb-3 tracking-tight leading-snug">
+        <h2 className="font-heading text-h2-fluid text-foreground mt-7 mb-3 tracking-tight leading-snug">
           {children}
         </h2>
       ),
       h3: ({ children }) => (
-        <h3 className="font-heading font-normal text-[18px] text-foreground mt-6 mb-2 tracking-tight leading-snug">
+        <h3 className="font-heading text-h3-card text-foreground mt-6 mb-2 tracking-tight leading-snug">
           {children}
         </h3>
       ),
@@ -40,17 +40,17 @@ export function PortableText({ value, className = '', isLiterary = false }: Port
         </h4>
       ),
       blockquote: ({ children }) => (
-        <blockquote className="my-6 border-l-4 border-[#1E2FB8] dark:border-[#4F5CF2] pl-5 py-1 italic font-article text-lg text-foreground/85 bg-primary/5 rounded-r-xl">
+        <blockquote className="my-6 border-l-4 border-[#C5A059] pl-5 py-1 italic font-article text-lg text-foreground/85 bg-primary/5 rounded-r-xl max-w-[65ch]">
           {children}
         </blockquote>
       ),
       normal: ({ children }) => (
         <p
           className={cn(
-            'mb-4 leading-relaxed text-foreground/80',
+            'mb-4 leading-relaxed text-foreground/80 max-w-[65ch]',
             isLiterary
               ? 'font-article text-lg sm:text-xl leading-relaxed sm:leading-loose text-foreground/90'
-              : 'font-sans text-base sm:text-lg',
+              : 'font-sans text-body-fluid',
           )}
         >
           {children}
@@ -92,7 +92,7 @@ export function PortableText({ value, className = '', isLiterary = false }: Port
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#1E2FB8] dark:text-[#4F5CF2] underline underline-offset-4 font-medium hover:text-[#050A2E] dark:hover:text-white transition-colors"
+              className="text-[#C5A059] dark:text-[#E6B75B] underline underline-offset-4 font-medium hover:text-[#14120E] dark:hover:text-white transition-colors"
             >
               {children}
             </a>
@@ -101,7 +101,7 @@ export function PortableText({ value, className = '', isLiterary = false }: Port
         return (
           <Link
             href={href}
-            className="text-[#1E2FB8] dark:text-[#4F5CF2] underline underline-offset-4 font-medium hover:text-[#050A2E] dark:hover:text-white transition-colors"
+            className="text-[#C5A059] dark:text-[#E6B75B] underline underline-offset-4 font-medium hover:text-[#14120E] dark:hover:text-white transition-colors"
           >
             {children}
           </Link>

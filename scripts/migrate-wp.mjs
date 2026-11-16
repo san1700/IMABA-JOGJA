@@ -37,7 +37,10 @@ loadEnv()
 const WP_BASE_URL = process.env.WP_BASE_URL || 'https://imabayogyakarta.com'
 const SANITY_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'd109xcpl'
 const SANITY_DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
-const SANITY_TOKEN = process.env.SANITY_API_WRITE_TOKEN
+let SANITY_TOKEN = process.env.SANITY_API_WRITE_TOKEN?.trim().replace(/^["']|["']$/g, '')
+if (SANITY_TOKEN && SANITY_TOKEN.startsWith('sk_sk')) {
+  SANITY_TOKEN = SANITY_TOKEN.replace(/^sk_sk/, 'sk')
+}
 
 if (!SANITY_TOKEN) {
   console.error('\n❌ ERROR: SANITY_API_WRITE_TOKEN belum disetel!')

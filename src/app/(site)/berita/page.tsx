@@ -68,24 +68,24 @@ export default function BeritaPage({ searchParams }: BeritaPageProps) {
   return (
     <div className="w-full min-h-screen bg-background">
       {/* Header Banner Kanal */}
-      <section className="relative w-full bg-[#050A2E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
+      <section className="relative w-full bg-[#14120E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
         {/* Ambient Glow */}
         <div
-          className="absolute top-0 right-1/4 w-96 h-96 bg-[#1E2FB8]/20 rounded-full blur-3xl pointer-events-none"
+          className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-white/90 mb-4">
-            <Newspaper className="w-3.5 h-3.5 text-[#F9C80E]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-eyebrow text-white/90 mb-4">
+            <Newspaper className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>Kanal Informasi & Publikasi</span>
           </div>
 
-          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-3">
+          <h1 className="font-heading font-extrabold text-[clamp(32px,1.8rem+2vw,52px)] tracking-tight text-white leading-tight mb-3">
             Berita & Agenda DPW
           </h1>
 
-          <p className="font-sans text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed">
+          <p className="font-sans text-lead text-white/85 max-w-[60ch] leading-relaxed">
             Ikuti warta terbaru seputar pergerakan santri Bata-Bata di Yogyakarta, rilis pers kegiatan
             organisasi, serta jadwal agenda resmi pengurus.
           </p>

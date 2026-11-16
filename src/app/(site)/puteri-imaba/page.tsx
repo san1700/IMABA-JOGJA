@@ -31,28 +31,28 @@ export default function PuteriImabaPage() {
   return (
     <div className="w-full min-h-screen bg-background">
       {/* Header Banner */}
-      <section className="relative w-full bg-[#050A2E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
+      <section className="relative w-full bg-[#14120E] text-white py-16 sm:py-24 border-b border-white/10 overflow-hidden">
         {/* Ambient Glow bernuansa Merah Marun & Indigo */}
         <div
           className="absolute top-0 right-1/4 w-96 h-96 bg-[#E3262A]/20 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
         <div
-          className="absolute bottom-0 left-10 w-80 h-80 bg-[#4F5CF2]/15 rounded-full blur-3xl pointer-events-none"
+          className="absolute bottom-0 left-10 w-80 h-80 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-white/90 mb-4 border-[#E3262A]/40">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-eyebrow text-white/90 mb-4 border-[#E3262A]/40">
             <span className="w-2 h-2 rounded-full bg-[#E3262A] animate-pulse" />
             <span>Divisi Pemberdayaan Mahasiswi IMABA</span>
           </div>
 
-          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-5">
+          <h1 className="font-heading font-extrabold text-[clamp(32px,1.8rem+2vw,52px)] tracking-tight text-white leading-tight mb-5">
             Puteri Imaba Yogyakarta
           </h1>
 
-          <p className="font-sans text-base sm:text-lg text-white/75 max-w-2xl leading-relaxed mb-8">
+          <p className="font-sans text-lead text-white/85 max-w-[60ch] leading-relaxed mb-8">
             Wadah berhimpun, bertukar gagasan, dan meneguhkan kepemimpinan bagi seluruh mahasiswi
             alumni Pondok Pesantren Mambaul Ulum Bata-Bata di kampus-kampus Daerah Istimewa Yogyakarta.
           </p>
@@ -73,7 +73,7 @@ export default function PuteriImabaPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass-pill text-white/90 hover:text-white text-xs font-semibold"
             >
-              <InstagramIcon className="w-4 h-4 text-[#F9C80E]" />
+              <InstagramIcon className="w-4 h-4 text-[#C5A059]" />
               <span>Instagram @puteriimaba</span>
             </a>
           </div>
@@ -119,8 +119,8 @@ export default function PuteriImabaPage() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="p-8 sm:p-10 rounded-[32px] bg-gradient-to-br from-[#050A2E] to-[#1E2FB8] text-white shadow-2xl border border-white/10">
-                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#F9C80E] mb-6">
+              <div className="p-8 sm:p-10 rounded-[32px] bg-gradient-to-br from-[#1F1A14] to-[#2A241D] border border-[#C5A059]/20 text-white shadow-2xl border border-white/10">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#C5A059] mb-6">
                   <Feather className="w-6 h-6" />
                 </div>
                 <h3 className="font-heading font-normal text-[18px] text-white mb-3">
@@ -170,7 +170,7 @@ export default function PuteriImabaPage() {
 
             <StaggerItem>
               <div className="h-full card-radius-large p-7 bg-card border border-border">
-                <div className="w-10 h-10 rounded-2xl bg-[#1E2FB8]/10 text-[#1E2FB8] flex items-center justify-center mb-5">
+                <div className="w-10 h-10 rounded-2xl bg-[#C5A059]/10 text-[#C5A059] flex items-center justify-center mb-5">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">

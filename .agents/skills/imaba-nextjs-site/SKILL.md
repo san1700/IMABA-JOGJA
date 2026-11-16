@@ -81,23 +81,27 @@ IMABA = **Ikatan Mahasiswa Bata-Bata**. Logo berupa segitiga bertembok bata biru
 - Pakai versi **PNG transparan** di `public/logo.png` (dan ukuran kecil untuk favicon). Bila belum ada, minta user menyiapkan; jangan memakai logo berlatar putih langsung di atas hero gelap.
 - Di navbar gelap, letakkan logo pada badge/lingkaran putih kecil atau gunakan versi transparan.
 
-### Referensi visual
+### Referensi visual & Identitas
 
-Gaya "modern landing page" (referensi AirLume): hero navy gelap dengan garis vertikal bergradasi, badge pil kecil, judul besar tebal dengan kata beraksen, kartu kaca melayang, tombol pil dengan lingkaran panah, lalu transisi ke bagian terang berisi grid kartu putih berradius besar. **Ambil gayanya, bukan menyalin layout/kontennya.**
+Situs menggunakan pendekatan **"Prestige Islamic Academic / Cultural Minimalist"** yang terinspirasi dari kemegahan dan kehangatan portal resmi **UNU Yogyakarta (unu-jogja.ac.id)**, dengan menghindari elemen template SaaS/AI generic (tidak ada gradien neon biru/indigo elektrik atau teks yang menutupi wajah orang).
+- **Hero:** Emblem laurel wreath emas 🌿, judul 2 baris tegas, subjudul italic berwibawa, tombol pil emas, dan dokumentasi foto bersama pengurus ditampilkan dalam frame sinematik 16:9 yang terang dan bermartabat tanpa ditutupi teks.
+- **Kartu & Konten:** Menggunakan radius lembut, palet kertas gading hangat pada mode terang, dan bronze espresso mewah pada mode gelap.
 
-### Palet warna
-
-Nilai hex perkiraan dari logo dan referensi. Jika user memberi nilai resmi, ganti di satu tempat (token CSS).
+### Palet warna (Espresso Charcoal & Royal Gold)
 
 | Peran | Warna | Hex |
 |---|---|---|
-| Latar gelap (hero, footer) | Navy sangat tua | `#050A2E` |
-| Biru utama (primary) | Biru segitiga logo | `#1E2FB8` |
-| Aksen interaktif | Indigo terang | `#4F5CF2` |
-| Latar bagian terang | Abu kebiruan | `#EEF1F9` |
-| Aksen 1 | Kuning logo | `#F9C80E` |
-| Aksen 2 | Hijau logo | `#1FA83C` |
-| Aksen 3 | Merah logo | `#E3262A` |
+| Latar gelap (hero, navbar, footer) | Espresso Charcoal | `#14120E` |
+| Panel / kartu gelap | Bronze Dark | `#1F1A14` |
+| Border gelap subtle | Dark Bronze Border | `#2D2822` / `#3E3428` |
+| Warna utama (primary) | Royal Gold Foil | `#C5A059` |
+| Aksen terang (highlight H1) | Light Gold | `#E6B75B` |
+| Teks sekunder hangat | Warm Sand | `#E5D7B7` |
+| Teks muted gelap | Warm Muted | `#A39987` |
+| Latar bagian terang (mode terang) | Ivory Warm Paper | `#F3EFEA` |
+| Teks mode terang | Espresso Near-Black | `#1A1612` |
+| Aksen hijau | Hijau Pesantren | `#5E9B72` |
+| Aksen merah | Merah Bata-Bata | `#E3262A` |
 
 Aturan pemakaian: **biru + indigo dominan**; kuning/hijau/merah hanya aksen kecil (badge, ikon, highlight kata, penanda kategori). Jangan menjadikan situs pelangi. Pastikan kontras teks memenuhi WCAG AA (teks putih di navy, teks navy di latar terang).
 
@@ -121,9 +125,8 @@ Sediakan nilai untuk **light dan dark mode**. Di dark mode, latar memakai navy, 
 
 ### Font (via `next/font/google`)
 
-- Judul: **Plus Jakarta Sans** (600-800)
-- Isi umum/UI: **Inter**
-- Isi artikel Karya Kader (puisi, cerpen, esai): **Newsreader** atau Lora; lebar baris sekitar 65 karakter, line-height 1.7-1.8
+- Font Utama (Judul, UI, dan Isi Umum): **Figtree** (variable font via `next/font/google`, dipasang ke variabel CSS `--font-sans` dan `--font-heading`). Menggantikan Plus Jakarta Sans dan Inter.
+- Isi artikel Karya Kader (puisi, cerpen, esai): **Newsreader** (variable serif font via `next/font/google`, dipasang ke variabel CSS `--font-article`); lebar baris maksimal 65 karakter, line-height 1.7-1.8
 
 ### Pola komponen khas
 

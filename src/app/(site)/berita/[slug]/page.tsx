@@ -178,7 +178,7 @@ async function BeritaDetailPageContent({ params }: PostDetailPageProps) {
         </div>
 
         {/* Judul Utama Artikel */}
-        <h1 className="font-heading font-normal text-[28px] text-foreground leading-snug tracking-tight mb-6">
+        <h1 className="font-heading font-extrabold text-[clamp(28px,1.6rem+1.8vw,44px)] text-foreground leading-tight tracking-tight mb-6">
           {post.title}
         </h1>
 
@@ -250,14 +250,14 @@ async function BeritaDetailPageContent({ params }: PostDetailPageProps) {
               {post.author.name ? post.author.name[0] : 'A'}
             </div>
             <div>
-              <span className="text-xs font-bold text-primary uppercase tracking-wider block mb-1">
+              <span className="text-caption-label text-primary block mb-1">
                 Tentang Penulis
               </span>
-              <h4 className="font-heading font-bold text-base text-foreground mb-1">
+              <h3 className="font-heading font-bold text-base text-foreground mb-1">
                 {post.author.name}
-              </h4>
+              </h3>
               {post.author.bio && (
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed max-w-[65ch]">
                   {post.author.bio}
                 </p>
               )}
@@ -270,9 +270,9 @@ async function BeritaDetailPageContent({ params }: PostDetailPageProps) {
       {relatedPosts && relatedPosts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-16 border-t border-border">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="font-heading font-normal text-[18px] text-foreground">
+            <h2 className="font-heading text-h2-fluid text-foreground">
               Berita Terkait Lainnya
-            </h3>
+            </h2>
             <Link
               href="/berita"
               className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
