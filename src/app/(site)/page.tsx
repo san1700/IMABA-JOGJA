@@ -196,29 +196,11 @@ export default async function HomePage() {
 
             {/* Kalimat Penyambut Hangat (Subheading Italic Khas UNU Jogja) */}
             <FadeUp delay={0.15}>
-              <p className="font-sans italic text-base sm:text-lg md:text-xl text-white/95 max-w-3xl mx-auto leading-relaxed mb-8 drop-shadow-lg font-light">
+              <p className="font-sans italic text-base sm:text-lg md:text-xl text-white/95 max-w-3xl mx-auto leading-relaxed drop-shadow-lg font-light">
                 &ldquo;Selamat datang di portal resmi Ikatan Mahasiswa Bata-Bata (IMABA) Daerah Istimewa Yogyakarta.
                 Wadah silaturahmi, advokasi pendidikan tinggi, pendampingan beasiswa, serta mimbar literasi ilmiah
                 bagi seluruh santri dan alumni di tanah perantauan.&rdquo;
               </p>
-            </FadeUp>
-
-            {/* Badge & Tombol Navigasi Utama */}
-            <FadeUp delay={0.2} className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#050A2E]/75 backdrop-blur-md border border-white/25 text-xs font-semibold text-white shadow-lg">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#1FA83C] animate-pulse" />
-                <span>Dokumentasi Resmi Pengurus & Kader DPW IMABA DIY</span>
-              </div>
-
-              <Link
-                href="/informasi-kampus#bimtren"
-                className="btn-pill-arrow bg-[#1E2FB8] hover:bg-[#162494] text-white shadow-xl shadow-blue-950/70 border border-white/30 text-xs sm:text-sm group"
-              >
-                <span>Pendaftaran Bimtren 2026</span>
-                <span className="arrow-disc bg-white text-[#1E2FB8]">
-                  <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                </span>
-              </Link>
             </FadeUp>
           </div>
 
