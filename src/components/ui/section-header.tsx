@@ -46,10 +46,10 @@ export function SectionHeader({
         </div>
       )}
 
-      {/* Judul Utama Tebal */}
+      {/* Judul Utama */}
       <h2
         className={cn(
-          'font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.2] mb-4',
+          'font-heading font-normal text-[22px] tracking-tight leading-snug mb-3',
           isDark ? 'text-white' : 'text-[#050A2E] dark:text-white',
         )}
       >

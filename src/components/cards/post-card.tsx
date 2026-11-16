@@ -114,8 +114,8 @@ export function PostCard({
             )}
           </div>
 
-          {/* Judul Tebal */}
-          <h3 className="font-heading font-extrabold text-base sm:text-lg text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2 mb-2.5">
+          {/* Judul Post */}
+          <h3 className="font-heading font-normal text-[18px] text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2 mb-2.5">
             <Link href={targetHref} className="focus:outline-none focus-visible:underline">
               {post.title}
             </Link>

@@ -197,7 +197,7 @@ export default async function InformasiKampusPage() {
             <span>Gerbang Pendidikan Santri di Jogja</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl tracking-tight text-white mb-6">
+          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-5">
             Informasi Kampus, Beasiswa & Bimtren
           </h1>
 
@@ -247,7 +247,7 @@ export default async function InformasiKampusPage() {
               <span>Program Khidmah Tahunan DPW IMABA</span>
             </div>
 
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight mb-4 leading-tight">
+            <h2 className="font-heading font-normal text-[22px] text-white tracking-tight mb-4 leading-snug">
               Bimtren 2026: Bimbingan Intensif Masuk Kampus Impian di Jogja
             </h2>
 
@@ -339,7 +339,7 @@ export default async function InformasiKampusPage() {
               <span className="w-8 h-8 rounded-full bg-[#1E2FB8]/15 text-primary flex items-center justify-center font-bold text-xs mb-4">
                 01
               </span>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">SNBP / SNBT</h3>
+              <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">SNBP / SNBT</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Jalur seleksi nasional berbasis prestasi rapor (SNBP) dan seleksi tes berbasis UTBK (SNBT)
                 untuk seluruh perguruan tinggi negeri se-Indonesia.
@@ -350,7 +350,7 @@ export default async function InformasiKampusPage() {
               <span className="w-8 h-8 rounded-full bg-[#1FA83C]/15 text-[#1FA83C] flex items-center justify-center font-bold text-xs mb-4">
                 02
               </span>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">SPAN & UM-PTKIN</h3>
+              <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">SPAN & UM-PTKIN</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Jalur khusus perguruan tinggi keagamaan Islam negeri (UIN, IAIN, STAIN) yang ramah santri,
                 dengan penilaian prestasi maupun tes mandiri nasional.
@@ -361,7 +361,7 @@ export default async function InformasiKampusPage() {
               <span className="w-8 h-8 rounded-full bg-[#F9C80E]/20 text-[#D97706] flex items-center justify-center font-bold text-xs mb-4">
                 03
               </span>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">Ujian Mandiri (UM)</h3>
+              <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">Ujian Mandiri (UM)</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Seleksi resmi yang diselenggarakan langsung oleh masing-masing kampus (seperti UM UGM CBT,
                 CBT UNY, Mandiri UIN Suka) dengan beragam skema.
@@ -372,7 +372,7 @@ export default async function InformasiKampusPage() {
               <span className="w-8 h-8 rounded-full bg-[#4F5CF2]/15 text-[#4F5CF2] flex items-center justify-center font-bold text-xs mb-4">
                 04
               </span>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">Jalur Khusus Santri</h3>
+              <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">Jalur Khusus Santri</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Jalur apresiasi santri berprestasi, hafiz Al-Qur&apos;an 30 juz, qiroatul kutub, dan rekomendasi
                 pesantren di kampus-kampus mitra.
@@ -422,7 +422,7 @@ export default async function InformasiKampusPage() {
                     <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-primary/10 text-primary mb-3 inline-block">
                       {b.year || 'Dokumen'}
                     </span>
-                    <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                    <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                       {b.title}
                     </h3>
                     {b.description && (
@@ -453,7 +453,7 @@ export default async function InformasiKampusPage() {
                     <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-primary/10 text-primary mb-3 inline-block">
                       Buku Saku 2026
                     </span>
-                    <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                    <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                       Buku Saku Maba Santri Bata-Bata di Jogja
                     </h3>
                     <p className="text-xs text-muted-foreground leading-relaxed mb-6">
@@ -474,7 +474,7 @@ export default async function InformasiKampusPage() {
                     <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-[#1FA83C]/10 text-[#1FA83C] mb-3 inline-block">
                       Brosur PMB
                     </span>
-                    <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                    <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                       Panduan Jalur Masuk Mandiri PTN & PTKIN
                     </h3>
                     <p className="text-xs text-muted-foreground leading-relaxed mb-6">
@@ -495,7 +495,7 @@ export default async function InformasiKampusPage() {
                     <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-[#F9C80E]/20 text-[#D97706] mb-3 inline-block">
                       Modul Bimtren
                     </span>
-                    <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                    <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                       Bank Soal & Pembahasan UTBK-SNBT
                     </h3>
                     <p className="text-xs text-muted-foreground leading-relaxed mb-6">

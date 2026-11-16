@@ -178,7 +178,7 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
 
         {/* Header Judul & Penulis */}
         <header className="mb-10 text-center">
-          <h1 className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-foreground leading-[1.25] tracking-tight mb-6">
+          <h1 className="font-heading font-normal text-[28px] text-foreground leading-snug tracking-tight mb-6">
             {post.title}
           </h1>
 
@@ -231,7 +231,7 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
               <span className="text-xs font-bold text-primary uppercase tracking-wider block mb-1">
                 Kader Penulis
               </span>
-              <h3 className="font-heading font-bold text-lg text-foreground mb-1">
+              <h3 className="font-heading font-normal text-[18px] text-foreground mb-1">
                 {post.author?.name || 'Kader Santri IMABA'}
               </h3>
               {post.author?.campus && (
@@ -253,7 +253,7 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
       {relatedPosts && relatedPosts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-16 border-t border-border">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="font-heading font-extrabold text-2xl text-foreground">
+            <h3 className="font-heading font-normal text-[18px] text-foreground">
               Karya Kader Lainnya
             </h3>
             <Link

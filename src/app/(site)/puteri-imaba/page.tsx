@@ -48,7 +48,7 @@ export default function PuteriImabaPage() {
             <span>Divisi Pemberdayaan Mahasiswi IMABA</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl tracking-tight text-white mb-6">
+          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-5">
             Puteri Imaba Yogyakarta
           </h1>
 
@@ -92,7 +92,7 @@ export default function PuteriImabaPage() {
                 <span>Visi & Keanggunan</span>
               </div>
 
-              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-6 leading-tight">
+              <h2 className="font-heading font-normal text-[22px] text-foreground mb-4 leading-snug">
                 Melahirkan Mahasiswi Santri yang Cerdas, Mandiri, dan Berakhlakul Karimah
               </h2>
 
@@ -123,7 +123,7 @@ export default function PuteriImabaPage() {
                 <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#F9C80E] mb-6">
                   <Feather className="w-6 h-6" />
                 </div>
-                <h3 className="font-heading font-bold text-2xl text-white mb-3">
+                <h3 className="font-heading font-normal text-[18px] text-white mb-3">
                   Falsafah Gerakan
                 </h3>
                 <p className="text-white/80 leading-relaxed text-sm italic mb-6">
@@ -159,7 +159,7 @@ export default function PuteriImabaPage() {
                 <div className="w-10 h-10 rounded-2xl bg-[#E3262A]/10 text-[#E3262A] flex items-center justify-center mb-5">
                   <BookOpen className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                   Kajian Fiqhun Nisa
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -173,7 +173,7 @@ export default function PuteriImabaPage() {
                 <div className="w-10 h-10 rounded-2xl bg-[#1E2FB8]/10 text-[#1E2FB8] flex items-center justify-center mb-5">
                   <Sparkles className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                   Leadership & Soft Skills
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -187,7 +187,7 @@ export default function PuteriImabaPage() {
                 <div className="w-10 h-10 rounded-2xl bg-[#F9C80E]/20 text-[#D97706] flex items-center justify-center mb-5">
                   <Feather className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                   Kelas Literasi & Puisi
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -201,7 +201,7 @@ export default function PuteriImabaPage() {
                 <div className="w-10 h-10 rounded-2xl bg-[#1FA83C]/10 text-[#1FA83C] flex items-center justify-center mb-5">
                   <Heart className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                   Bakti Sosial & Edukasi
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">

@@ -20,17 +20,17 @@ export function PortableText({ value, className = '', isLiterary = false }: Port
   const components: PortableTextComponents = {
     block: {
       h1: ({ children }) => (
-        <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-foreground mt-8 mb-4 tracking-tight">
+        <h1 className="font-heading font-normal text-[28px] text-foreground mt-8 mb-4 tracking-tight leading-snug">
           {children}
         </h1>
       ),
       h2: ({ children }) => (
-        <h2 className="font-heading font-bold text-xl sm:text-2xl text-foreground mt-7 mb-3 tracking-tight">
+        <h2 className="font-heading font-normal text-[22px] text-foreground mt-7 mb-3 tracking-tight leading-snug">
           {children}
         </h2>
       ),
       h3: ({ children }) => (
-        <h3 className="font-heading font-bold text-lg sm:text-xl text-foreground mt-6 mb-2 tracking-tight">
+        <h3 className="font-heading font-normal text-[18px] text-foreground mt-6 mb-2 tracking-tight leading-snug">
           {children}
         </h3>
       ),

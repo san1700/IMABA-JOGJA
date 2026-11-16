@@ -81,7 +81,7 @@ export default function BeritaPage({ searchParams }: BeritaPageProps) {
             <span>Kanal Informasi & Publikasi</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4">
+          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-3">
             Berita & Agenda DPW
           </h1>
 

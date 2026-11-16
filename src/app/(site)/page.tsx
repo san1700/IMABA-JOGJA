@@ -127,7 +127,7 @@ export default async function HomePage() {
                 <span>Dewan Pengurus Wilayah IMABA Daerah Istimewa Yogyakarta</span>
               </div>
 
-              <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.14] mb-6">
+              <h1 className="font-heading font-normal text-[28px] tracking-tight text-white leading-snug mb-5">
                 Pusat Informasi & Gerakan Intelektual Santri di Kota Pendidikan
               </h1>
 
@@ -266,7 +266,7 @@ export default async function HomePage() {
                       <span className="text-xs font-bold uppercase tracking-wider text-[#F9C80E] mb-1">
                         Pimpinan Organisasi
                       </span>
-                      <h3 className="font-heading font-extrabold text-xl text-white">
+                      <h3 className="font-heading font-normal text-[18px] text-white">
                         Moh. Hosen
                       </h3>
                       <p className="text-xs text-white/70 mt-1">
@@ -295,7 +295,7 @@ export default async function HomePage() {
                   <span>Pesan Khidmah Pimpinan</span>
                 </div>
 
-                <h2 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-foreground tracking-tight leading-snug mb-5">
+                <h2 className="font-heading font-normal text-[22px] text-foreground tracking-tight leading-snug mb-5">
                   Menjaga Integritas Kesantrian di Tengah Arus Modernitas Intelektual Jogja
                 </h2>
 
@@ -383,7 +383,7 @@ export default async function HomePage() {
               <Calendar className="w-3.5 h-3.5" />
               <span>Kalender Informasi</span>
             </div>
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground tracking-tight">
+            <h2 className="font-heading font-normal text-[22px] text-foreground tracking-tight">
               Agenda Mendatang & Pengumuman Resmi
             </h2>
             <p className="font-sans text-muted-foreground text-sm sm:text-base mt-2 max-w-2xl">
@@ -541,7 +541,7 @@ export default async function HomePage() {
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-extrabold text-lg text-foreground mb-1 leading-snug">
+                  <h3 className="font-heading font-normal text-[18px] text-foreground mb-1 leading-snug">
                     {campus.shortName}
                   </h3>
                   <p className="text-xs text-primary font-semibold mb-3">
@@ -665,7 +665,7 @@ export default async function HomePage() {
             <span className="text-xs font-bold uppercase tracking-widest text-[#F9C80E] block mb-2">
               Jejak Khidmah & Dedikasi
             </span>
-            <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-white">
+            <h3 className="font-heading font-normal text-[18px] text-white">
               IMABA Yogyakarta dalam Angka
             </h3>
           </div>
@@ -738,7 +738,7 @@ export default async function HomePage() {
               <span>Penerimaan Mahasiswa Baru 2026</span>
             </div>
 
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight mb-6">
+            <h2 className="font-heading font-normal text-[22px] text-white tracking-tight mb-5">
               Siap Melangkah Menembus Kampus Impian di Yogyakarta?
             </h2>
 

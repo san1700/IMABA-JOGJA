@@ -178,7 +178,7 @@ async function BeritaDetailPageContent({ params }: PostDetailPageProps) {
         </div>
 
         {/* Judul Utama Artikel */}
-        <h1 className="font-heading font-extrabold text-2xl sm:text-4xl md:text-5xl text-foreground leading-[1.2] tracking-tight mb-6">
+        <h1 className="font-heading font-normal text-[28px] text-foreground leading-snug tracking-tight mb-6">
           {post.title}
         </h1>
 
@@ -270,7 +270,7 @@ async function BeritaDetailPageContent({ params }: PostDetailPageProps) {
       {relatedPosts && relatedPosts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-16 border-t border-border">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="font-heading font-extrabold text-2xl text-foreground">
+            <h3 className="font-heading font-normal text-[18px] text-foreground">
               Berita Terkait Lainnya
             </h3>
             <Link

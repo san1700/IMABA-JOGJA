@@ -79,7 +79,7 @@ export default function KaryaKaderPage({ searchParams }: KaryaKaderPageProps) {
             <span>Mimbar Literasi & Pemikiran Santri</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white mb-4">
+          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-3">
             Karya Kader IMABA
           </h1>
 
@@ -109,7 +109,7 @@ export default function KaryaKaderPage({ searchParams }: KaryaKaderPageProps) {
               <PenTool className="w-3.5 h-3.5" />
               <span>Kirimkan Karya Tulismu</span>
             </div>
-            <h3 className="font-heading font-extrabold text-2xl text-foreground mb-2">
+            <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
               Punya Opini, Esai, Cerpen, atau Puisi?
             </h3>
             <p className="text-sm text-muted-foreground max-w-xl leading-relaxed">

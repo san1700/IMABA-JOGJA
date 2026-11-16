@@ -85,7 +85,7 @@ export function CampusFilterTabs({ campuses }: CampusFilterTabsProps) {
                   </span>
                 </div>
 
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+                <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                   {campus.name}
                 </h3>
 

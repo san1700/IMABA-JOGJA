@@ -1,19 +1,80 @@
 import type { Metadata, Viewport } from 'next'
-import { Plus_Jakarta_Sans, Inter, Newsreader } from 'next/font/google'
+import localFont from 'next/font/local'
+import { Newsreader } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { JsonLd } from '@/components/json-ld'
 import { cn } from '@/lib/utils'
 
-const fontSans = Inter({
-  variable: '--font-sans',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const fontHeading = Plus_Jakarta_Sans({
-  variable: '--font-heading',
-  subsets: ['latin'],
+const figtree = localFont({
+  src: [
+    {
+      path: './fonts/figtree/Figtree-Light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './fonts/figtree/Figtree-LightItalic.ttf',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: './fonts/figtree/Figtree-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/figtree/Figtree-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: './fonts/figtree/Figtree-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/figtree/Figtree-MediumItalic.ttf',
+      weight: '500',
+      style: 'italic',
+    },
+    {
+      path: './fonts/figtree/Figtree-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './fonts/figtree/Figtree-SemiBoldItalic.ttf',
+      weight: '600',
+      style: 'italic',
+    },
+    {
+      path: './fonts/figtree/Figtree-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './fonts/figtree/Figtree-BoldItalic.ttf',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: './fonts/figtree/Figtree-ExtraBold.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: './fonts/figtree/Figtree-Black.ttf',
+      weight: '900',
+      style: 'normal',
+    },
+    {
+      path: './fonts/figtree/Figtree-BlackItalic.ttf',
+      weight: '900',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-figtree',
   display: 'swap',
 })
 
@@ -154,8 +215,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cn(
         'h-full antialiased',
-        fontSans.variable,
-        fontHeading.variable,
+        figtree.variable,
         fontArticle.variable,
       )}
     >

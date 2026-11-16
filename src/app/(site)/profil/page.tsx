@@ -113,7 +113,7 @@ export default async function ProfilPage() {
             <span>Tentang IMABA Yogyakarta</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl tracking-tight text-white mb-6">
+          <h1 className="font-heading font-normal text-[28px] tracking-tight text-white mb-5">
             Profil, Sejarah & Struktur Organisasi
           </h1>
 
@@ -157,7 +157,7 @@ export default async function ProfilPage() {
                 <span>Jejak Sejarah</span>
               </div>
 
-              <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-foreground mb-6 tracking-tight leading-snug">
+              <h2 className="font-heading font-normal text-[22px] text-foreground mb-4 tracking-tight leading-snug">
                 Lahir dari Kerinduan, Bertumbuh dalam Persaudaraan Santri di Jogja
               </h2>
 
@@ -193,7 +193,7 @@ export default async function ProfilPage() {
 
             <div className="lg:col-span-5 flex flex-col gap-5">
               <div className="p-8 rounded-[32px] bg-gradient-to-br from-[#050A2E] to-[#1E2FB8] text-white shadow-xl">
-                <h3 className="font-heading font-bold text-xl mb-4 text-[#F9C80E] flex items-center gap-2">
+                <h3 className="font-heading font-normal text-[18px] mb-3 text-[#F9C80E] flex items-center gap-2">
                   <Sparkles className="w-5 h-5" /> 5 Pilar Gerakan IMABA Jogja
                 </h3>
                 <ul className="space-y-3.5 text-sm text-white/90">
@@ -239,7 +239,7 @@ export default async function ProfilPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-7 rounded-3xl bg-card border border-border">
-              <h3 className="font-heading font-bold text-lg text-foreground mb-3">
+              <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                 Bab I: Asas & Sifat
               </h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
@@ -249,7 +249,7 @@ export default async function ProfilPage() {
             </div>
 
             <div className="p-7 rounded-3xl bg-card border border-border">
-              <h3 className="font-heading font-bold text-lg text-foreground mb-3">
+              <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                 Bab II: Tujuan & Usaha
               </h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
@@ -259,7 +259,7 @@ export default async function ProfilPage() {
             </div>
 
             <div className="p-7 rounded-3xl bg-card border border-border">
-              <h3 className="font-heading font-bold text-lg text-foreground mb-3">
+              <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
                 Bab III: Keanggotaan
               </h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
@@ -311,7 +311,7 @@ export default async function ProfilPage() {
                   </div>
 
                   {/* Nama & Posisi */}
-                  <h3 className="font-heading font-bold text-lg text-foreground mb-1">
+                  <h3 className="font-heading font-normal text-[18px] text-foreground mb-1">
                     {member.name}
                   </h3>
                   <span className="text-xs font-bold text-primary uppercase tracking-wider mb-2">

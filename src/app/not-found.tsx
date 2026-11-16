@@ -15,7 +15,7 @@ export default function NotFound() {
           404
         </h1>
 
-        <h2 className="font-heading font-extrabold text-xl sm:text-2xl text-foreground mb-3">
+        <h2 className="font-heading font-normal text-[22px] text-foreground mb-3">
           Tersesat di Kota Pendidikan?
         </h2>
 

@@ -111,7 +111,7 @@ export function PostFilterTabs({
       {filteredPosts.length === 0 && (
         <div className="text-center py-16 bg-card rounded-3xl border border-border p-8 max-w-lg mx-auto mt-6">
           <Calendar className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-          <h3 className="font-heading font-bold text-lg text-foreground mb-2">
+          <h3 className="font-heading font-normal text-[18px] text-foreground mb-2">
             Belum Ada Artikel di Kategori Ini
           </h3>
           <p className="text-sm text-muted-foreground mb-6">

@@ -83,7 +83,7 @@ export function ScholarshipCard({ scholarship, className = '' }: ScholarshipCard
         </div>
 
         {/* Judul Beasiswa */}
-        <h3 className="font-heading font-extrabold text-xl text-foreground group-hover:text-primary transition-colors leading-snug mb-3">
+        <h3 className="font-heading font-normal text-[18px] text-foreground group-hover:text-primary transition-colors leading-snug mb-3">
           {scholarship.title}
         </h3>
 
