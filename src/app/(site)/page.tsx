@@ -10,6 +10,7 @@ import {
   Compass,
   Calendar,
   ChevronRight,
+  ChevronDown,
   Newspaper,
   Feather,
   Bell,
@@ -18,6 +19,7 @@ import {
   Clock,
   Quote,
   Megaphone,
+  MessageCircle,
 } from 'lucide-react'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import {
@@ -86,22 +88,27 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* ============================================================ */}
-      {/* 1. HERO BANNER INSTITUSIONAL + RUNNING INFO TICKER */}
+      {/* 1. HERO BANNER UTAMA DENGAN FOTO PENGURUS & KALIMAT PENYAMBUT */}
+      {/*    (TERINSPIRASI DARI STRUKTUR HERO PORTAL UNU JOGJA)         */}
       {/* ============================================================ */}
-      <section className="relative w-full bg-[#050A2E] text-white pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden border-b border-white/10">
-        {/* Subtle Ambient Radial Glows */}
+      <section className="relative w-full bg-[#050A2E] text-white pt-8 pb-16 sm:pt-12 sm:pb-24 overflow-hidden border-b border-white/10">
+        {/* Subtle Ambient Radial Glows (Atmosfer Senja / Deep Navy) */}
         <div
-          className="absolute top-0 right-1/4 w-[600px] h-[400px] bg-[#1E2FB8]/25 rounded-full blur-3xl pointer-events-none"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-gradient-to-b from-[#1E2FB8]/30 via-[#4F5CF2]/15 to-transparent rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
         <div
-          className="absolute bottom-0 left-10 w-[500px] h-[350px] bg-[#4F5CF2]/20 rounded-full blur-3xl pointer-events-none"
+          className="absolute top-1/3 left-10 w-[450px] h-[400px] bg-[#1E2FB8]/20 rounded-full blur-3xl pointer-events-none"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute top-1/4 right-10 w-[450px] h-[400px] bg-[#F9C80E]/10 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Running Info Ticker Bar (Khas Portal Institusi) */}
-          <FadeUp className="mb-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+          {/* Running Info Ticker Bar di Atas Hero */}
+          <FadeUp className="mb-6 sm:mb-8 w-full max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-3 p-1.5 pr-4 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/15 max-w-full">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9C80E] text-[#050A2E] text-xs font-bold uppercase tracking-wider shrink-0 shadow-sm">
                 <Megaphone className="w-3.5 h-3.5" />
@@ -119,53 +126,209 @@ export default async function HomePage() {
             </div>
           </FadeUp>
 
-          {/* Main Hero Header */}
-          <div className="max-w-4xl text-left">
-            <FadeUp delay={0.05}>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-white/90 mb-6">
-                <span className="w-2 h-2 rounded-full bg-[#F9C80E] animate-pulse" />
-                <span>Dewan Pengurus Wilayah IMABA Daerah Istimewa Yogyakarta</span>
+          {/* Emblem Laurel Wreath Prestisius Ala UNU Jogja */}
+          <FadeUp delay={0.05} className="mb-5 sm:mb-6">
+            <div className="inline-flex items-center gap-2 sm:gap-4 px-4 py-2 rounded-full glass-pill border border-[#F9C80E]/30 bg-white/[0.04]">
+              {/* Sayap Kiri Laurel Wreath */}
+              <svg
+                className="w-7 h-7 sm:w-8 sm:h-8 text-[#F9C80E] shrink-0 opacity-90"
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M22 6C18 10 16 16 16 24C16 32 19 38 24 42" strokeLinecap="round" />
+                <path d="M20 10C16 11 12 10 9 8C10 12 13 14 17 14" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
+                <path d="M17 18C13 19 8 18 6 15C7 20 11 22 15 22" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
+                <path d="M16 26C12 27 7 26 5 23C6 28 10 30 15 30" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
+                <path d="M17 34C13 35 9 35 7 32C9 36 13 38 17 37" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
+              </svg>
+
+              <div className="flex flex-col items-center">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#F9C80E]">
+                  Dewan Pengurus Wilayah &bull; DIY
+                </span>
+                <span className="font-heading font-extrabold text-xs sm:text-sm text-white tracking-wide">
+                  IKATAN MAHASISWA BATA-BATA
+                </span>
               </div>
 
-              <h1 className="font-heading font-normal text-[28px] tracking-tight text-white leading-snug mb-5">
-                Pusat Informasi & Gerakan Intelektual Santri di Kota Pendidikan
-              </h1>
+              {/* Sayap Kanan Laurel Wreath */}
+              <svg
+                className="w-7 h-7 sm:w-8 sm:h-8 text-[#F9C80E] shrink-0 opacity-90 transform scale-x-[-1]"
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M22 6C18 10 16 16 16 24C16 32 19 38 24 42" strokeLinecap="round" />
+                <path d="M20 10C16 11 12 10 9 8C10 12 13 14 17 14" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
+                <path d="M17 18C13 19 8 18 6 15C7 20 11 22 15 22" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
+                <path d="M16 26C12 27 7 26 5 23C6 28 10 30 15 30" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
+                <path d="M17 34C13 35 9 35 7 32C9 36 13 38 17 37" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
+              </svg>
+            </div>
+          </FadeUp>
 
-              <p className="font-sans text-base sm:text-lg text-white/80 max-w-3xl leading-relaxed mb-10">
-                Wadah silaturahmi, advokasi pendidikan tinggi, pendampingan beasiswa, serta mimbar
-                literasi ilmiah bagi santri dan alumni Pondok Pesantren Mambaul Ulum Bata-Bata di
-                kampus-kampus Daerah Istimewa Yogyakarta.
-              </p>
+          {/* Judul Utama Hero (Heading 1 Sesuai Spesifikasi Figtree) */}
+          <FadeUp delay={0.1}>
+            <h1 className="font-heading font-normal text-[28px] sm:text-3xl md:text-4xl lg:text-[40px] tracking-tight text-white leading-snug sm:leading-tight max-w-4xl mx-auto mb-4">
+              Berakar pada Nilai Pesantren. Berdaya di Kota Pendidikan.
+            </h1>
+          </FadeUp>
 
-              {/* Primary Dual Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/informasi-kampus#bimtren"
-                  className="btn-pill-arrow bg-[#1E2FB8] hover:bg-[#162494] text-white shadow-xl shadow-blue-950/60 border border-white/20 group"
-                >
-                  <span>Pendaftaran Bimtren 2026</span>
-                  <span className="arrow-disc bg-white text-[#1E2FB8] shadow-sm">
-                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+          {/* Kalimat Penyambut Hangat (Subheading Italic Khas UNU Jogja) */}
+          <FadeUp delay={0.15}>
+            <p className="font-sans italic text-sm sm:text-base md:text-lg text-white/85 max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-10">
+              &ldquo;Selamat datang di portal resmi Ikatan Mahasiswa Bata-Bata (IMABA) Daerah Istimewa Yogyakarta.
+              Wadah silaturahmi, advokasi pendidikan tinggi, pendampingan beasiswa, serta mimbar literasi ilmiah
+              bagi seluruh santri dan alumni di tanah perantauan.&rdquo;
+            </p>
+          </FadeUp>
+
+          {/* ============================================================ */}
+          {/* FOTO BERSAMA PENGURUS & ANGGOTA IMABA (CENTERPIECE ALA UNU)  */}
+          {/* ============================================================ */}
+          <FadeUp delay={0.2} className="w-full">
+            <div className="relative max-w-5xl mx-auto">
+              {/* Backlight Ambient Glow */}
+              <div
+                className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-[#1E2FB8]/40 via-[#4F5CF2]/25 to-[#F9C80E]/20 rounded-[44px] blur-3xl opacity-70 pointer-events-none"
+                aria-hidden="true"
+              />
+
+              {/* Frame Foto Utama */}
+              <div className="relative rounded-2xl sm:rounded-[36px] overflow-hidden border border-white/20 bg-[#0c1445] shadow-[0_30px_90px_-20px_rgba(5,10,46,0.95)]">
+                <div className="relative aspect-[16/9] sm:aspect-[21/10] w-full">
+                  <Image
+                    src="/images/foto-pengurus-imaba.jpg"
+                    alt="Foto Bersama Pengurus dan Anggota DPW IMABA Daerah Istimewa Yogyakarta"
+                    fill
+                    priority
+                    className="object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
+                    sizes="(max-width: 1280px) 100vw, 1200px"
+                  />
+
+                  {/* Gradien Bayangan Estetis Agar Foto Menyatu dengan Latar */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050A2E] via-[#050A2E]/25 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#050A2E]/30 via-transparent to-[#050A2E]/30 pointer-events-none" />
+
+                  {/* Badge Atas Kiri Foto */}
+                  <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#050A2E]/85 backdrop-blur-md border border-white/20 text-xs font-semibold text-white shadow-lg">
+                      <span className="w-2 h-2 rounded-full bg-[#1FA83C] animate-pulse" />
+                      <span>Pengurus & Kader Aktif DPW IMABA DIY</span>
+                    </div>
+                  </div>
+
+                  {/* Keterangan Bawah Kiri Foto */}
+                  <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-10 max-w-md text-left">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#F9C80E] block mb-1">
+                      Keluarga Besar IMABA Jogja
+                    </span>
+                    <p className="font-heading font-normal text-sm sm:text-base text-white/95 leading-snug drop-shadow-md">
+                      Menjaga Nilai Luhur Kesantrian, Melangkah Bersama di Kota Pendidikan
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Interactive Welcoming Assistant (Ala UNU Jogja di Kanan Bawah) */}
+              <div className="hidden lg:flex flex-col items-end gap-2 absolute -bottom-6 -right-6 xl:-right-10 z-20 max-w-xs animate-in fade-in slide-in-from-bottom-4 duration-500">
+                {/* Gelembung Percakapan Putih */}
+                <div className="relative p-3.5 sm:p-4 rounded-2xl bg-white text-[#050A2E] shadow-2xl border border-gray-200 text-left">
+                  <div className="flex items-start gap-2.5">
+                    <div className="w-7 h-7 rounded-full bg-[#1E2FB8] p-0.5 shrink-0 flex items-center justify-center">
+                      <Image
+                        src="/logo.png"
+                        alt="Logo IMABA"
+                        width={24}
+                        height={24}
+                        className="object-contain"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-[#050A2E] leading-snug">
+                        Selamat datang calon mahasiswa & santri!
+                      </p>
+                      <p className="text-[11px] text-gray-500 mt-0.5">
+                        Mau cari informasi apa hari ini?
+                      </p>
+                    </div>
+                  </div>
+                  {/* Ekor Balon Chat */}
+                  <div className="absolute -bottom-2 right-8 w-4 h-4 bg-white rotate-45 border-r border-b border-gray-200" />
+                </div>
+
+                {/* Tumpukan Tombol Pil Bantuan Cepat */}
+                <div className="flex flex-col items-end gap-1.5 w-full pt-1">
+                  <Link
+                    href="/informasi-kampus#bimtren"
+                    className="px-4 py-2 rounded-full bg-white hover:bg-[#EEF1F9] text-[#050A2E] hover:text-[#1E2FB8] text-xs font-semibold shadow-md border border-gray-200 transition-all hover:scale-105 hover:shadow-lg flex items-center gap-1.5 whitespace-nowrap"
+                  >
+                    <span>Bimtren Masuk Kampus 2026</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#1E2FB8]" />
+                  </Link>
+
+                  <Link
+                    href="/informasi-kampus#beasiswa"
+                    className="px-4 py-2 rounded-full bg-white hover:bg-[#EEF1F9] text-[#050A2E] hover:text-[#1E2FB8] text-xs font-semibold shadow-md border border-gray-200 transition-all hover:scale-105 hover:shadow-lg flex items-center gap-1.5 whitespace-nowrap"
+                  >
+                    <span>Pilihan Beasiswa Santri</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#1FA83C]" />
+                  </Link>
+
+                  <Link
+                    href="/informasi-kampus"
+                    className="px-4 py-2 rounded-full bg-white hover:bg-[#EEF1F9] text-[#050A2E] hover:text-[#1E2FB8] text-xs font-semibold shadow-md border border-gray-200 transition-all hover:scale-105 hover:shadow-lg flex items-center gap-1.5 whitespace-nowrap"
+                  >
+                    <span>Daftar Kampus di Jogja</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#4F5CF2]" />
+                  </Link>
+
+                  <Link
+                    href="/karya-kader"
+                    className="px-4 py-2 rounded-full bg-white hover:bg-[#EEF1F9] text-[#050A2E] hover:text-[#1E2FB8] text-xs font-semibold shadow-md border border-gray-200 transition-all hover:scale-105 hover:shadow-lg flex items-center gap-1.5 whitespace-nowrap"
+                  >
+                    <span>Karya Tulis & Opini Santri</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#F9C80E]" />
+                  </Link>
+                </div>
+
+                {/* Tombol Aksi Melayang dengan Notifikasi */}
+                <div className="relative mt-1">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#1E2FB8] to-[#4F5CF2] text-white flex items-center justify-center shadow-lg shadow-indigo-950/50 border border-white/30">
+                    <MessageCircle className="w-5 h-5" />
+                  </div>
+                  <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#E3262A] text-white text-[10px] font-bold flex items-center justify-center border-2 border-[#050A2E]">
+                    1
                   </span>
-                </Link>
-
-                <Link
-                  href="/informasi-kampus"
-                  className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 glass-pill text-white/90 hover:text-white hover:bg-white/15 text-sm font-semibold transition-all duration-200 border border-white/20"
-                >
-                  <GraduationCap className="w-4 h-4 text-[#F9C80E]" />
-                  <span>Direktori Kampus & Beasiswa</span>
-                </Link>
+                </div>
               </div>
-            </FadeUp>
-          </div>
+            </div>
+          </FadeUp>
+
+          {/* Petunjuk Gulir ke Bawah (Scroll Indicator Ala UNU Jogja) */}
+          <FadeUp delay={0.25} className="mt-10 sm:mt-14">
+            <a
+              href="#konten-utama"
+              className="group inline-flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors"
+            >
+              <span className="text-xs sm:text-sm font-medium tracking-wide">
+                Lanjutkan di bawah untuk menjelajahi lebih lanjut
+              </span>
+              <div className="w-8 h-12 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5 group-hover:border-white/60 transition-colors">
+                <ChevronDown className="w-4 h-4 text-[#F9C80E] animate-bounce" />
+              </div>
+            </a>
+          </FadeUp>
         </div>
       </section>
 
       {/* ============================================================ */}
       {/* 2. BARIS AKSES CEPAT (QUICK ACCESS STRIP ALA UNU JOGJA) */}
       {/* ============================================================ */}
-      <section className="relative z-20 -mt-8 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <section id="konten-utama" className="relative z-20 -mt-8 sm:-mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full scroll-mt-24">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {/* Quick Item 1 */}
           <Link
