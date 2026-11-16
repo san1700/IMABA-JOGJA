@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "migrate:wp": "node scripts/migrate-wp.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
