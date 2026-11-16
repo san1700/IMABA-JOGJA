@@ -132,6 +132,145 @@ export const FALLBACK_KARYA: Post[] = [
   },
 ]
 
+export interface AgendaItem {
+  id: string
+  title: string
+  date: string
+  month: string
+  year: string
+  time: string
+  location: string
+  category: string
+  organizer: string
+  link?: string
+}
+
+export const FALLBACK_AGENDA: AgendaItem[] = [
+  {
+    id: 'ag-1',
+    title: 'Kajian Kitab Turats Bulanan: Menelaah Sanad Keilmuan Masyaikh Bata-Bata',
+    date: '15',
+    month: 'MAR',
+    year: '2026',
+    time: '19:30 WIB - Selesai',
+    location: 'Asrama IMABA DIY & Daring Zoom',
+    category: 'Kajian & Dakwah',
+    organizer: 'Divisi Kaderisasi & Dakwah',
+    link: '/berita/kajian-ilmiah-bulanan-turats',
+  },
+  {
+    id: 'ag-2',
+    title: 'Rapat Kerja Wilayah (Rakerwil) DPW IMABA DIY Periode 2026/2027',
+    date: '28',
+    month: 'MAR',
+    year: '2026',
+    time: '08:30 - 16:00 WIB',
+    location: 'Auditorium UIN Sunan Kalijaga',
+    category: 'Agenda Organisasi',
+    organizer: 'Pengurus Harian DPW',
+    link: '/berita/pelantikan-pengurus-dpw-imaba-diy-2026',
+  },
+  {
+    id: 'ag-3',
+    title: 'Sosialisasi & Pembukaan Bimtren Masuk Kampus Jogja 2026',
+    date: '12',
+    month: 'APR',
+    year: '2026',
+    time: '13:00 - 15:30 WIB',
+    location: 'Aula Sekretariat & YouTube Live',
+    category: 'Bimtren 2026',
+    organizer: 'Panitia Bimtren IMABA Jogja',
+    link: '/informasi-kampus#bimtren',
+  },
+]
+
+export interface AnnouncementItem {
+  id: string
+  title: string
+  category: string
+  date: string
+  badge: 'Penting' | 'Terbaru' | 'Edaran'
+  excerpt: string
+  href: string
+}
+
+export const FALLBACK_ANNOUNCEMENTS: AnnouncementItem[] = [
+  {
+    id: 'ann-1',
+    title: 'Pendaftaran Bimbingan Masuk Perguruan Tinggi (Bimtren IMABA Jogja 2026) Gelombang I Resmi Dibuka',
+    category: 'Bimtren',
+    date: '01 Mar 2026',
+    badge: 'Penting',
+    excerpt: 'Pendampingan belajar intensif SNBT, tryout berkala, dan fasilitas asrama singgah bagi santri baru di Yogyakarta.',
+    href: '/informasi-kampus#bimtren',
+  },
+  {
+    id: 'ann-2',
+    title: 'Surat Edaran Pendataan Kader Mahasiswa Baru Asal Ponpes Mambaul Ulum Bata-Bata Tahun 2026',
+    category: 'Keorganisasian',
+    date: '25 Feb 2026',
+    badge: 'Edaran',
+    excerpt: 'Diimbau kepada seluruh koordinator komisariat kampus di DIY untuk memperbarui pangkalan data santri baru.',
+    href: '/profil#struktur',
+  },
+  {
+    id: 'ann-3',
+    title: 'Pembaruan Skema Beasiswa KIP Kuliah & PBSB Kemenag Tahun Akademik 2026 Wilayah DIY',
+    category: 'Beasiswa',
+    date: '20 Feb 2026',
+    badge: 'Terbaru',
+    excerpt: 'Simak syarat dokumen, jadwal registrasi, dan mekanisme pendampingan berkas melalui advokasi pendidikan DPW.',
+    href: '/informasi-kampus#beasiswa',
+  },
+]
+
+export const FALLBACK_CAMPUSES: Campus[] = [
+  {
+    _id: 'ugm',
+    name: 'Universitas Gadjah Mada',
+    shortName: 'UGM',
+    slug: 'ugm',
+    type: 'ptn',
+    address: 'Bulaksumur, Sleman, DI Yogyakarta',
+    websiteUrl: 'https://ugm.ac.id',
+    admissionUrl: 'https://um.ugm.ac.id',
+    description: 'Perguruan tinggi negeri tertua dan terkemuka di Indonesia dengan 18 fakultas berstandar internasional.',
+  },
+  {
+    _id: 'uin',
+    name: 'UIN Sunan Kalijaga Yogyakarta',
+    shortName: 'UIN Suka',
+    slug: 'uin-sunan-kalijaga',
+    type: 'ptkin',
+    address: 'Jl. Marsda Adisucipto, Sleman, DI Yogyakarta',
+    websiteUrl: 'https://uin-suka.ac.id',
+    admissionUrl: 'https://admisi.uin-suka.ac.id',
+    description: 'Pelopor integrasi keilmuan Islam dan sains modern, rumah akademik bagi ratusan santri Bata-Bata di Jogja.',
+  },
+  {
+    _id: 'uny',
+    name: 'Universitas Negeri Yogyakarta',
+    shortName: 'UNY',
+    slug: 'uny',
+    type: 'ptn',
+    address: 'Jl. Colombo No. 1, Sleman, DI Yogyakarta',
+    websiteUrl: 'https://uny.ac.id',
+    admissionUrl: 'https://pmb.uny.ac.id',
+    description: 'Pusat keunggulan pendidikan kependidikan dan sains terapan dengan sarana riset modern dan kampus hijau.',
+  },
+  {
+    _id: 'umy',
+    name: 'Universitas Muhammadiyah Yogyakarta',
+    shortName: 'UMY',
+    slug: 'umy',
+    type: 'pts',
+    address: 'Jl. Brawijaya, Kasihan, Bantul, DI Yogyakarta',
+    websiteUrl: 'https://umy.ac.id',
+    admissionUrl: 'https://admisi.umy.ac.id',
+    description: 'Kampus swasta unggul berakreditasi institusi Unggul dengan jejaring kemitraan global dan fasilitas terpadu.',
+  },
+]
+
 export interface Campus {
   _id: string
   name: string
