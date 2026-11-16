@@ -18,7 +18,6 @@ import {
   MapPin,
   Clock,
   Quote,
-  Megaphone,
   MessageCircle,
 } from 'lucide-react'
 import { sanityFetch } from '@/sanity/lib/fetch'
@@ -115,78 +114,9 @@ export default async function HomePage() {
         {/* ========================================================== */}
         {/* ELEMEN KONTEN DI ATAS FOTO BERSAMA                         */}
         {/* ========================================================== */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8 sm:py-10 flex flex-col justify-between flex-1 min-h-[92vh] sm:min-h-screen">
-          {/* Bagian Atas: Running Info & Emblem Laurel Wreath Emas */}
-          <div className="w-full flex flex-col items-center text-center pt-2 sm:pt-4">
-            {/* Running Info Ticker Bar di Atas Hero */}
-            <FadeUp className="mb-4 sm:mb-6 w-full max-w-2xl mx-auto">
-              <div className="inline-flex items-center gap-3 p-1.5 pr-4 rounded-full bg-[#050A2E]/80 backdrop-blur-md border border-white/20 max-w-full shadow-xl">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9C80E] text-[#050A2E] text-xs font-bold uppercase tracking-wider shrink-0 shadow-sm">
-                  <Megaphone className="w-3.5 h-3.5" />
-                  <span>Info Terkini</span>
-                </span>
-                <Link
-                  href="/informasi-kampus#bimtren"
-                  className="text-xs sm:text-sm text-white/95 hover:text-white truncate transition-colors flex items-center gap-1.5"
-                >
-                  <span className="truncate">
-                    Pendaftaran Bimtren IMABA Jogja 2026 Gelombang I Resmi Dibuka untuk Santri Baru
-                  </span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#F9C80E] shrink-0" />
-                </Link>
-              </div>
-            </FadeUp>
-
-            {/* Emblem Laurel Wreath Prestisius Ala UNU Jogja */}
-            <FadeUp delay={0.05} className="mb-4 sm:mb-6">
-              <div className="inline-flex items-center gap-2 sm:gap-4 px-4 sm:px-6 py-2 rounded-full bg-[#050A2E]/70 backdrop-blur-md border border-[#F9C80E]/40 shadow-2xl">
-                {/* Sayap Kiri Laurel Wreath */}
-                <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-[#F9C80E] shrink-0 drop-shadow"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M22 6C18 10 16 16 16 24C16 32 19 38 24 42" strokeLinecap="round" />
-                  <path d="M20 10C16 11 12 10 9 8C10 12 13 14 17 14" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
-                  <path d="M17 18C13 19 8 18 6 15C7 20 11 22 15 22" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
-                  <path d="M16 26C12 27 7 26 5 23C6 28 10 30 15 30" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
-                  <path d="M17 34C13 35 9 35 7 32C9 36 13 38 17 37" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
-                </svg>
-
-                <div className="flex flex-col items-center">
-                  <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#F9C80E]">
-                    Dewan Pengurus Wilayah &bull; DIY
-                  </span>
-                  <span className="font-heading font-extrabold text-xs sm:text-base text-white tracking-wide">
-                    IKATAN MAHASISWA BATA-BATA
-                  </span>
-                  <span className="text-[9px] sm:text-[10px] text-white/80 tracking-wider uppercase font-medium">
-                    Masa Khidmah 2025/2026
-                  </span>
-                </div>
-
-                {/* Sayap Kanan Laurel Wreath */}
-                <svg
-                  className="w-7 h-7 sm:w-8 sm:h-8 text-[#F9C80E] shrink-0 drop-shadow transform scale-x-[-1]"
-                  viewBox="0 0 48 48"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M22 6C18 10 16 16 16 24C16 32 19 38 24 42" strokeLinecap="round" />
-                  <path d="M20 10C16 11 12 10 9 8C10 12 13 14 17 14" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
-                  <path d="M17 18C13 19 8 18 6 15C7 20 11 22 15 22" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
-                  <path d="M16 26C12 27 7 26 5 23C6 28 10 30 15 30" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
-                  <path d="M17 34C13 35 9 35 7 32C9 36 13 38 17 37" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.25" />
-                </svg>
-              </div>
-            </FadeUp>
-          </div>
-
-          {/* Bagian Tengah: Judul Besar, Kalimat Penyambut & Tombol Aksi Langsung di Atas Foto */}
-          <div className="w-full max-w-4xl mx-auto text-center my-auto py-4 sm:py-6">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 sm:pt-16 sm:pb-10 flex flex-col justify-between flex-1 min-h-[92vh] sm:min-h-screen">
+          {/* Bagian Tengah: Judul Besar & Kalimat Penyambut di Atas Foto */}
+          <div className="w-full max-w-4xl mx-auto text-center my-auto py-8 sm:py-12">
             {/* Judul Utama Hero */}
             <FadeUp delay={0.1}>
               <h1 className="font-heading font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[54px] tracking-tight text-white leading-tight sm:leading-snug max-w-4xl mx-auto mb-4 sm:mb-6 drop-shadow-2xl">
