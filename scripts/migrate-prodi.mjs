@@ -1,5 +1,5 @@
 /**
- * Script Migrasi Data Ninja Tables (ID: 4578) - Perguruan Tinggi & Prodi IMABA Jogja
+ * Script Migrasi Data Perguruan Tinggi & Prodi IMABA Jogja ke Sanity CMS & JSON
  */
 
 import fs from 'node:fs'
@@ -25,9 +25,6 @@ function loadEnv() {
 
 loadEnv()
 
-const WP_BASE_URL = process.env.WP_BASE_URL || 'https://imabayogyakarta.com'
-const TABLE_ID = 4578
-
 const SANITY_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'd109xcpl'
 const SANITY_DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 let SANITY_TOKEN = process.env.SANITY_API_WRITE_TOKEN?.trim().replace(/^["']|["']$/g, '')
@@ -45,198 +42,197 @@ const client = SANITY_TOKEN
     })
   : null
 
-async function tryFetchEndpoint(url, desc) {
-  console.log(`📡 Mencoba ${desc}: ${url}`)
-  try {
-    const res = await fetch(url)
-    if (!res.ok) {
-      console.log(`   ❌ Status: ${res.status} ${res.statusText}`)
-      return null
-    }
-    const contentType = res.headers.get('content-type') || ''
-    if (contentType.includes('application/json')) {
-      const json = await res.json()
-      console.log(`   ✅ Berhasil mendapatkan JSON!`)
-      return json
-    } else {
-      const text = await res.text()
-      try {
-        const parsed = JSON.parse(text)
-        console.log(`   ✅ Berhasil parse JSON dari respons teks!`)
-        return parsed
-      } catch {
-        console.log(`   ⚠️ Respons bukan JSON (panjang: ${text.length} karakter)`)
-        return null
-      }
-    }
-  } catch (err) {
-    console.log(`   ❌ Error: ${err.message}`)
-    return null
+function normalizeAccreditation(val) {
+  if (!val) return '-'
+  const s = val.toString().trim()
+  if (!s || s === '-' || s === '--' || s === '---' || s === '----' || s === '-----' || s === '_') return '-'
+  const upper = s.toUpperCase()
+  if (upper === 'UNGGUL' || upper.includes('INSTITUSI UNGGUL')) return 'Unggul'
+  if (upper === 'BAIK SEKALI' || upper.includes('BAIK SEKALI')) return 'Baik Sekali'
+  if (upper === 'BAIK' || upper.includes('AKREDITASI BAIK') || upper === 'TERAKREDITASI' || upper.includes('BAN PT')) return 'Baik'
+  if (upper === 'A' || upper.startsWith('A-')) return 'A'
+  if (upper === 'B') return 'B'
+  if (upper === 'C' || upper.startsWith('C ')) return 'C'
+  if (upper.includes('BARU') || upper.includes('PROSES') || upper.includes('MINIMUM')) return 'Prodi Baru'
+  if (upper.includes('SK/BAN-PT') || upper.includes('LAMTEKNIK')) return 'Terakreditasi'
+  return s
+}
+
+function normalizeCampus(rawName) {
+  if (!rawName) return ''
+  let name = rawName.replace(/\s+/g, ' ').trim()
+  if (name.includes('Negri')) name = name.replace('Negri', 'Negeri')
+  if (name.includes('Nahdhotul Ulamak')) name = 'Universitas Nahdlatul Ulama (UNU) Yogyakarta'
+  if (name.includes('Kesehtan')) name = name.replace('Kesehtan', 'Kesehatan')
+  if (name.toLowerCase() === 'sekolah tinggi maritim yogyakarta') name = 'Sekolah Tinggi Maritim Yogyakarta'
+  if (name.toLowerCase() === 'sekolah tinggi ilmu kesehatan akbidyo') name = 'Sekolah Tinggi Ilmu Kesehatan AKBIDYO'
+  if (name === 'Universitas Islam Negeri Sunan Kalijaga') name = 'UIN Sunan Kalijaga Yogyakarta'
+  if (name === 'UPN Veteran Yogyakarta') name = 'UPN "Veteran" Yogyakarta'
+  if (name === 'Universitas Muhammadiyah Yogyakarta') name = 'Universitas Muhammadiyah Yogyakarta (UMY)'
+  if (name === 'Universitas Sanata Dharma') name = 'Universitas Sanata Dharma (USD)'
+  if (name === 'Universitas BSI Yogyakarta' || name === 'Universitas Bina Sarana Informatika Yogyakarta') name = 'Universitas BSI Yogyakarta'
+  if (name === 'UNIVERSITAS TEKNOLOGI DIGITAL INDONESIA (UTDI)') name = 'Universitas Teknologi Digital Indonesia (UTDI)'
+  return name
+}
+
+function getCampusShort(campus) {
+  const m = campus.match(/\(([^)]+)\)/)
+  if (m) return m[1].replace(/"/g, '').trim()
+  if (campus.includes('UIN Sunan Kalijaga')) return 'UIN Suka'
+  if (campus.includes('Sanata Dharma')) return 'USD'
+  if (campus.includes('Institut Seni Indonesia')) return 'ISI Jogja'
+  if (campus.includes('Alma Ata')) return 'UAA'
+  if (campus.includes('AMIKOM')) return 'AMIKOM'
+  if (campus.includes('AKPRIND')) return 'AKPRIND'
+  if (campus.includes('Poltekkes Kemenkes')) return 'Poltekkes'
+  if (campus.includes('Achmad Yani')) return 'UNJAYA'
+  if (campus.includes('Duta Wacana')) return 'UKDW'
+  if (campus.includes('Mercu Buana')) return 'UMBY'
+  if (campus.includes('PGRI')) return 'UPY'
+  if (campus.includes('Aisyiyah')) return 'UNISA'
+  if (campus.includes('Janabadra')) return 'Janabadra'
+  if (campus.includes('MMTC')) return 'MMTC'
+  if (campus.includes('STPN')) return 'STPN'
+  if (campus.includes('Panti Rapih')) return 'STIKES Panti Rapih'
+  if (campus.includes('STIPRAM')) return 'STIPRAM'
+  return campus.split(' ')[0]
+}
+
+function getCampusType(campus) {
+  const c = campus.toLowerCase()
+  if (c.includes('gadjah mada') || c.includes('negeri yogyakarta') || c.includes('veteran yogyakarta') || c.includes('seni indonesia')) {
+    return 'ptn'
   }
+  if (c.includes('sunan kalijaga') || c.includes('uin')) {
+    return 'ptkin'
+  }
+  if (c.includes('poltekkes') || c.includes('pertanahan') || c.includes('udara') || c.includes('mmtc') || c.includes('atk')) {
+    return 'kedinasan'
+  }
+  return 'pts'
+}
+
+function slugify(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+|-+$/g, '')
 }
 
 async function run() {
   console.log('========================================================')
-  console.log(`🎯 MENGAMBIL DATA NINJA TABLES [ID: ${TABLE_ID}]`)
-  console.log(`   Target: Data Perguruan Tinggi & Prodi di Yogyakarta`)
+  console.log('🎓 MIGRASI DATA PERGURUAN TINGGI & PROGRAM STUDI')
+  console.log('   Sumber: Ninja Tables Export / src/data/prodi-kampus.json')
   console.log('========================================================\n')
 
-  const candidateUrls = [
-    {
-      url: `${WP_BASE_URL}/wp-admin/admin-ajax.php?action=ninja_tables_public_action&table_id=${TABLE_ID}&target_action=get-all-data`,
-      desc: 'Ninja Tables AJAX (get-all-data)',
-    },
-    {
-      url: `${WP_BASE_URL}/wp-admin/admin-ajax.php?action=ninja_tables_public_action&table_id=${TABLE_ID}&target_action=get-data`,
-      desc: 'Ninja Tables AJAX (get-data)',
-    },
-    {
-      url: `${WP_BASE_URL}/wp-json/ninja-tables/v1/tables/${TABLE_ID}`,
-      desc: 'Ninja Tables REST API (table)',
-    },
-    {
-      url: `${WP_BASE_URL}/wp-json/ninja-tables/v1/tables/${TABLE_ID}/rows`,
-      desc: 'Ninja Tables REST API (rows)',
-    },
-    {
-      url: `${WP_BASE_URL}/wp-admin/admin-ajax.php?action=get_ninja_table_public_data&table_id=${TABLE_ID}`,
-      desc: 'Ninja Tables Public Data Action',
-    },
-    {
-      url: `${WP_BASE_URL}/wp-json/wp/v2/posts/${TABLE_ID}`,
-      desc: 'WordPress Post CPT Object',
-    },
-  ]
+  const jsonPath = path.resolve(process.cwd(), 'src/data/prodi-kampus.json')
+  let prodiList = []
 
-  let rawTableData = null
-  for (const candidate of candidateUrls) {
-    const data = await tryFetchEndpoint(candidate.url, candidate.desc)
-    if (data) {
-      rawTableData = data
-      break
-    }
-  }
-
-  if (!rawTableData) {
-    console.error('\n❌ Belum berhasil mengambil data otomatis dari endpoint Ninja Tables.')
-    console.error('Silakan cek apakah tabel dapat diekspor langsung dari dashboard WordPress:')
-    console.error('Menu: Ninja Tables -> Klik Tabel "Daftar Perguruan Tinggi" -> Export Table (CSV / JSON)')
+  if (fs.existsSync(jsonPath)) {
+    console.log(`✓ Ditemukan file lokal: ${jsonPath}`)
+    prodiList = JSON.parse(fs.readFileSync(jsonPath, 'utf8'))
+    console.log(`  Memuat ${prodiList.length} data program studi.`)
+  } else {
+    console.log('⚠️ File src/data/prodi-kampus.json belum ditemukan.')
     return
   }
 
-  console.log('\n🔍 Menganalisis struktur data yang diterima...')
-  fs.writeFileSync('scripts/debug-ninja-data.json', JSON.stringify(rawTableData, null, 2))
-  console.log('Tersimpan di scripts/debug-ninja-data.json')
-
-  // Normalisasi data baris
-  let rows = []
-  if (Array.isArray(rawTableData)) {
-    rows = rawTableData
-  } else if (Array.isArray(rawTableData.rows)) {
-    rows = rawTableData.rows
-  } else if (Array.isArray(rawTableData.data)) {
-    rows = rawTableData.data
-  } else if (rawTableData.content?.rendered) {
-    console.log('Data ada di dalam post content rendered')
-  }
-
-  console.log(`📊 Berhasil mendeteksi ${rows.length} data baris!`)
-
-  if (rows.length === 0) {
-    console.log('Struktur data mentah:', Object.keys(rawTableData))
-    return
-  }
-
-  console.log('\nContoh baris pertama:', rows[0])
-
-  const parsedPrograms = []
-  const uniqueCampuses = new Map()
-
-  rows.forEach((row, idx) => {
-    // Ninja tables biasanya menyimpan data dalam key seperti 'prodi', 'akreditasi', 'fakultas', 'nama_kampus', dll
-    // atau 'value' objek
-    const item = row.values || row.value || row
-
-    // Deteksi field secara fleksibel
-    const prodi =
-      item.prodi || item['prodi'] || item['nama_prodi'] || item.column_1 || item.program_studi || item[1] || ''
-    const akredProdi =
-      item.akreditasi || item['akreditasi'] || item.column_2 || item.akreditasi_prodi || item[2] || ''
-    const fakultas =
-      item.fakultas || item['fakultas'] || item.column_3 || item[3] || ''
-    const kampus =
-      item.nama_kampus || item['nama_kampus'] || item.kampus || item.column_4 || item[4] || ''
-    const akredKampus =
-      item.akreditasi_kampus || item['akreditasi_kampus'] || item.column_5 || item[5] || ''
-
-    if (!prodi && !kampus) return
-
-    // Deteksi singkatan
-    let shortName = ''
-    const shortMatch = kampus.match(/\(([^)]+)\)/)
-    if (shortMatch) {
-      shortName = shortMatch[1].trim()
-    } else {
-      shortName = kampus.split(' ')[0]
-    }
-
-    if (!uniqueCampuses.has(kampus) && kampus) {
-      uniqueCampuses.set(kampus, {
-        name: kampus,
-        shortName,
-        accreditation: akredKampus,
+  // Ringkasan Kampus
+  const campusMap = new Map()
+  prodiList.forEach((p) => {
+    if (!campusMap.has(p.campus)) {
+      campusMap.set(p.campus, {
+        name: p.campus,
+        shortName: p.campusShort,
+        type: getCampusType(p.campus),
+        accreditation: p.campusAccreditation,
+        prodiCount: 0,
       })
     }
-
-    parsedPrograms.push({
-      no: idx + 1,
-      name: prodi,
-      degree: 'S1',
-      accreditation: akredProdi,
-      faculty: fakultas,
-      campus: kampus,
-      campusShort: shortName,
-      campusAccreditation: akredKampus,
-    })
+    campusMap.get(p.campus).prodiCount++
   })
 
-  console.log(`✓ Berhasil memproses ${parsedPrograms.length} program studi dari ${uniqueCampuses.size} kampus.`)
-
-  // Simpan ke src/data/prodi-kampus.json
-  const outputDir = path.resolve(process.cwd(), 'src/data')
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true })
+  console.log(`\n📊 Terdeteksi ${campusMap.size} perguruan tinggi di Yogyakarta:`)
+  Array.from(campusMap.values())
+    .sort((a, b) => b.prodiCount - a.prodiCount)
+    .slice(0, 10)
+    .forEach((c, idx) => {
+      console.log(`   ${idx + 1}. ${c.name} (${c.shortName}) - ${c.prodiCount} prodi [${c.type.toUpperCase()}]`)
+    })
+  if (campusMap.size > 10) {
+    console.log(`   ... dan ${campusMap.size - 10} perguruan tinggi lainnya.`)
   }
-  const jsonPath = path.join(outputDir, 'prodi-kampus.json')
-  fs.writeFileSync(jsonPath, JSON.stringify(parsedPrograms, null, 2))
-  console.log(`💾 File JSON berhasil diperbarui: src/data/prodi-kampus.json`)
 
-  // Simpan ke Sanity jika ada token
+  // Upload ke Sanity jika client terhubung
   if (client) {
-    console.log('\n--- Mengunggah ke Sanity CMS ---')
-    let progCount = 0
-    for (const p of parsedPrograms) {
-      const slug = `${p.campusShort}-${p.name}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+    console.log('\n🚀 Menyinkronkan ke Sanity CMS...')
+
+    // 1. Sinkronisasi Kampus
+    console.log('   Mengunggah dokumen Kampus...')
+    let campusSaved = 0
+    for (const [name, c] of campusMap.entries()) {
+      const slug = slugify(c.shortName || c.name)
+      const campusDocId = `campus-${slug}`
       const doc = {
-        _id: `prodi-wp-${slug}`,
-        _type: 'studyProgram',
-        name: p.name,
-        degree: p.degree,
-        faculty: p.faculty,
-        accreditation: p.accreditation,
+        _id: campusDocId,
+        _type: 'campus',
+        name: c.name,
+        shortName: c.shortName,
+        slug: { _type: 'slug', current: slug },
+        type: c.type,
       }
       try {
         await client.createOrReplace(doc)
-        progCount++
-      } catch (e) {
-        // silent
+        campusSaved++
+      } catch (err) {
+        console.warn(`   ⚠️ Gagal menyimpan kampus ${c.name}: ${err.message}`)
       }
     }
-    console.log(`  ✓ Berhasil mengunggah ${progCount} program studi ke Sanity!`)
+    console.log(`   ✓ Berhasil menyinkronkan ${campusSaved} dari ${campusMap.size} kampus ke Sanity!`)
+
+    // 2. Sinkronisasi Program Studi
+    console.log('\n   Mengunggah dokumen Program Studi...')
+    let prodiSaved = 0
+    for (const p of prodiList) {
+      const campusSlug = slugify(p.campusShort || p.campus)
+      const prodiSlug = slugify(p.name)
+      const docId = `prodi-${campusSlug}-${prodiSlug}`
+
+      const doc = {
+        _id: docId,
+        _type: 'studyProgram',
+        name: p.name,
+        degree: p.degree || 'S1',
+        campus: {
+          _type: 'reference',
+          _ref: `campus-${campusSlug}`,
+        },
+        faculty: p.faculty !== '-' ? p.faculty : undefined,
+        accreditation: p.accreditation !== '-' ? p.accreditation : undefined,
+      }
+
+      try {
+        await client.createOrReplace(doc)
+        prodiSaved++
+        if (prodiSaved % 100 === 0) {
+          console.log(`   ... ${prodiSaved} / ${prodiList.length} prodi tersimpan`)
+        }
+      } catch (err) {
+        // Skip individual error silently
+      }
+    }
+    console.log(`   ✓ Berhasil menyinkronkan ${prodiSaved} dari ${prodiList.length} prodi ke Sanity!`)
+  } else {
+    console.log('\n💡 Tips: Untuk menyinkronkan ke Sanity CMS, pastikan SANITY_API_WRITE_TOKEN diisi di .env.local.')
+    console.log('   Data tabel di website tetap tampil 100% lengkap melalui src/data/prodi-kampus.json!')
   }
 
   console.log('\n========================================================')
-  console.log('🎉 MIGRASI NINJA TABLES BERHASIL!')
+  console.log('🎉 SELESAI! Seluruh data prodi & kampus siap digunakan.')
   console.log('========================================================\n')
 }
 

@@ -47,9 +47,10 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
 
   const [searchTerm, setSearchTerm] = React.useState('')
   const [selectedCampus, setSelectedCampus] = React.useState('ALL')
+  const [selectedDegree, setSelectedDegree] = React.useState('ALL')
   const [selectedAccreditation, setSelectedAccreditation] = React.useState('ALL')
   const [currentPage, setCurrentPage] = React.useState(1)
-  const rowsPerPage = 12
+  const rowsPerPage = 15
 
   // Ambil daftar unik kampus untuk dropdown
   const campusOptions = React.useMemo(() => {
@@ -58,6 +59,16 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
       if (item.campus) set.add(item.campus)
     })
     return Array.from(set).sort()
+  }, [data])
+
+  // Ambil daftar jenjang yang ada
+  const degreeOptions = React.useMemo(() => {
+    const set = new Set<string>()
+    data.forEach((item) => {
+      if (item.degree) set.add(item.degree)
+    })
+    const order = ['S1', 'D3', 'D4', 'S2', 'S3', 'Profesi', 'Spesialis', 'D1', 'D2']
+    return order.filter((d) => set.has(d))
   }, [data])
 
   // Filter Data
@@ -72,19 +83,22 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
 
       const matchCampus = selectedCampus === 'ALL' || item.campus === selectedCampus
 
+      const matchDegree =
+        selectedDegree === 'ALL' || (item.degree && item.degree === selectedDegree)
+
       const matchAccreditation =
         selectedAccreditation === 'ALL' ||
         (item.accreditation &&
           item.accreditation.trim().toUpperCase() === selectedAccreditation.toUpperCase())
 
-      return matchSearch && matchCampus && matchAccreditation
+      return matchSearch && matchCampus && matchDegree && matchAccreditation
     })
-  }, [data, searchTerm, selectedCampus, selectedAccreditation])
+  }, [data, searchTerm, selectedCampus, selectedDegree, selectedAccreditation])
 
   // Reset page saat filter berubah
   React.useEffect(() => {
     setCurrentPage(1)
-  }, [searchTerm, selectedCampus, selectedAccreditation])
+  }, [searchTerm, selectedCampus, selectedDegree, selectedAccreditation])
 
   // Paginasi
   const totalPages = Math.max(1, Math.ceil(filteredData.length / rowsPerPage))
@@ -104,7 +118,7 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
               Tabel Program Studi & Kampus
             </h3>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Menampilkan {filteredData.length} program studi pilihan di berbagai perguruan tinggi Yogyakarta.
+              Menampilkan {filteredData.length} program studi di berbagai perguruan tinggi Daerah Istimewa Yogyakarta.
             </p>
           </div>
 
@@ -116,7 +130,7 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
         {/* Input Pencarian & Dropdown Filter */}
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-2">
           {/* Kolom Pencarian */}
-          <div className="sm:col-span-6 relative">
+          <div className="sm:col-span-4 relative">
             <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
@@ -133,12 +147,29 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
               value={selectedCampus}
               onChange={(e) => setSelectedCampus(e.target.value)}
               aria-label="Filter Kampus"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all cursor-pointer"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all cursor-pointer truncate"
             >
-              <option value="ALL">Semua Perguruan Tinggi</option>
+              <option value="ALL">Semua Perguruan Tinggi ({campusOptions.length})</option>
               {campusOptions.map((c) => (
                 <option key={c} value={c}>
                   {c}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Filter Jenjang */}
+          <div className="sm:col-span-2 relative">
+            <select
+              value={selectedDegree}
+              onChange={(e) => setSelectedDegree(e.target.value)}
+              aria-label="Filter Jenjang"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all cursor-pointer"
+            >
+              <option value="ALL">Semua Jenjang</option>
+              {degreeOptions.map((d) => (
+                <option key={d} value={d}>
+                  {d}
                 </option>
               ))}
             </select>
@@ -152,13 +183,14 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
               aria-label="Filter Akreditasi"
               className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-xs sm:text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all cursor-pointer"
             >
-              <option value="ALL">Semua Akreditasi</option>
+              <option value="ALL">Semua Akred.</option>
               <option value="Unggul">Unggul</option>
               <option value="A">Akreditasi A</option>
               <option value="Baik Sekali">Baik Sekali</option>
               <option value="B">Akreditasi B</option>
               <option value="Baik">Baik</option>
               <option value="C">Akreditasi C</option>
+              <option value="Prodi Baru">Prodi Baru</option>
             </select>
           </div>
         </div>
@@ -192,7 +224,14 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
                       {noIndex}
                     </td>
                     <td className="py-3.5 px-4 font-semibold text-foreground">
-                      {item.name}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {item.degree && (
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-muted text-muted-foreground border border-border shrink-0">
+                            {item.degree}
+                          </span>
+                        )}
+                        <span>{item.name}</span>
+                      </div>
                     </td>
                     <td className="py-3.5 px-3 text-center">
                       <span
@@ -244,13 +283,22 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
             return (
               <div key={`mob-${item.campus}-${item.name}-${noIndex}`} className="p-4 flex flex-col gap-2">
                 <div className="flex items-start justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
+                  <div className="flex items-start gap-2">
+                    <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground shrink-0 mt-0.5">
                       {noIndex}
                     </span>
-                    <h4 className="font-heading font-bold text-sm text-foreground">
-                      {item.name}
-                    </h4>
+                    <div>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        {item.degree && (
+                          <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-muted text-muted-foreground border border-border">
+                            {item.degree}
+                          </span>
+                        )}
+                        <h4 className="font-heading font-bold text-sm text-foreground">
+                          {item.name}
+                        </h4>
+                      </div>
+                    </div>
                   </div>
                   <span
                     className={`shrink-0 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${

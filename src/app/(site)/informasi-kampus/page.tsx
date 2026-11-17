@@ -20,7 +20,8 @@ import {
 } from '@/sanity/lib/queries'
 import { ScholarshipCard } from '@/components/cards/scholarship-card'
 import { CampusFilterTabs } from '@/components/campus-filter-tabs'
-import { ProdiTable } from '@/components/prodi-table'
+import { ProdiTable, type ProdiItem } from '@/components/prodi-table'
+import prodiData from '@/data/prodi-kampus.json'
 import { SectionHeader } from '@/components/ui/section-header'
 
 export const metadata: Metadata = {
@@ -332,7 +333,7 @@ export default async function InformasiKampusPage() {
       {/* SECTION 2.5: TABEL DIREKTORI PROGRAM STUDI DI YOGYAKARTA     */}
       {/* ============================================================ */}
       <section id="prodi" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 scroll-mt-20">
-        <ProdiTable />
+        <ProdiTable initialData={prodiData as ProdiItem[]} />
       </section>
 
       {/* ============================================================ */}
