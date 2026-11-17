@@ -133,6 +133,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/daftar-prodi-dan-kampus/:path*",
+        destination: "/informasi-kampus#prodi",
+        permanent: true,
+      },
+      {
         source: "/putri-imaba",
         destination: "/puteri-imaba",
         permanent: true,

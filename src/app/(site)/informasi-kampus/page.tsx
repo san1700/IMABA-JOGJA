@@ -20,6 +20,7 @@ import {
 } from '@/sanity/lib/queries'
 import { ScholarshipCard } from '@/components/cards/scholarship-card'
 import { CampusFilterTabs } from '@/components/campus-filter-tabs'
+import { ProdiTable } from '@/components/prodi-table'
 import { SectionHeader } from '@/components/ui/section-header'
 
 export const metadata: Metadata = {
@@ -221,6 +222,12 @@ export default async function InformasiKampusPage() {
               Direktori Kampus
             </a>
             <a
+              href="#prodi"
+              className="px-4 py-2 rounded-full text-xs font-semibold glass-pill text-white hover:bg-white/15 transition-colors"
+            >
+              Daftar Prodi
+            </a>
+            <a
               href="#jalur-masuk"
               className="px-4 py-2 rounded-full text-xs font-semibold glass-pill text-white hover:bg-white/15 transition-colors"
             >
@@ -319,6 +326,13 @@ export default async function InformasiKampusPage() {
         />
 
         <CampusFilterTabs campuses={displayCampuses} />
+      </section>
+
+      {/* ============================================================ */}
+      {/* SECTION 2.5: TABEL DIREKTORI PROGRAM STUDI DI YOGYAKARTA     */}
+      {/* ============================================================ */}
+      <section id="prodi" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 scroll-mt-20">
+        <ProdiTable />
       </section>
 
       {/* ============================================================ */}
