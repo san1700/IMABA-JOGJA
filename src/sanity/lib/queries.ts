@@ -91,6 +91,90 @@ export const FALLBACK_POSTS: Post[] = [
     publishedAt: '2026-02-25T14:30:00.000Z',
     featured: false,
   },
+  {
+    _id: 'sample-4',
+    title: 'Kunjungan Silaturahmi Pengurus DPW IMABA ke PWNU DIY & Tokoh Masyarakat',
+    slug: 'kunjungan-silaturahmi-pwnu-diy',
+    section: 'berita',
+    category: { _id: 'cat-4', title: 'Warta Wilayah', slug: 'warta' },
+    author: { name: 'Humas DPW', role: 'Pengurus DPW' },
+    excerpt:
+      'Pengurus Wilayah IMABA DIY menggelar audiensi strategis bersama jajaran PWNU DIY untuk memperkuat sinergi pembinaan santri mahasiswa.',
+    publishedAt: '2026-02-20T11:00:00.000Z',
+    featured: false,
+  },
+  {
+    _id: 'sample-5',
+    title: 'Forum Diskusi Kebangsaan: Kiprah Mahasiswa Santri Merawat Nilai Moderasi',
+    slug: 'forum-diskusi-kebangsaan-santri',
+    section: 'berita',
+    category: { _id: 'cat-5', title: 'Seminar & Dialog', slug: 'seminar' },
+    author: { name: 'Divisi Litbang', role: 'Pengurus DPW' },
+    excerpt:
+      'Refleksi peran strategis kader santri Mambaul Ulum Bata-Bata dalam menjaga harmoni kebinekaan dan perdamaian di Kota Pelajar.',
+    publishedAt: '2026-02-18T13:30:00.000Z',
+    featured: false,
+  },
+  {
+    _id: 'sample-6',
+    title: 'Pendampingan Beasiswa KIP Kuliah & PBSB Kemenag bagi Santri Prasejahtera',
+    slug: 'pendampingan-beasiswa-kip-kuliah-2026',
+    section: 'berita',
+    category: { _id: 'cat-6', title: 'Advokasi Pendidikan', slug: 'advokasi' },
+    author: { name: 'Divisi Advokasi', role: 'Pengurus DPW' },
+    excerpt:
+      'Layanan pendampingan berkas administrasi dan wawancara bagi santri yang berikhtiar menempuh jenjang perguruan tinggi impian.',
+    publishedAt: '2026-02-14T09:00:00.000Z',
+    featured: false,
+  },
+  {
+    _id: 'sample-7',
+    title: 'Peringatan Harlah IMABA DIY: Mempererat Ukhuwah Kader dan Khidmah Almamater',
+    slug: 'peringatan-harlah-imaba-diy',
+    section: 'berita',
+    category: { _id: 'cat-1', title: 'Liputan Acara', slug: 'liputan' },
+    author: { name: 'Humas DPW', role: 'Pengurus DPW' },
+    excerpt:
+      'Ratusan santri dan alumni memadati malam puncak tasyakuran Harlah dengan zikir bersama, pentas seni santri, dan orasi keilmuan.',
+    publishedAt: '2026-02-10T19:30:00.000Z',
+    featured: false,
+  },
+  {
+    _id: 'sample-8',
+    title: 'Pelatihan Penulisan Karya Ilmiah & Jurnalistik untuk Kader Muda IMABA',
+    slug: 'pelatihan-penulisan-karya-ilmiah',
+    section: 'berita',
+    category: { _id: 'cat-2', title: 'Kaderisasi', slug: 'kaderisasi' },
+    author: { name: 'Divisi Infokom', role: 'Pengurus DPW' },
+    excerpt:
+      'Membekali mahasiswa santri keterampilan riset, metodologi penulisan jurnal, dan produksi warta jurnalistik kampus berkualitas.',
+    publishedAt: '2026-02-05T08:30:00.000Z',
+    featured: false,
+  },
+  {
+    _id: 'sample-9',
+    title: 'Rihlah Ilmiah & Ziarah Maqbarah Ulama Nusantara se-Daerah Istimewa Yogyakarta',
+    slug: 'rihlah-ilmiah-ziarah-maqbarah',
+    section: 'berita',
+    category: { _id: 'cat-3', title: 'Kajian & Dakwah', slug: 'kajian' },
+    author: { name: 'Divisi Dakwah', role: 'Pengurus DPW' },
+    excerpt:
+      'Menapaki jejak dakwah dan sanad keilmuan para aulia dan ulama pendahulu dalam mengokohkan tradisi keilmuan Islam nusantara.',
+    publishedAt: '2026-01-28T07:00:00.000Z',
+    featured: false,
+  },
+  {
+    _id: 'sample-10',
+    title: 'Bazar Santri & Pameran Literasi Karya Pesantren di Gelanggang Mahasiswa',
+    slug: 'bazar-santri-pameran-literasi',
+    section: 'berita',
+    category: { _id: 'cat-1', title: 'Liputan Acara', slug: 'liputan' },
+    author: { name: 'Panitia Pelaksana', role: 'Pengurus DPW' },
+    excerpt:
+      'Menampilkan puluhan buku karya santri, kitab turats, dan produk kewirausahaan mandiri kader santri perantau di Yogyakarta.',
+    publishedAt: '2026-01-20T10:00:00.000Z',
+    featured: false,
+  },
 ]
 
 export const FALLBACK_KARYA: Post[] = [

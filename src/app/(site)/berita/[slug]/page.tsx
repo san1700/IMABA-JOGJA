@@ -178,7 +178,7 @@ async function BeritaDetailPageContent({ params }: PostDetailPageProps) {
         </div>
 
         {/* Judul Utama Artikel */}
-        <h1 className="font-heading font-extrabold text-[clamp(28px,1.6rem+1.8vw,44px)] text-foreground leading-tight tracking-tight mb-6">
+        <h1 className="font-heading font-semibold text-[clamp(28px,1.6rem+1.8vw,44px)] text-foreground leading-tight tracking-[-0.02em] mb-6">
           {post.title}
         </h1>
 
@@ -253,7 +253,7 @@ async function BeritaDetailPageContent({ params }: PostDetailPageProps) {
               <span className="text-caption-label text-primary block mb-1">
                 Tentang Penulis
               </span>
-              <h3 className="font-heading font-bold text-base text-foreground mb-1">
+              <h3 className="font-heading font-semibold text-base text-foreground mb-1">
                 {post.author.name}
               </h3>
               {post.author.bio && (

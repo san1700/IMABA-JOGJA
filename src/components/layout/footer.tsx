@@ -39,7 +39,7 @@ export function Footer() {
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="font-heading font-extrabold text-xl tracking-tight text-white leading-tight">
+                <span className="font-heading font-semibold text-xl tracking-tight text-white leading-tight">
                   IMABA JOGJA
                 </span>
                 <span className="text-xs text-white/60 tracking-wider uppercase font-medium">

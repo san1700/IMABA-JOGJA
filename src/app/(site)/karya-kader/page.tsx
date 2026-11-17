@@ -79,7 +79,7 @@ export default function KaryaKaderPage({ searchParams }: KaryaKaderPageProps) {
             <span>Mimbar Literasi & Pemikiran Santri</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-[clamp(32px,1.8rem+2vw,52px)] tracking-tight text-white leading-tight mb-3">
+          <h1 className="font-heading font-semibold text-[clamp(32px,1.8rem+2vw,52px)] tracking-[-0.02em] text-white leading-tight mb-3">
             Karya Kader IMABA
           </h1>
 

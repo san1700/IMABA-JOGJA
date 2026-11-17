@@ -241,7 +241,7 @@ export function Navbar() {
               </div>
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="font-heading font-bold text-nav-brand tracking-tight text-[#E5D7B7] leading-tight flex items-center gap-1.5 whitespace-nowrap">
+              <span className="font-heading font-semibold text-nav-brand tracking-tight text-[#E5D7B7] leading-tight flex items-center gap-1.5 whitespace-nowrap">
                 IMABA JOGJA
                 <span className="inline-block w-2 h-2 rounded-full bg-[#C5A059] animate-pulse shrink-0" />
               </span>

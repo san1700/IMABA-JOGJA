@@ -2,6 +2,8 @@ import * as React from 'react'
 import { Suspense } from 'react'
 import { Navbar } from '@/components/layout/navbar'
 import { Footer } from '@/components/layout/footer'
+import { ReadingProgress } from '@/components/reading-progress'
+import { IntroCurtain } from '@/components/motion/intro-curtain'
 
 export default function SiteLayout({
   children,
@@ -10,6 +12,8 @@ export default function SiteLayout({
 }) {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
+      <IntroCurtain />
+      <ReadingProgress />
       <Suspense fallback={<div className="h-20 w-full bg-[#14120E]" />}>
         <Navbar />
       </Suspense>

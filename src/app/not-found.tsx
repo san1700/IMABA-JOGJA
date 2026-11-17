@@ -11,7 +11,7 @@ export default function NotFound() {
           <span>Error 404 &bull; Halaman Tidak Ditemukan</span>
         </div>
 
-        <h1 className="font-heading font-black text-6xl sm:text-7xl text-foreground tracking-tight mb-4">
+        <h1 className="font-heading font-semibold text-6xl sm:text-7xl text-foreground tracking-tight mb-4">
           404
         </h1>
 

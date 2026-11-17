@@ -178,7 +178,7 @@ async function KaryaDetailPageContent({ params }: KaryaDetailPageProps) {
 
         {/* Header Judul & Penulis */}
         <header className="mb-10 text-center">
-          <h1 className="font-heading font-extrabold text-[clamp(28px,1.6rem+1.8vw,44px)] text-foreground leading-tight tracking-tight mb-6">
+          <h1 className="font-heading font-semibold text-[clamp(28px,1.6rem+1.8vw,44px)] text-foreground leading-tight tracking-[-0.02em] mb-6">
             {post.title}
           </h1>
 

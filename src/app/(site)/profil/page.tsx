@@ -113,7 +113,7 @@ export default async function ProfilPage() {
             <span>Tentang IMABA Yogyakarta</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-[clamp(32px,1.8rem+2vw,52px)] tracking-tight text-white leading-tight mb-5">
+          <h1 className="font-heading font-semibold text-[clamp(32px,1.8rem+2vw,52px)] tracking-[-0.02em] text-white leading-tight mb-5">
             Profil, Sejarah & Struktur Organisasi
           </h1>
 

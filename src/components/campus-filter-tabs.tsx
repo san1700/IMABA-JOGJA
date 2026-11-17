@@ -77,7 +77,7 @@ export function CampusFilterTabs({ campuses }: CampusFilterTabsProps) {
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="font-heading font-black text-2xl text-primary tracking-tight">
+                  <span className="font-heading font-semibold text-2xl text-primary tracking-tight">
                     {campus.shortName}
                   </span>
                   <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-muted text-foreground/80 border border-border">
