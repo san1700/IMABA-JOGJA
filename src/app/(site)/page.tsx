@@ -86,108 +86,83 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* ============================================================ */}
-      {/* 1. HERO BANNER — ESPRESSO CHARCOAL & ROYAL GOLD              */}
-      {/*    Adaptasi gaya UNU Jogja: Foto pengurus sebagai showcase    */}
-      {/*    sinematik di bawah H1, bukan sebagai background yg digelapkan */}
+      {/* 1. HERO BANNER FULL SCREEN — GAYA RESMI UNU YOGYAKARTA       */}
+      {/*    Foto bersama pengurus menjadi background layar penuh      */}
+      {/*    dengan teks duduk elegan di atas area langit & kubah      */}
       {/* ============================================================ */}
-      <section className="relative w-full overflow-hidden bg-[#14120E] text-white border-b border-[#2D2822]">
-        {/* Background subtle: tekstur gelap hangat */}
-        <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_0%,rgba(197,160,89,0.09)_0%,rgba(20,18,14,0)_65%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_100%,rgba(94,155,114,0.06)_0%,rgba(20,18,14,0)_60%)]" />
+      <section className="relative w-full min-h-[92vh] sm:min-h-screen flex flex-col justify-between overflow-hidden bg-[#14120E] text-white border-b border-[#2D2822]">
+        {/* ========================================================== */}
+        {/* FOTO BERSAMA PENGURUS SEBAGAI BACKGROUND FULL SCREEN       */}
+        {/* ========================================================== */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/foto-pengurus-imaba-dpw.jpg"
+            alt="Foto Bersama Pengurus dan Anggota DPW IMABA Daerah Istimewa Yogyakarta"
+            fill
+            priority
+            className="object-cover object-[center_50%] sm:object-[center_45%] scale-100 transition-transform duration-1000 ease-out"
+            sizes="100vw"
+            quality={95}
+          />
+
+          {/* Gradien Gelap Area Teks (0% - 55%) Diturunkan Melingkupi Subtitle Agar Teks Jelas Terbaca */}
+          <div
+            className="absolute top-0 inset-x-0 h-[52%] sm:h-[55%] pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(20, 18, 14, 0.96) 0%, rgba(20, 18, 14, 0.88) 45%, rgba(20, 18, 14, 0.5) 75%, rgba(20, 18, 14, 0) 100%)',
+            }}
+          />
+
+          {/* Transisi Halus di Dasar Hero Tanpa Mengenai Muka/Badan Pengurus */}
+          <div className="absolute bottom-0 inset-x-0 h-16 sm:h-20 bg-gradient-to-t from-[#14120E] via-[#14120E]/60 to-transparent pointer-events-none" />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-10 sm:pb-12 flex flex-col items-center">
+        {/* ========================================================== */}
+        {/* ELEMEN KONTEN DI ATAS FOTO BERSAMA                         */}
+        {/* ========================================================== */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-6 sm:pb-8 flex flex-col justify-between flex-1 min-h-[92vh] sm:min-h-screen">
+          {/* Bagian Atas: Eyebrow + H1 Hero + Lead + CTA Buttons */}
+          <div className="w-full max-w-4xl mx-auto text-center pt-2 sm:pt-4 flex flex-col items-center">
+            {/* Eyebrow Organisasi — Title Case, Tanpa Kotak & Daun */}
+            <FadeUp delay={0.04}>
+              <p className="text-xs sm:text-sm font-semibold tracking-wide text-[#E8D4A6] mb-3 sm:mb-3.5 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                Dewan Pengurus Wilayah IMABA Daerah Istimewa Yogyakarta
+              </p>
+            </FadeUp>
 
-          {/* Eyebrow Organisasi */}
-          <FadeUp delay={0.04}>
-            <p className="text-xs sm:text-sm font-semibold tracking-wide text-[#E8D4A6] mb-3 sm:mb-3.5">
-              Dewan Pengurus Wilayah IMABA Daerah Istimewa Yogyakarta
-            </p>
-          </FadeUp>
+            {/* H1 Hero — Dua Baris, Baris Kedua Emas Royal */}
+            <FadeUp delay={0.08}>
+              <h1 className="font-heading font-extrabold text-[clamp(32px,2rem+2.6vw,60px)] leading-[1.15] tracking-[-0.02em] max-w-4xl mx-auto text-center drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] mb-4 sm:mb-5">
+                <span className="block text-white">Berakar pada Nilai Pesantren.</span>
+                <span className="block text-[#E6B75B]">Berdaya di Kota Pendidikan.</span>
+              </h1>
+            </FadeUp>
 
-          {/* H1 Hero — Dua Baris, Baris Kedua Emas Royal */}
-          <FadeUp delay={0.08}>
-            <h1 className="font-heading font-extrabold text-[clamp(32px,2rem+2.6vw,60px)] leading-[1.15] tracking-[-0.02em] max-w-4xl mx-auto text-center drop-shadow-2xl mb-5 sm:mb-6">
-              <span className="block text-white">Berakar pada Nilai Pesantren.</span>
-              <span className="block text-[#E6B75B]">Berdaya di Kota Pendidikan.</span>
-            </h1>
-          </FadeUp>
+            {/* Lead — Italic Khas Akademik UNU Jogja, Warna Hangat & Bayangan Tajam */}
+            <FadeUp delay={0.14}>
+              <p className="font-sans font-normal italic text-[clamp(15px,0.92rem+0.32vw,18px)] text-[#EDE8DD] max-w-2xl sm:max-w-3xl mx-auto leading-[1.70] tracking-[-0.005em] text-center text-pretty drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                Portal resmi IMABA DIY: Wadah silaturahmi, pendampingan beasiswa masuk kampus, dan mimbar literasi ilmiah santri Pondok Pesantren Mambaul Ulum Bata-Bata di Yogyakarta.
+              </p>
+            </FadeUp>
+          </div>
 
-          {/* Lead — italic khas akademik UNU Jogja */}
-          <FadeUp delay={0.14}>
-            <p className="font-sans font-normal italic text-[clamp(15px,0.92rem+0.32vw,18px)] text-[#CFC8BA] max-w-2xl sm:max-w-3xl mx-auto leading-[1.70] tracking-[-0.005em] text-center text-pretty drop-shadow-md mb-8 sm:mb-10">
-              Portal resmi IMABA DIY: Wadah silaturahmi, pendampingan beasiswa masuk kampus, dan mimbar literasi ilmiah santri Pondok Pesantren Mambaul Ulum Bata-Bata di Yogyakarta.
-            </p>
-          </FadeUp>
-
-          {/* CTA Buttons */}
-          <FadeUp delay={0.18} className="mb-8 sm:mb-10">
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              <Link
-                href="/informasi-kampus#bimtren"
-                className="btn-pill-arrow bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] font-bold shadow-xl shadow-black/40 border border-[#E6B75B]/30 transition-all hover:scale-105"
+          {/* Bagian Bawah: Petunjuk Scroll Khas UNU Jogja */}
+          <div className="w-full flex flex-col items-center justify-center pt-8 pb-2 sm:pb-4 z-10">
+            <FadeUp delay={0.24}>
+              <a
+                href="#konten-utama"
+                className="group inline-flex flex-col items-center gap-2 text-[#D4CBBF] hover:text-[#C5A059] transition-colors"
               >
-                <span>Pendaftaran Bimtren 2026</span>
-                <span className="arrow-disc bg-[#14120E] text-[#C5A059] shadow-sm">
-                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                <span className="text-[13px] font-medium tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  Lanjutkan di bawah untuk menjelajahi lebih lanjut
                 </span>
-              </Link>
-
-              <Link
-                href="/informasi-kampus"
-                className="inline-flex items-center gap-2 rounded-full px-5 py-3 border border-[#3E3428] hover:border-[#C5A059]/60 hover:bg-[#C5A059]/10 text-[#E5D7B7] font-medium text-sm transition-all backdrop-blur-sm shadow-sm"
-              >
-                <Compass className="w-4 h-4 text-[#C5A059]" />
-                <span>Direktori Kampus &amp; Beasiswa</span>
-              </Link>
-            </div>
-          </FadeUp>
-
-          {/* Foto Bersama Pengurus — Sinematik 16:9, Berbingkai Emas, Di Bawah CTA */}
-          <FadeUp delay={0.22} className="w-full max-w-5xl mx-auto mb-8 sm:mb-10">
-            <div className="relative rounded-2xl overflow-hidden border border-[#3E3428] shadow-2xl bg-[#1C1813] p-1.5 sm:p-2">
-              <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-xl overflow-hidden bg-[#181512]">
-                <Image
-                  src="/images/foto-pengurus-imaba.jpg"
-                  alt="Foto Bersama Pengurus dan Anggota DPW IMABA Daerah Istimewa Yogyakarta"
-                  fill
-                  priority
-                  className="object-cover object-[center_35%]"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1024px"
-                  quality={92}
-                />
-                {/* Gradien halus hanya di bagian bawah untuk caption */}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#14120E]/90 via-[#14120E]/30 to-transparent p-3 sm:p-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-left">
-                    <span className="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse shrink-0" />
-                    <span className="text-xs font-semibold text-[#E5D7B7]">
-                      Jajaran Pengurus &amp; Kader DPW IMABA DIY
-                    </span>
-                    <span className="text-[#A39987] text-xs hidden sm:inline">&bull; Periode 2025/2026</span>
-                  </div>
-                  <span className="hidden sm:flex px-2.5 py-1 rounded-md bg-[#2A231A] text-[#C5A059] text-[10px] font-bold uppercase border border-[#3E3428]">
-                    Dokumentasi Resmi
-                  </span>
+                <div className="w-7 h-11 rounded-full border border-[#54483B] group-hover:border-[#C5A059]/70 flex items-start justify-center p-1 transition-colors bg-[#14120E]/80 backdrop-blur-sm shadow-md">
+                  <ChevronDown className="w-3.5 h-3.5 text-[#C5A059] animate-bounce" />
                 </div>
-              </div>
-            </div>
-          </FadeUp>
-
-          {/* Petunjuk Scroll — Persis seperti UNU Jogja */}
-          <FadeUp delay={0.26}>
-            <a
-              href="#konten-utama"
-              className="group inline-flex flex-col items-center gap-2 text-[#9E9382] hover:text-[#C5A059] transition-colors"
-            >
-              <span className="text-[13px] font-medium tracking-wide drop-shadow-sm">
-                Lanjutkan di bawah untuk menjelajahi lebih lanjut
-              </span>
-              <div className="w-7 h-11 rounded-full border border-[#54483B] group-hover:border-[#C5A059]/70 flex items-start justify-center p-1 transition-colors bg-[#14120E]/60 backdrop-blur-sm">
-                <ChevronDown className="w-3.5 h-3.5 text-[#C5A059] animate-bounce" />
-              </div>
-            </a>
-          </FadeUp>
+              </a>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
