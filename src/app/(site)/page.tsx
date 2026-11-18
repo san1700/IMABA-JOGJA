@@ -33,9 +33,8 @@ import {
 } from '@/sanity/lib/queries'
 import { SectionHeader } from '@/components/ui/section-header'
 import { PostCard } from '@/components/cards/post-card'
-import { UnuNewsCarousel } from '@/components/home/unu-news-carousel'
 import { FadeUp, StaggerContainer, StaggerItem } from '@/components/motion/fade-in'
-import { HeroParallax } from '@/components/motion/hero-parallax'
+import { HeroSlideshow } from '@/components/motion/hero-slideshow'
 
 export const metadata: Metadata = {
   title: 'Beranda | Ikatan Mahasiswa Bata-Bata (IMABA) Yogyakarta',
@@ -81,35 +80,22 @@ export default async function HomePage() {
     fallback: FALLBACK_CAMPUSES,
   })
 
+  const latestBerita = (beritaList && beritaList.length > 0 ? beritaList : FALLBACK_POSTS).slice(0, 6)
   const latestKarya = (karyaList || FALLBACK_KARYA).slice(0, 3)
   const popularCampuses = (campusesList || FALLBACK_CAMPUSES).slice(0, 4)
-
-  // Data Berita untuk Carousel 2 Baris Geser Halus Bergaya UNU Yogyakarta
-  const rawBerita = beritaList && beritaList.length > 0 ? beritaList : FALLBACK_POSTS
-  let carouselPosts = [...rawBerita]
-  if (carouselPosts.length < 8) {
-    const extraPosts = karyaList && karyaList.length > 0 ? karyaList : FALLBACK_POSTS
-    carouselPosts = [...carouselPosts, ...extraPosts]
-  }
-  if (carouselPosts.length < 8) {
-    carouselPosts = [...carouselPosts, ...FALLBACK_POSTS]
-  }
 
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* ============================================================ */}
-      {/* 1. HERO BANNER FULL SCREEN — GAYA RESMI UNU YOGYAKARTA       */}
-      {/*    Foto bersama pengurus menjadi background layar penuh      */}
+      {/* 1. HERO BANNER FULL SCREEN — ROTASI FOTO BERGANTIAN          */}
+      {/*    Slideshow halus foto pengurus & kegiatan silaturahmi      */}
       {/*    dengan teks duduk elegan di atas area langit & kubah      */}
       {/* ============================================================ */}
       <section className="relative w-full min-h-[92vh] sm:min-h-screen flex flex-col justify-between overflow-hidden bg-[#14120E] text-white border-b border-[#2D2822]">
         {/* ========================================================== */}
-        {/* FOTO BERSAMA PENGURUS — PARALLAX & SETTLE MOTION           */}
+        {/* SLIDESHOW FOTO PENGURUS — ROTASI HALUS SETIAP 6 DETIK      */}
         {/* ========================================================== */}
-        <HeroParallax
-          src="/images/foto-pengurus-imaba-dpw.jpg"
-          alt="Foto Bersama Pengurus dan Anggota DPW IMABA Daerah Istimewa Yogyakarta"
-        />
+        <HeroSlideshow />
 
         {/* ========================================================== */}
         {/* ELEMEN KONTEN DI ATAS FOTO BERSAMA                         */}
@@ -134,9 +120,34 @@ export default async function HomePage() {
 
             {/* Lead — Italic Khas Akademik UNU Jogja, Warna Hangat & Bayangan Tajam */}
             <FadeUp delay={0.14}>
-              <p className="font-sans font-normal italic text-[clamp(15px,0.92rem+0.32vw,18px)] text-[#EDE8DD] max-w-2xl sm:max-w-3xl mx-auto leading-[1.70] tracking-[-0.005em] text-center text-pretty drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+              <p className="font-sans font-normal italic text-[clamp(15px,0.92rem+0.32vw,18px)] text-[#EDE8DD] max-w-2xl sm:max-w-3xl mx-auto leading-[1.70] tracking-[-0.005em] text-center text-pretty drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] mb-6 sm:mb-8">
                 Portal resmi IMABA DIY: Wadah silaturahmi, pendampingan beasiswa masuk kampus, dan mimbar literasi ilmiah santri Pondok Pesantren Mambaul Ulum Bata-Bata di Yogyakarta.
               </p>
+            </FadeUp>
+
+            {/* CTA Buttons Hero — Sesuai Attachment 1 & Sekeco Style */}
+            <FadeUp delay={0.18}>
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-2">
+                {/* Tombol Utama: Pendaftaran Bimtren 2026 */}
+                <Link
+                  href="/informasi-kampus#bimtren"
+                  className="btn-pill-arrow bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] font-bold shadow-xl shadow-black/50 border border-[#E6B75B]/40 transition-all hover:scale-105 active:scale-95"
+                >
+                  <span className="tracking-wide">Pendaftaran Bimtren 2026</span>
+                  <span className="arrow-disc bg-[#14120E] text-[#C5A059] shadow-sm">
+                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                  </span>
+                </Link>
+
+                {/* Tombol Sekunder: Direktori Kampus & Beasiswa */}
+                <Link
+                  href="/informasi-kampus"
+                  className="inline-flex items-center gap-2.5 rounded-full px-5 py-3 bg-[#14120E]/70 hover:bg-[#14120E]/90 border border-white/20 hover:border-[#C5A059]/60 text-[#E5D7B7] hover:text-white font-medium text-sm transition-all backdrop-blur-md shadow-lg shadow-black/40 hover:scale-105 active:scale-95"
+                >
+                  <Compass className="w-4 h-4 text-[#C5A059]" />
+                  <span>Direktori Kampus &amp; Beasiswa</span>
+                </Link>
+              </div>
             </FadeUp>
           </div>
 
@@ -168,13 +179,13 @@ export default async function HomePage() {
           <StaggerItem>
             <Link
               href="/informasi-kampus#bimtren"
-              className="group flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1F1A14] border border-border shadow-lg shadow-black/5 hover:border-[#C5A059] hover:shadow-xl transition-all duration-300"
+              className="group flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1F1A14] border border-[#E5DFD3] dark:border-border shadow-lg shadow-black/5 hover:border-primary dark:hover:border-[#C5A059] hover:shadow-xl transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#C5A059]/10 text-[#C5A059] dark:text-[#E6B75B] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#C5A059] group-hover:text-[#14120E] transition-all">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary dark:bg-[#C5A059]/10 dark:text-[#E6B75B] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground dark:group-hover:bg-[#C5A059] dark:group-hover:text-[#14120E] transition-all">
                 <GraduationCap className="w-5 h-5" />
               </div>
               <div className="min-w-0">
-                <span className="font-heading font-bold text-sm text-foreground block group-hover:text-primary transition-colors truncate">
+                <span className="font-heading font-semibold text-sm text-foreground block group-hover:text-primary transition-colors truncate">
                   Bimtren 2026
                 </span>
                 <span className="text-xs text-muted-foreground block truncate">
@@ -188,13 +199,13 @@ export default async function HomePage() {
           <StaggerItem>
             <Link
               href="/informasi-kampus#beasiswa"
-              className="group flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1F1A14] border border-border shadow-lg shadow-black/5 hover:border-[#1FA83C] hover:shadow-xl transition-all duration-300"
+              className="group flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1F1A14] border border-[#E5DFD3] dark:border-border shadow-lg shadow-black/5 hover:border-[#1FA83C] hover:shadow-xl transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-xl bg-[#1FA83C]/10 text-[#1FA83C] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#1FA83C] group-hover:text-white transition-all">
                 <Award className="w-5 h-5" />
               </div>
               <div className="min-w-0">
-                <span className="font-heading font-bold text-sm text-foreground block group-hover:text-[#1FA83C] transition-colors truncate">
+                <span className="font-heading font-semibold text-sm text-foreground block group-hover:text-[#1FA83C] transition-colors truncate">
                   Info Beasiswa
                 </span>
                 <span className="text-xs text-muted-foreground block truncate">
@@ -208,13 +219,13 @@ export default async function HomePage() {
           <StaggerItem>
             <Link
               href="/informasi-kampus#kampus"
-              className="group flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1F1A14] border border-border shadow-lg shadow-black/5 hover:border-[#C5A059] hover:shadow-xl transition-all duration-300"
+              className="group flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1F1A14] border border-[#E5DFD3] dark:border-border shadow-lg shadow-black/5 hover:border-primary dark:hover:border-[#C5A059] hover:shadow-xl transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#C5A059]/10 text-[#C5A059] dark:text-[#E6B75B] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#C5A059] group-hover:text-[#14120E] transition-all">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary dark:bg-[#C5A059]/10 dark:text-[#E6B75B] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground dark:group-hover:bg-[#C5A059] dark:group-hover:text-[#14120E] transition-all">
                 <Compass className="w-5 h-5" />
               </div>
               <div className="min-w-0">
-                <span className="font-heading font-bold text-sm text-foreground block group-hover:text-[#C5A059] transition-colors truncate">
+                <span className="font-heading font-semibold text-sm text-foreground block group-hover:text-primary transition-colors truncate">
                   Daftar Kampus
                 </span>
                 <span className="text-xs text-muted-foreground block truncate">
@@ -228,13 +239,13 @@ export default async function HomePage() {
           <StaggerItem>
             <Link
               href="/karya-kader"
-              className="group flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1F1A14] border border-border shadow-lg shadow-black/5 hover:border-[#F9C80E] hover:shadow-xl transition-all duration-300"
+              className="group flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#1F1A14] border border-[#E5DFD3] dark:border-border shadow-lg shadow-black/5 hover:border-[#b48a04] hover:shadow-xl transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-xl bg-[#F9C80E]/15 text-[#b48a04] dark:text-[#E6B75B] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#F9C80E] group-hover:text-[#14120E] transition-all">
                 <Feather className="w-5 h-5" />
               </div>
               <div className="min-w-0">
-                <span className="font-heading font-bold text-sm text-foreground block group-hover:text-primary transition-colors truncate">
+                <span className="font-heading font-semibold text-sm text-foreground block group-hover:text-primary transition-colors truncate">
                   Karya & Literasi
                 </span>
                 <span className="text-xs text-muted-foreground block truncate">
@@ -257,9 +268,9 @@ export default async function HomePage() {
               <FadeUp>
                 <div className="relative">
                   {/* Decorative Gradient Ring */}
-                  <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-3xl p-1 bg-gradient-to-tr from-[#C5A059] via-[#E6B75B] to-[#C5A059] shadow-2xl shadow-black/30">
-                    <div className="w-full h-full rounded-[22px] bg-[#14120E] flex flex-col items-center justify-center p-6 text-white text-center relative overflow-hidden">
-                      <div className="w-20 h-20 rounded-full bg-white/10 p-2 mb-4 border border-white/20 flex items-center justify-center">
+                  <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-3xl p-1 bg-gradient-to-tr from-[#8E6F32]/35 via-[#D4B36D] to-[#8E6F32]/35 dark:from-[#C5A059] dark:via-[#E6B75B] dark:to-[#C5A059] shadow-2xl shadow-black/10 dark:shadow-black/50">
+                    <div className="w-full h-full rounded-[22px] bg-[#FFFDF9] dark:bg-[#14120E] border border-[#E5DFD3]/80 dark:border-none flex flex-col items-center justify-center p-6 text-foreground dark:text-white text-center relative overflow-hidden transition-colors">
+                      <div className="w-20 h-20 rounded-full bg-[#8E6F32]/10 dark:bg-white/10 p-2 mb-4 border border-[#8E6F32]/20 dark:border-white/20 flex items-center justify-center">
                         <Image
                           src="/logo.png"
                           alt="Logo IMABA Yogyakarta"
@@ -268,25 +279,25 @@ export default async function HomePage() {
                           className="object-contain"
                         />
                       </div>
-                      <span className="text-eyebrow text-[#E6B75B] mb-1">
+                      <span className="text-eyebrow text-[#8E6F32] dark:text-[#E6B75B] mb-1 font-semibold">
                         Pimpinan Organisasi
                       </span>
-                      <h3 className="font-heading text-h3-card text-white">
+                      <h3 className="font-heading text-h3-card text-[#1A1612] dark:text-white font-semibold">
                         Moh. Hosen
                       </h3>
-                      <p className="text-xs text-white/70 mt-1">
+                      <p className="text-xs text-[#5C5243] dark:text-white/70 mt-1 font-medium">
                         Ketua Umum DPW IMABA DIY
                       </p>
-                      <p className="text-[11px] text-white/50">
+                      <p className="text-[11px] text-[#7A6E60] dark:text-white/50">
                         Kader UIN Sunan Kalijaga Yogyakarta
                       </p>
                     </div>
                   </div>
 
                   {/* Badge Masa Khidmah */}
-                  <div className="absolute -bottom-4 right-2 sm:-right-4 px-4 py-2 rounded-xl bg-white dark:bg-[#1F1A14] text-foreground border border-border shadow-lg flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#C5A059]" />
-                    <span className="text-caption-label">Masa Khidmah 2025/2026</span>
+                  <div className="absolute -bottom-4 right-2 sm:-right-4 px-4 py-2 rounded-xl bg-white dark:bg-[#1F1A14] text-foreground border border-[#E5DFD3] dark:border-border shadow-lg flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#8E6F32] dark:bg-[#C5A059]" />
+                    <span className="text-caption-label font-medium text-[#2C241B] dark:text-[#E5D7B7]">Masa Khidmah 2025/2026</span>
                   </div>
                 </div>
               </FadeUp>
@@ -295,7 +306,7 @@ export default async function HomePage() {
             {/* Konten Sambutan & Visi */}
             <div className="lg:col-span-7 flex flex-col items-start">
               <FadeUp delay={0.1}>
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 text-primary text-eyebrow mb-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 dark:border-transparent text-eyebrow mb-4">
                   <Quote className="w-3.5 h-3.5" />
                   <span>Pesan Khidmah Pimpinan</span>
                 </div>
@@ -304,7 +315,7 @@ export default async function HomePage() {
                   Menjaga Integritas Kesantrian di Tengah Arus Modernitas Intelektual Jogja
                 </h2>
 
-                <blockquote className="font-article italic text-lg sm:text-xl text-muted-foreground leading-relaxed mb-6 border-l-4 border-primary pl-4 max-w-[65ch]">
+                <blockquote className="font-article italic text-lg sm:text-xl text-[#2E2820] dark:text-muted-foreground leading-relaxed mb-6 border-l-2 border-primary/80 pl-5 max-w-[65ch]">
                   &ldquo;Di kota pelajar ini, kita tidak hanya menuntut gelar akademis. Kita mengemban
                   amanah membawa keluhuran akhlak, ketawaduan, dan kedalaman sanad keilmuan pesantren
                   Mambaul Ulum Bata-Bata untuk mengabdi bagi masyarakat dan kemajuan bangsa.&rdquo;
@@ -319,7 +330,7 @@ export default async function HomePage() {
                 <div className="flex flex-wrap items-center gap-4">
                   <Link
                     href="/profil"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs transition-colors shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary hover:bg-[#735824] dark:hover:bg-primary/90 text-primary-foreground font-semibold text-xs transition-colors shadow-sm"
                   >
                     <span>Mengenal Profil & AD/ART</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -327,7 +338,7 @@ export default async function HomePage() {
 
                   <Link
                     href="/profil#struktur"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-muted hover:bg-muted/80 text-foreground font-semibold text-xs transition-colors border border-border"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white dark:bg-muted hover:bg-[#F5EFE6] dark:hover:bg-muted/80 text-[#1A1612] dark:text-foreground font-semibold text-xs transition-colors border border-[#E5DFD3] dark:border-border"
                   >
                     <Users className="w-3.5 h-3.5 text-muted-foreground" />
                     <span>Struktur Pengurus Wilayah</span>
@@ -340,26 +351,30 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* 4. WARTA & KABAR TERKINI DPW (NEWSROOM UNU JOGJA STYLE) */}
+      {/* 4. WARTA & KABAR TERKINI DPW (GAYA SEKECO)                   */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#F3EFEA] dark:bg-[#14120E] text-foreground py-20 sm:py-28 transition-colors duration-300 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center mb-10 sm:mb-12">
-          <FadeUp className="w-full">
+      <section className="w-full bg-[#F5F1EA] dark:bg-[#14120E] text-foreground py-20 sm:py-28 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <FadeUp className="w-full mb-10 sm:mb-12">
             <SectionHeader
               variant="light"
               badge="Warta & Publikasi Resmi"
-              badgeIcon={<Newspaper className="w-3.5 h-3.5 text-[#C5A059] dark:text-[#E6B75B]" />}
+              badgeIcon={<Newspaper className="w-3.5 h-3.5 text-primary dark:text-[#E6B75B]" />}
               title="Kabar Terkini Kegiatan & Pengkaderan DPW"
               description="Dokumentasi peliputan kegiatan organisasi, rilis pers keumatan, dan warta silaturahmi kader santri Bata-Bata se-Daerah Istimewa Yogyakarta."
             />
           </FadeUp>
-        </div>
 
-        {/* Carousel 2 Baris Geser Halus Bergaya UNU Yogyakarta */}
-        <UnuNewsCarousel posts={carouselPosts} hrefPrefix="/berita" />
+          {/* Grid Kartu Berita Bergaya Sekeco (3 Kolom Bersih) */}
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full mb-12">
+            {latestBerita.map((post) => (
+              <StaggerItem key={post._id} className="h-full">
+                <PostCard post={post} hrefPrefix="/berita" className="h-full" />
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
 
-        {/* Action Link ke Kanal Berita */}
-        <div className="max-w-7xl mx-auto flex justify-center mt-10 sm:mt-12 px-4">
+          {/* Action Link ke Kanal Berita */}
           <FadeUp delay={0.15}>
             <Link
               href="/berita"
@@ -375,7 +390,7 @@ export default async function HomePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* 5. AGENDA KEGIATAN & PENGUMUMAN RESMI (KOLOM GANDA ALA UNU) */}
+      {/* 5. AGENDA KEGIATAN & PENGUMUMAN RESMI (GAYA SEKECO)          */}
       {/* ============================================================ */}
       <section className="w-full bg-white dark:bg-[#1A1612] text-foreground py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-y border-border/80 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
@@ -393,9 +408,9 @@ export default async function HomePage() {
             </p>
           </FadeUp>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Kolom Kiri: Agenda Kegiatan (Kotak Tanggal Kalender Besar) */}
-            <div className="lg:col-span-7 flex flex-col gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {/* Kolom Kiri: Agenda Kegiatan Terdekat (Gaya Sekeco) */}
+            <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between pb-3 border-b border-border">
                 <h3 className="font-heading font-semibold text-base text-foreground flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-primary" />
@@ -413,55 +428,44 @@ export default async function HomePage() {
               <StaggerContainer className="flex flex-col gap-4">
                 {FALLBACK_AGENDA.map((item) => (
                   <StaggerItem key={item.id}>
-                    <div className="group p-4 sm:p-5 rounded-2xl bg-[#F3EFEA] dark:bg-[#1F1A14] border border-border/80 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-primary hover:shadow-md transition-all duration-200">
-                      {/* Kotak Tanggal Kalender (Khas UNU) */}
-                      <div className="w-16 h-16 rounded-xl bg-[#1F1A14] text-white flex flex-col items-center justify-center shrink-0 border border-[#3E3428] shadow-sm">
-                        <span className="font-heading font-semibold text-xl leading-none text-[#E6B75B]">
-                          {item.date}
+                    <Link
+                      href={item.link || '/berita'}
+                      className="group block p-5 rounded-2xl bg-[#FAF8F5] dark:bg-[#1F1A14] border border-[#E5DFD3] dark:border-white/[0.08] hover:border-primary/50 dark:hover:border-[#C5A059]/50 transition-all duration-300 shadow-sm hover:shadow-md"
+                    >
+                      {/* Baris Meta: Kategori Pill + Tanggal (Sesuai Sekeco) */}
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white dark:bg-white/10 text-neutral-700 dark:text-neutral-300 border border-[#E5DFD3] dark:border-white/5 whitespace-nowrap">
+                          {item.category}
                         </span>
-                        <span className="text-[10px] font-bold uppercase tracking-widest mt-0.5 text-white/80">
-                          {item.month}
+                        <span className="text-xs text-muted-foreground dark:text-neutral-400 font-normal">
+                          {item.date} {item.month} 2026
                         </span>
                       </div>
 
-                      {/* Informasi Acara */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary border border-primary/20">
-                            {item.category}
-                          </span>
-                        </div>
-                        <h4 className="font-heading font-semibold text-sm sm:text-base text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2">
-                          {item.title}
-                        </h4>
-                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mt-2">
-                          <span className="flex items-center gap-1">
-                            <Clock className="w-3.5 h-3.5 text-primary/70" />
-                            {item.time}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <MapPin className="w-3.5 h-3.5 text-primary/70" />
-                            {item.location}
-                          </span>
-                        </div>
-                      </div>
+                      {/* Judul Agenda */}
+                      <h4 className="font-heading font-semibold text-base text-foreground dark:text-white group-hover:text-primary dark:group-hover:text-[#E6B75B] transition-colors leading-snug line-clamp-2 mb-3">
+                        {item.title}
+                      </h4>
 
-                      {/* Tombol Detail */}
-                      <Link
-                        href={item.link || '/berita'}
-                        aria-label={`Detail agenda: ${item.title}`}
-                        className="w-8 h-8 rounded-full bg-white dark:bg-white/10 text-primary group-hover:bg-primary group-hover:text-white flex items-center justify-center shrink-0 transition-all self-end sm:self-center shadow-sm"
-                      >
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
+                      {/* Detail Waktu & Lokasi di Dasar Kartu */}
+                      <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-muted-foreground dark:text-neutral-400 pt-3 border-t border-[#E5DFD3]/60 dark:border-white/[0.06]">
+                        <span className="flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5 text-primary/70 shrink-0" />
+                          <span>{item.time}</span>
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <MapPin className="w-3.5 h-3.5 text-primary/70 shrink-0" />
+                          <span>{item.location}</span>
+                        </span>
+                      </div>
+                    </Link>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
             </div>
 
-            {/* Kolom Kanan: Pengumuman Resmi & Surat Edaran */}
-            <div className="lg:col-span-5 flex flex-col gap-4">
+            {/* Kolom Kanan: Pengumuman Resmi & Surat Edaran (Gaya Sekeco) */}
+            <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between pb-3 border-b border-border">
                 <h3 className="font-heading font-semibold text-base text-foreground flex items-center gap-2">
                   <Bell className="w-4 h-4 text-[#E3262A]" />
@@ -472,33 +476,38 @@ export default async function HomePage() {
                 </span>
               </div>
 
-              <StaggerContainer className="flex flex-col gap-3">
+              <StaggerContainer className="flex flex-col gap-4">
                 {FALLBACK_ANNOUNCEMENTS.map((ann) => (
                   <StaggerItem key={ann.id}>
                     <Link
                       href={ann.href}
-                      className="group block p-4 rounded-2xl bg-[#F3EFEA] dark:bg-[#1F1A14] border border-border/80 hover:border-[#C5A059] hover:shadow-md transition-all duration-200"
+                      className="group block p-5 rounded-2xl bg-[#FAF8F5] dark:bg-[#1F1A14] border border-[#E5DFD3] dark:border-white/[0.08] hover:border-primary/50 dark:hover:border-[#C5A059]/50 transition-all duration-300 shadow-sm hover:shadow-md"
                     >
-                      <div className="flex items-center justify-between gap-2 mb-2">
+                      {/* Baris Meta: Badge Status + Tanggal (Sesuai Sekeco) */}
+                      <div className="flex items-center gap-3 mb-2.5">
                         <span
-                          className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                          className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
                             ann.badge === 'Penting'
-                              ? 'bg-[#E3262A]/10 text-[#E3262A] border border-[#E3262A]/20'
+                              ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
                               : ann.badge === 'Terbaru'
-                                ? 'bg-[#1FA83C]/10 text-[#1FA83C] border border-[#1FA83C]/20'
-                                : 'bg-primary/10 text-primary border border-primary/20'
+                                ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+                                : 'bg-white dark:bg-white/10 text-neutral-700 dark:text-neutral-300 border border-[#E5DFD3] dark:border-white/5'
                           }`}
                         >
                           {ann.badge}
                         </span>
-                        <span className="text-[11px] text-muted-foreground">{ann.date}</span>
+                        <span className="text-xs text-muted-foreground dark:text-neutral-400 font-normal">
+                          {ann.date}
+                        </span>
                       </div>
 
-                      <h4 className="font-heading font-semibold text-sm text-foreground group-hover:text-primary transition-colors leading-snug mb-1 line-clamp-2">
+                      {/* Judul Pengumuman */}
+                      <h4 className="font-heading font-semibold text-base text-foreground dark:text-white group-hover:text-primary dark:group-hover:text-[#E6B75B] transition-colors leading-snug line-clamp-2 mb-2">
                         {ann.title}
                       </h4>
 
-                      <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                      {/* Cuplikan Isi Pengumuman */}
+                      <p className="font-sans text-xs sm:text-sm text-muted-foreground dark:text-neutral-400 leading-relaxed line-clamp-2">
                         {ann.excerpt}
                       </p>
                     </Link>
@@ -513,13 +522,13 @@ export default async function HomePage() {
       {/* ============================================================ */}
       {/* 6. PUSAT INFORMASI KAMPUS & BEASISWA (EDUCATION HUB) */}
       {/* ============================================================ */}
-      <section className="w-full bg-[#F3EFEA] dark:bg-[#14120E] text-foreground py-20 sm:py-28 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <section className="w-full bg-[#F5F1EA] dark:bg-[#14120E] text-foreground py-20 sm:py-28 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           <FadeUp className="w-full">
             <SectionHeader
               variant="light"
               badge="Pusat Informasi Kampus Jogja"
-              badgeIcon={<GraduationCap className="w-3.5 h-3.5 text-[#C5A059] dark:text-[#E6B75B]" />}
+              badgeIcon={<GraduationCap className="w-3.5 h-3.5 text-primary dark:text-[#E6B75B]" />}
               title="Gerbang Informasi Perguruan Tinggi & Beasiswa"
               description="Panduan lengkap direktori kampus negeri dan swasta di Yogyakarta tempat kader santri belajar, disertai direktori beasiswa pendidikan aktif."
             />

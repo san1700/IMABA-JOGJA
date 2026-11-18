@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { Search, Building2, Award, BookOpen, ChevronLeft, ChevronRight, Filter } from 'lucide-react'
+import { Search, Building2, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 
 export interface ProdiItem {
   no?: number
@@ -95,10 +95,28 @@ export function ProdiTable({ initialData }: ProdiTableProps) {
     })
   }, [data, searchTerm, selectedCampus, selectedDegree, selectedAccreditation])
 
-  // Reset page saat filter berubah
-  React.useEffect(() => {
+  // Reset page saat filter berubah (pola resmi React tanpa cascading effect)
+  const [prevFilter, setPrevFilter] = React.useState({
+    searchTerm,
+    selectedCampus,
+    selectedDegree,
+    selectedAccreditation,
+  })
+
+  if (
+    prevFilter.searchTerm !== searchTerm ||
+    prevFilter.selectedCampus !== selectedCampus ||
+    prevFilter.selectedDegree !== selectedDegree ||
+    prevFilter.selectedAccreditation !== selectedAccreditation
+  ) {
+    setPrevFilter({
+      searchTerm,
+      selectedCampus,
+      selectedDegree,
+      selectedAccreditation,
+    })
     setCurrentPage(1)
-  }, [searchTerm, selectedCampus, selectedDegree, selectedAccreditation])
+  }
 
   // Paginasi
   const totalPages = Math.max(1, Math.ceil(filteredData.length / rowsPerPage))

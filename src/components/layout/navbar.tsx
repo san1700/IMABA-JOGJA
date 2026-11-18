@@ -211,14 +211,19 @@ export function Navbar() {
     setActiveDropdown((prev) => (prev === title ? null : title))
   }
 
+  const isHome = pathname === '/'
+  const isOverHero = isHome && !isScrolled
+
   return (
     <header
       ref={navRef}
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled
-          ? 'bg-[#14120E]/90 backdrop-blur-xl border-b border-[#C5A059]/20 shadow-lg shadow-black/30 py-3'
-          : 'bg-[#14120E] text-white py-4 border-b border-[#2D2822]',
+        isOverHero
+          ? 'bg-[#14120E]/50 backdrop-blur-md border-b border-white/10 text-white py-3.5 sm:py-4 shadow-sm shadow-black/20'
+          : isScrolled
+            ? 'bg-[#FAF8F5]/92 dark:bg-[#14120E]/92 backdrop-blur-xl border-b border-[#E5DFD3] dark:border-[#C5A059]/20 shadow-sm dark:shadow-lg dark:shadow-black/30 py-2.5 sm:py-3 text-[#1A1612] dark:text-white'
+            : 'bg-[#FAF8F5] dark:bg-[#14120E] text-[#1A1612] dark:text-white py-3.5 sm:py-4 border-b border-[#E5DFD3] dark:border-[#2D2822]',
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -241,11 +246,25 @@ export function Navbar() {
               </div>
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="font-heading font-semibold text-nav-brand tracking-tight text-[#E5D7B7] leading-tight flex items-center gap-1.5 whitespace-nowrap">
+              <span
+                className={cn(
+                  'font-heading font-semibold text-nav-brand tracking-tight leading-tight flex items-center gap-1.5 whitespace-nowrap transition-colors',
+                  isOverHero
+                    ? 'text-[#E5D7B7]'
+                    : 'text-[#1A1612] dark:text-[#E5D7B7]',
+                )}
+              >
                 IMABA JOGJA
-                <span className="inline-block w-2 h-2 rounded-full bg-[#C5A059] animate-pulse shrink-0" />
+                <span className="inline-block w-2 h-2 rounded-full bg-[#8E6F32] dark:bg-[#C5A059] animate-pulse shrink-0" />
               </span>
-              <span className="text-nav-subbrand text-[#C5A059]/80 leading-none hidden xl:block whitespace-nowrap">
+              <span
+                className={cn(
+                  'text-nav-subbrand leading-none hidden xl:block whitespace-nowrap transition-colors',
+                  isOverHero
+                    ? 'text-[#C5A059]/80'
+                    : 'text-[#8E6F32]/80 dark:text-[#C5A059]/80',
+                )}
+              >
                 Ikatan Mahasiswa Bata-Bata
               </span>
             </div>
@@ -269,8 +288,12 @@ export function Navbar() {
                     className={cn(
                       'px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-full text-nav-link whitespace-nowrap shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                       isActive
-                        ? 'bg-[#C5A059]/20 text-[#E6B75B] shadow-sm font-semibold'
-                        : 'text-[#D5CEBF] hover:text-white hover:bg-[#C5A059]/10',
+                        ? isOverHero
+                          ? 'bg-[#C5A059]/20 text-[#E6B75B] shadow-sm font-semibold'
+                          : 'bg-primary/12 text-primary dark:bg-[#C5A059]/20 dark:text-[#E6B75B] shadow-sm font-semibold'
+                        : isOverHero
+                          ? 'text-[#D5CEBF] hover:text-white hover:bg-white/10'
+                          : 'text-[#3D352B] hover:text-[#1A1612] hover:bg-black/5 dark:text-[#D5CEBF] dark:hover:text-white dark:hover:bg-[#C5A059]/10',
                     )}
                   >
                     <span className="whitespace-nowrap">{item.title}</span>
@@ -288,15 +311,22 @@ export function Navbar() {
                     className={cn(
                       'inline-flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-full text-nav-link whitespace-nowrap shrink-0 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                       isOpen || isActive
-                        ? 'bg-[#C5A059]/20 text-[#E6B75B] shadow-sm font-semibold'
-                        : 'text-[#D5CEBF] hover:text-white hover:bg-[#C5A059]/10',
+                        ? isOverHero
+                          ? 'bg-[#C5A059]/20 text-[#E6B75B] shadow-sm font-semibold'
+                          : 'bg-primary/12 text-primary dark:bg-[#C5A059]/20 dark:text-[#E6B75B] shadow-sm font-semibold'
+                        : isOverHero
+                          ? 'text-[#D5CEBF] hover:text-white hover:bg-white/10'
+                          : 'text-[#3D352B] hover:text-[#1A1612] hover:bg-black/5 dark:text-[#D5CEBF] dark:hover:text-white dark:hover:bg-[#C5A059]/10',
                     )}
                   >
                     <span className="whitespace-nowrap">{item.title}</span>
                     <ChevronDown
                       className={cn(
-                        'w-3.5 h-3.5 transition-transform duration-200 text-white/70 shrink-0',
-                        isOpen && 'transform rotate-180 text-white',
+                        'w-3.5 h-3.5 transition-transform duration-200 shrink-0',
+                        isOverHero
+                          ? 'text-white/70'
+                          : 'text-[#6E6252] dark:text-white/70',
+                        isOpen && (isOverHero ? 'rotate-180 text-white' : 'rotate-180 text-primary dark:text-white'),
                       )}
                     />
                   </button>
@@ -305,7 +335,12 @@ export function Navbar() {
                   {isOpen && (
                     <div
                       onMouseLeave={() => setActiveDropdown(null)}
-                      className="absolute top-full left-0 mt-2 w-80 sm:w-96 rounded-2xl p-2.5 bg-[#14120E]/95 backdrop-blur-2xl border border-[#C5A059]/20 shadow-2xl shadow-black/60 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+                      className={cn(
+                        'absolute top-full left-0 mt-2 w-80 sm:w-96 rounded-2xl p-2.5 z-50 animate-in fade-in slide-in-from-top-2 duration-200',
+                        isOverHero
+                          ? 'bg-[#14120E]/95 backdrop-blur-2xl border border-[#C5A059]/20 shadow-2xl shadow-black/60 text-white'
+                          : 'bg-[#FAF8F5]/98 dark:bg-[#14120E]/95 backdrop-blur-2xl border border-[#E5DFD3] dark:border-[#C5A059]/20 shadow-2xl shadow-black/10 dark:shadow-black/60 text-[#1A1612] dark:text-white',
+                      )}
                     >
                       <div className="flex flex-col gap-1">
                         {item.items?.map((sub) => {
@@ -315,23 +350,23 @@ export function Navbar() {
                               key={sub.title}
                               href={sub.href}
                               onClick={() => setActiveDropdown(null)}
-                              className="group flex items-start gap-3.5 p-3 rounded-xl transition-all duration-200 hover:bg-white/10 focus:outline-none focus:bg-white/10"
+                              className="group flex items-start gap-3.5 p-3 rounded-xl transition-all duration-200 hover:bg-black/5 dark:hover:bg-white/10 focus:outline-none focus:bg-black/5 dark:focus:bg-white/10"
                             >
-                              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#C5A059]/30 to-[#E6B75B]/20 border border-[#C5A059]/20 flex items-center justify-center text-[#C5A059] group-hover:scale-105 group-hover:bg-[#C5A059] group-hover:text-[#14120E] transition-all flex-shrink-0 mt-0.5">
+                              <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 text-primary dark:bg-gradient-to-br dark:from-[#C5A059]/30 dark:to-[#E6B75B]/20 dark:border-[#C5A059]/20 dark:text-[#C5A059] flex items-center justify-center group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground dark:group-hover:bg-[#C5A059] dark:group-hover:text-[#14120E] transition-all flex-shrink-0 mt-0.5">
                                 <Icon className="w-4 h-4" />
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2">
-                                  <span className="text-sm font-semibold text-white group-hover:text-[#C5A059] transition-colors truncate">
+                                  <span className="text-sm font-semibold text-[#1A1612] dark:text-white group-hover:text-primary dark:group-hover:text-[#C5A059] transition-colors truncate">
                                     {sub.title}
                                   </span>
                                   {sub.badge && (
-                                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#1FA83C]/30 text-[#4ADE80] border border-[#1FA83C]/50">
+                                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#1FA83C]/20 text-[#15803D] dark:bg-[#1FA83C]/30 dark:text-[#4ADE80] border border-[#1FA83C]/40">
                                       {sub.badge}
                                     </span>
                                   )}
                                 </div>
-                                <p className="text-xs text-white/60 line-clamp-2 mt-0.5 group-hover:text-white/80 transition-colors">
+                                <p className="text-xs text-[#5C5243] dark:text-white/60 line-clamp-2 mt-0.5 group-hover:text-[#1A1612] dark:group-hover:text-white/80 transition-colors">
                                   {sub.description}
                                 </p>
                               </div>
@@ -354,21 +389,43 @@ export function Navbar() {
               onClick={() => setIsSearchOpen(true)}
               aria-label="Pencarian Cepat (Cmd+K)"
               title="Pencarian Cepat (Cmd+K)"
-              className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/90 border border-white/15 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shrink-0"
+              className={cn(
+                'flex items-center justify-center w-9 h-9 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shrink-0',
+                isOverHero
+                  ? 'bg-white/10 hover:bg-white/20 text-white/90 border border-white/15'
+                  : 'bg-black/5 hover:bg-black/10 text-[#1A1612] border border-[#E5DFD3] dark:bg-white/10 dark:hover:bg-white/20 dark:text-white/90 dark:border-white/15',
+              )}
             >
               <Search className="w-4 h-4" />
             </button>
 
             {/* Dark Mode Toggle */}
-            <ThemeToggle className="text-white shrink-0" />
+            <ThemeToggle
+              className={cn(
+                'shrink-0',
+                isOverHero ? 'text-white' : 'text-[#1A1612] dark:text-white',
+              )}
+            />
 
             {/* Pill CTA Button dengan Lingkaran Panah */}
             <Link
               href="/informasi-kampus#bimtren"
-              className="hidden sm:inline-flex items-center gap-2 xl:gap-2.5 rounded-full pl-3.5 xl:pl-5 pr-1.5 xl:pr-2 py-1 xl:py-1.5 bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] font-bold text-xs tracking-wide shadow-md shadow-black/30 border border-[#E6B75B]/30 transition-all duration-300 group whitespace-nowrap shrink-0"
+              className={cn(
+                'hidden sm:inline-flex items-center gap-2 xl:gap-2.5 rounded-full pl-3.5 xl:pl-5 pr-1.5 xl:pr-2 py-1 xl:py-1.5 font-bold text-xs tracking-wide shadow-md transition-all duration-300 group whitespace-nowrap shrink-0',
+                isOverHero
+                  ? 'bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] border border-[#E6B75B]/30 shadow-black/30'
+                  : 'bg-primary hover:bg-[#735824] text-white border border-primary/30 dark:bg-[#C5A059] dark:hover:bg-[#D4B36D] dark:text-[#14120E] dark:border-[#E6B75B]/30 shadow-black/10 dark:shadow-black/30',
+              )}
             >
               <span className="whitespace-nowrap">Bimtren 2026</span>
-              <span className="w-6 h-6 xl:w-7 xl:h-7 rounded-full bg-[#14120E] text-[#C5A059] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shadow-sm shrink-0">
+              <span
+                className={cn(
+                  'w-6 h-6 xl:w-7 xl:h-7 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shadow-sm shrink-0',
+                  isOverHero
+                    ? 'bg-[#14120E] text-[#C5A059]'
+                    : 'bg-white text-primary dark:bg-[#14120E] dark:text-[#C5A059]',
+                )}
+              >
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
             </Link>
@@ -378,7 +435,12 @@ export function Navbar() {
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
-              className="lg:hidden p-2 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shrink-0"
+              className={cn(
+                'lg:hidden p-2 rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shrink-0',
+                isOverHero
+                  ? 'text-white/80 hover:text-white hover:bg-white/10'
+                  : 'text-[#1A1612] hover:bg-black/5 dark:text-white/80 dark:hover:text-white dark:hover:bg-white/10',
+              )}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -388,7 +450,7 @@ export function Navbar() {
 
       {/* Mobile Menu Drawer / Sheet */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[69px] bottom-0 bg-[#14120E]/97 backdrop-blur-2xl z-40 border-t border-[#2D2822] overflow-y-auto p-4 sm:p-6 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="lg:hidden fixed inset-x-0 top-[65px] bottom-0 bg-[#FAF8F5]/98 dark:bg-[#14120E]/97 backdrop-blur-2xl z-40 border-t border-[#E5DFD3] dark:border-[#2D2822] overflow-y-auto p-4 sm:p-6 animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col gap-2 max-w-lg mx-auto pb-12">
             {NAV_ITEMS.map((item) => {
               const hasDropdown = Boolean(item.items && item.items.length > 0)
@@ -400,7 +462,7 @@ export function Navbar() {
                     key={item.title}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3 rounded-xl text-base font-semibold text-white/90 hover:text-white hover:bg-white/10 transition-colors"
+                    className="block px-4 py-3 rounded-xl text-base font-semibold text-[#1A1612] dark:text-white/90 hover:bg-black/5 dark:hover:text-white dark:hover:bg-white/10 transition-colors"
                   >
                     {item.title}
                   </Link>
@@ -408,23 +470,23 @@ export function Navbar() {
               }
 
               return (
-                <div key={item.title} className="rounded-xl overflow-hidden bg-white/[0.04] border border-white/10">
+                <div key={item.title} className="rounded-xl overflow-hidden bg-black/[0.03] dark:bg-white/[0.04] border border-[#E5DFD3] dark:border-white/10">
                   <button
                     type="button"
                     onClick={() => toggleDropdown(item.title)}
-                    className="w-full flex items-center justify-between px-4 py-3.5 text-base font-semibold text-white/90 hover:text-white transition-colors"
+                    className="w-full flex items-center justify-between px-4 py-3.5 text-base font-semibold text-[#1A1612] dark:text-white/90 hover:bg-black/5 dark:hover:text-white transition-colors"
                   >
                     <span>{item.title}</span>
                     <ChevronDown
                       className={cn(
-                        'w-4 h-4 transition-transform duration-200 text-white/70',
-                        isOpen && 'transform rotate-180 text-white',
+                        'w-4 h-4 transition-transform duration-200 text-[#6E6252] dark:text-white/70',
+                        isOpen && 'transform rotate-180 text-primary dark:text-white',
                       )}
                     />
                   </button>
 
                   {isOpen && (
-                    <div className="px-3 pb-3 pt-1 flex flex-col gap-1 border-t border-white/5 bg-black/20">
+                    <div className="px-3 pb-3 pt-1 flex flex-col gap-1 border-t border-[#E5DFD3] dark:border-white/5 bg-black/[0.02] dark:bg-black/20">
                       {item.items?.map((sub) => {
                         const Icon = sub.icon
                         return (
@@ -432,15 +494,15 @@ export function Navbar() {
                             key={sub.title}
                             href={sub.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="flex items-center gap-3 p-2.5 rounded-lg text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                            className="flex items-center gap-3 p-2.5 rounded-lg text-sm text-[#4A4033] dark:text-white/80 hover:text-[#1A1612] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
                           >
-                            <div className="w-7 h-7 rounded-md bg-[#C5A059]/20 text-[#C5A059] flex items-center justify-center text-white/90 flex-shrink-0">
+                            <div className="w-7 h-7 rounded-md bg-primary/10 text-primary dark:bg-[#C5A059]/20 dark:text-[#C5A059] flex items-center justify-center flex-shrink-0">
                               <Icon className="w-3.5 h-3.5" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <span className="font-medium text-white">{sub.title}</span>
+                              <span className="font-medium text-[#1A1612] dark:text-white">{sub.title}</span>
                               {sub.badge && (
-                                <span className="ml-2 text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-[#1FA83C]/30 text-[#4ADE80]">
+                                <span className="ml-2 text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-[#1FA83C]/20 text-[#15803D] dark:bg-[#1FA83C]/30 dark:text-[#4ADE80]">
                                   {sub.badge}
                                 </span>
                               )}
@@ -455,14 +517,14 @@ export function Navbar() {
             })}
 
             {/* Mobile Action CTA */}
-            <div className="pt-4 border-t border-white/10 mt-2">
+            <div className="pt-4 border-t border-[#E5DFD3] dark:border-white/10 mt-2">
               <Link
                 href="/informasi-kampus#bimtren"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-3 rounded-full py-3 px-6 bg-[#C5A059] hover:bg-[#D4B36D] text-[#14120E] font-bold text-sm shadow-lg shadow-black/30"
+                className="w-full flex items-center justify-center gap-3 rounded-full py-3 px-6 bg-primary hover:bg-[#735824] dark:bg-[#C5A059] dark:hover:bg-[#D4B36D] text-white dark:text-[#14120E] font-bold text-sm shadow-lg shadow-black/20"
               >
                 <span>Bimbingan Masuk Kampus (Bimtren 2026)</span>
-                <span className="w-6 h-6 rounded-full bg-[#14120E] text-[#C5A059] flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full bg-white dark:bg-[#14120E] text-primary dark:text-[#C5A059] flex items-center justify-center">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </Link>

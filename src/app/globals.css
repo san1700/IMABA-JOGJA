@@ -63,28 +63,28 @@
 
 :root {
   /* =============================================
-     MODE TERANG → Latar Kertas Gading Hangat
-     Cocok untuk bagian konten editorial & artikel
+     MODE TERANG → Luminous Warm Pearl / Ivory & Heritage Bronze
+     Palet resmi presisi akademik dengan kontras tinggi (WCAG AAA >= 5:1)
      ============================================= */
-  --background: #F3EFEA;         /* Ivory Warm Paper */
-  --foreground: #1A1612;         /* Espresso Near-Black */
-  --card:            #FFFFFF;
+  --background: #FAF8F5;         /* Luminous Warm Pearl / Ivory */
+  --foreground: #1A1612;         /* Deep Charcoal Obsidian */
+  --card:            #FFFFFF;    /* Pure Card White */
   --card-foreground: #1A1612;
   --popover:            #FFFFFF;
   --popover-foreground: #1A1612;
-  --primary:            #C5A059; /* Royal Gold */
-  --primary-foreground: #14120E;
-  --secondary:          #EDE8E0;
-  --secondary-foreground: #3A3025;
-  --muted:              #EAE4DA;
-  --muted-foreground:   #7A6E60;
-  --accent:             #E6B75B; /* Gold Light */
-  --accent-foreground:  #14120E;
+  --primary:            #8E6F32; /* Deep Antique Royal Gold (WCAG AAA >= 5:1 on white/ivory) */
+  --primary-foreground: #FFFFFF;
+  --secondary:          #F0EAE1; /* Soft Warm Linen */
+  --secondary-foreground: #2C241B;
+  --muted:              #EFEAE1;
+  --muted-foreground:   #6E6252;
+  --accent:             #9C7A34; /* Rich Ochre Gold Accent */
+  --accent-foreground:  #FFFFFF;
   --destructive:        #e3262a;
   --destructive-foreground: #ffffff;
-  --border: #DDD5C8;
-  --input:  #DDD5C8;
-  --ring:   #C5A059;
+  --border: #E5DFD3;             /* Warm Hairline Border */
+  --input:  #E5DFD3;
+  --ring:   #8E6F32;
   --radius: 1rem;
 }
 

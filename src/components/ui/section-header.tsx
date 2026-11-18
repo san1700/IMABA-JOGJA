@@ -38,7 +38,7 @@ export function SectionHeader({
             'inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-eyebrow mb-4 shadow-sm',
             isDark
               ? 'glass-pill text-white/90 border-white/20'
-              : 'bg-[#C5A059]/10 text-[#C5A059] dark:bg-[#C5A059]/15 dark:text-[#E6B75B] border border-[#C5A059]/25 dark:border-[#C5A059]/30',
+              : 'bg-primary/10 text-primary dark:bg-[#C5A059]/15 dark:text-[#E6B75B] border border-primary/20 dark:border-[#C5A059]/30',
           )}
         >
           {badgeIcon}
